@@ -106,7 +106,7 @@ button {
   height: 44px;
   padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.44);
-  border-radius: 999px;
+  border-radius: 18px;
   background: rgba(255, 255, 255, 0.16);
   backdrop-filter: blur(12px);
 }
@@ -151,7 +151,7 @@ button {
   width: 236px;
   padding: 12px;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 28px;
+  border-radius: 22px;
   background: rgba(34, 39, 42, 0.78);
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
   opacity: 0;
@@ -176,7 +176,7 @@ button {
   min-height: 54px;
   padding: 0 12px;
   border: 0;
-  border-radius: 18px;
+  border-radius: 14px;
   background: transparent;
   color: rgba(255, 255, 255, 0.92);
   font-size: 17px;
@@ -195,14 +195,16 @@ main {
 
 .hero-board {
   position: relative;
-  min-height: calc(720px + env(safe-area-inset-top));
+  min-height: calc(720px + var(--safe-top));
+  margin-top: calc(-1 * var(--safe-top));
+  padding-top: var(--safe-top);
   overflow: hidden;
   background: #111;
 }
 
 .hero-image {
   position: absolute;
-  inset: calc(-1 * env(safe-area-inset-top)) 0 0;
+  inset: 0;
   background-image: url("./public/images/hero-cover.png");
   background-position: center center;
   background-repeat: no-repeat;
@@ -236,7 +238,7 @@ main {
 h1 {
   margin: 0;
   color: #fff;
-  font-size: 31px;
+  font-size: 22px;
   font-weight: 600;
   line-height: 1.18;
   letter-spacing: 0;
@@ -246,14 +248,14 @@ h1 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 35px;
-  margin: 11px 0 20px;
-  padding: 0 16px;
+  min-height: 25px;
+  margin: 8px 0 14px;
+  padding: 0 11px;
   border: 1px solid rgba(255, 255, 255, 0.42);
   border-radius: 999px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0.48));
   color: #000;
-  font-size: 13px;
+  font-size: 9px;
   font-weight: 500;
   line-height: 1;
   box-shadow:
@@ -307,7 +309,7 @@ h1 {
   align-items: center;
   height: 42px;
   padding: 0 14px;
-  border-radius: 12px;
+  border-radius: 9px;
   background: rgba(255, 255, 255, 0.1);
 }
 
@@ -383,8 +385,8 @@ h1 {
   bottom: 0;
   left: 54px;
   height: 1px;
-  background: rgba(255, 255, 255, 0.08);
-  transform: scaleY(0.45);
+  background: rgba(255, 255, 255, 0.13);
+  transform: scaleY(0.62);
   transform-origin: bottom;
 }
 
@@ -398,7 +400,7 @@ h1 {
 
 .rank-number {
   color: #fff;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 1;
 }
@@ -463,7 +465,7 @@ h1 {
   height: 48px;
   place-items: center;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 6px;
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0)),
     var(--cover);
@@ -545,7 +547,7 @@ h1 {
   max-height: 260px;
   padding: 18px;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 28px;
+  border-radius: 22px;
   background: rgba(35, 39, 42, 0.72);
   box-shadow: 0 24px 90px rgba(0, 0, 0, 0.55);
   opacity: 0;
@@ -660,7 +662,7 @@ h1 {
   min-height: 78px;
   padding: 14px;
   border: 1px solid var(--line);
-  border-radius: 16px;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.08);
 }
 
@@ -699,7 +701,7 @@ h1 {
   width: 100%;
   height: auto;
   overflow: visible;
-  border-radius: 18px;
+  border-radius: 13px;
   background: rgba(255, 255, 255, 0.06);
 }
 
@@ -752,7 +754,7 @@ h1 {
   min-width: 62px;
   padding: 7px 9px;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 14px;
+  border-radius: 11px;
   background: rgba(255, 255, 255, 0.68);
   color: rgba(0, 0, 0, 0.72);
   font-size: 10px;
@@ -799,7 +801,7 @@ h1 {
   width: 100%;
   aspect-ratio: 16 / 9;
   border: 0;
-  border-radius: 18px;
+  border-radius: 13px;
   background: rgba(255, 255, 255, 0.08);
 }
 
@@ -829,7 +831,7 @@ h1 {
 
 @media (max-width: 420px) {
   .hero-board {
-    min-height: 710px;
+    min-height: calc(710px + var(--safe-top));
   }
 
   .track-title {
