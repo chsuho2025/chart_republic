@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-25T12:50:00+09:00",
+  "generatedAt": "2026-06-25T08:25:53.698Z",
   "chartDate": "2026-06-25",
   "sources": {
     "spotifyDaily": {
@@ -21,42 +21,6 @@
   },
   "tracks": [
     {
-      "id": "redred-cortis",
-      "title": "REDRED",
-      "artist": "CORTIS",
-      "artistKo": "코르티스",
-      "album": "REDRED",
-      "spotifyDailyRank": 1,
-      "appleDailyRank": 1,
-      "youtubeMusicWeeklyRank": 1,
-      "youtubeShortsDailyRank": null,
-      "reviewScore": 88,
-      "previousRank": 2,
-      "peakRank": 1,
-      "daysOnChart": 9,
-      "status": "up",
-      "coverSeed": "redred-cortis",
-      "finalScore": 78.8
-    },
-    {
-      "id": "lemonade-aespa",
-      "title": "LEMONADE",
-      "artist": "aespa",
-      "artistKo": "에스파",
-      "album": "LEMONADE - The 2nd Album",
-      "spotifyDailyRank": 3,
-      "appleDailyRank": 2,
-      "youtubeMusicWeeklyRank": 2,
-      "youtubeShortsDailyRank": null,
-      "reviewScore": 86,
-      "previousRank": 1,
-      "peakRank": 1,
-      "daysOnChart": 3,
-      "status": "down",
-      "coverSeed": "lemonade-aespa",
-      "finalScore": 77.6
-    },
-    {
       "id": "its-me-illit",
       "title": "It's Me",
       "artist": "ILLIT",
@@ -67,12 +31,18 @@
       "youtubeMusicWeeklyRank": 3,
       "youtubeShortsDailyRank": 6,
       "reviewScore": 84,
-      "previousRank": 4,
-      "peakRank": 3,
-      "daysOnChart": 7,
-      "status": "up",
+      "previousRank": null,
+      "peakRank": 1,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "its-me-illit",
-      "finalScore": 95.2
+      "finalScore": 95.2,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 1
+        }
+      ]
     },
     {
       "id": "gapjagi-ioi",
@@ -85,211 +55,18 @@
       "youtubeMusicWeeklyRank": 4,
       "youtubeShortsDailyRank": 2,
       "reviewScore": 82,
-      "previousRank": 5,
-      "peakRank": 4,
-      "daysOnChart": 5,
-      "status": "up",
-      "coverSeed": "gapjagi-ioi",
-      "finalScore": 94.55
-    },
-    {
-      "id": "love-attack-rescene",
-      "title": "LOVE ATTACK",
-      "artist": "RESCENE",
-      "artistKo": "리센느",
-      "album": "SCENEDROME",
-      "spotifyDailyRank": 5,
-      "appleDailyRank": 4,
-      "youtubeMusicWeeklyRank": 5,
-      "youtubeShortsDailyRank": null,
-      "reviewScore": 80,
-      "previousRank": 6,
-      "peakRank": 4,
-      "daysOnChart": 25,
-      "status": "up",
-      "coverSeed": "love-attack-rescene",
-      "finalScore": 75.45
-    },
-    {
-      "id": "rude-hearts2hearts",
-      "title": "RUDE!",
-      "artist": "Hearts2Hearts",
-      "artistKo": "Hearts2Hearts",
-      "album": "RUDE!",
-      "spotifyDailyRank": 7,
-      "appleDailyRank": 8,
-      "youtubeMusicWeeklyRank": 6,
-      "youtubeShortsDailyRank": null,
-      "reviewScore": 78,
-      "previousRank": 7,
-      "peakRank": 6,
-      "daysOnChart": 17,
-      "status": "steady",
-      "coverSeed": "rude-hearts2hearts",
-      "finalScore": 73.5
-    },
-    {
-      "id": "lemon-tang-hearts2hearts",
-      "title": "Lemon Tang",
-      "artist": "Hearts2Hearts",
-      "artistKo": "Hearts2Hearts",
-      "album": "Lemon Tang - The 2nd Mini Album",
-      "spotifyDailyRank": 10,
-      "appleDailyRank": 3,
-      "youtubeMusicWeeklyRank": null,
-      "youtubeShortsDailyRank": null,
-      "reviewScore": 83,
-      "previousRank": 9,
-      "peakRank": 3,
-      "daysOnChart": 2,
-      "status": "up",
-      "coverSeed": "lemon-tang-hearts2hearts",
-      "finalScore": 60.1
-    },
-    {
-      "id": "sarang-hanroro",
-      "title": "사랑하게 될 거야",
-      "artist": "HANRORO",
-      "artistKo": "한로로",
-      "album": "이상비행",
-      "spotifyDailyRank": 9,
-      "appleDailyRank": 13,
-      "youtubeMusicWeeklyRank": 10,
-      "youtubeShortsDailyRank": null,
-      "reviewScore": 87,
-      "previousRank": 10,
-      "peakRank": 9,
-      "daysOnChart": 45,
-      "status": "up",
-      "coverSeed": "sarang-hanroro",
-      "finalScore": 71.95
-    },
-    {
-      "id": "zero-zero-hanroro",
-      "title": "0+0",
-      "artist": "HANRORO",
-      "artistKo": "한로로",
-      "album": "자몽살구클럽",
-      "spotifyDailyRank": 8,
-      "appleDailyRank": 22,
-      "youtubeMusicWeeklyRank": null,
-      "youtubeShortsDailyRank": null,
-      "reviewScore": 80,
-      "previousRank": 8,
-      "peakRank": 8,
-      "daysOnChart": 6,
-      "status": "steady",
-      "coverSeed": "zero-zero-hanroro",
-      "finalScore": 55.65
-    },
-    {
-      "id": "catch-catch-yena",
-      "title": "캐치 캐치",
-      "artist": "YENA",
-      "artistKo": "최예나",
-      "album": "LOVE CATCHER",
-      "spotifyDailyRank": 18,
-      "appleDailyRank": null,
-      "youtubeMusicWeeklyRank": 8,
-      "youtubeShortsDailyRank": 7,
-      "reviewScore": 76,
-      "previousRank": 12,
-      "peakRank": 8,
-      "daysOnChart": 15,
-      "status": "up",
-      "coverSeed": "catch-catch-yena",
-      "finalScore": 65.25
-    },
-    {
-      "id": "fake-love-juns",
-      "title": "가짜사랑",
-      "artist": "CHOIJUNSEONG",
-      "artistKo": "최준성",
-      "album": "가짜사랑",
-      "spotifyDailyRank": 23,
-      "appleDailyRank": null,
-      "youtubeMusicWeeklyRank": null,
-      "youtubeShortsDailyRank": 3,
-      "reviewScore": 74,
-      "previousRank": 16,
-      "peakRank": 11,
-      "daysOnChart": 14,
-      "status": "up",
-      "coverSeed": "fake-love-juns",
-      "finalScore": 50.4
-    },
-    {
-      "id": "i-like-you-choi",
-      "title": "I Like You",
-      "artist": "Choi Sung Gon",
-      "artistKo": "최성곤",
-      "album": "I Like You",
-      "spotifyDailyRank": null,
-      "appleDailyRank": null,
-      "youtubeMusicWeeklyRank": null,
-      "youtubeShortsDailyRank": 1,
-      "reviewScore": 70,
-      "previousRank": 21,
-      "peakRank": 12,
-      "daysOnChart": 20,
-      "status": "up",
-      "coverSeed": "i-like-you-choi",
-      "finalScore": 27
-    },
-    {
-      "id": "youngcreatorcrew-cortis",
-      "title": "YOUNGCREATORCREW",
-      "artist": "CORTIS",
-      "artistKo": "코르티스",
-      "album": "GREENGREEN - EP",
-      "spotifyDailyRank": null,
-      "appleDailyRank": 6,
-      "youtubeMusicWeeklyRank": null,
-      "youtubeShortsDailyRank": null,
-      "reviewScore": 77,
       "previousRank": null,
-      "peakRank": 13,
+      "peakRank": 2,
       "daysOnChart": 1,
       "status": "new",
-      "coverSeed": "youngcreatorcrew-cortis",
-      "finalScore": 31.45
-    },
-    {
-      "id": "seven-jungkook",
-      "title": "Seven (feat. Latto)",
-      "artist": "Jung Kook, Latto",
-      "artistKo": "정국, Latto",
-      "album": "GOLDEN",
-      "spotifyDailyRank": 2,
-      "appleDailyRank": null,
-      "youtubeMusicWeeklyRank": null,
-      "youtubeShortsDailyRank": null,
-      "reviewScore": 79,
-      "previousRank": 11,
-      "peakRank": 2,
-      "daysOnChart": 120,
-      "status": "up",
-      "coverSeed": "seven-jungkook",
-      "finalScore": 37.6,
-      "videoUrl": "https://www.youtube.com/embed/QU9c0053UAU"
-    },
-    {
-      "id": "boompala-lesserafim",
-      "title": "BOOMPALA",
-      "artist": "LE SSERAFIM",
-      "artistKo": "르세라핌",
-      "album": "PUREFLOW, Pt. 1",
-      "spotifyDailyRank": null,
-      "appleDailyRank": 24,
-      "youtubeMusicWeeklyRank": 7,
-      "youtubeShortsDailyRank": null,
-      "reviewScore": 78,
-      "previousRank": 14,
-      "peakRank": 7,
-      "daysOnChart": 4,
-      "status": "down",
-      "coverSeed": "boompala-lesserafim",
-      "finalScore": 41.15
+      "coverSeed": "gapjagi-ioi",
+      "finalScore": 94.55,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 2
+        }
+      ]
     },
     {
       "id": "somun-akmu",
@@ -302,88 +79,138 @@
       "youtubeMusicWeeklyRank": 9,
       "youtubeShortsDailyRank": 8,
       "reviewScore": 86,
-      "previousRank": 13,
-      "peakRank": 9,
-      "daysOnChart": 11,
-      "status": "up",
+      "previousRank": null,
+      "peakRank": 3,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "somun-akmu",
-      "finalScore": 80.5
+      "finalScore": 80.5,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 3
+        }
+      ]
     },
     {
-      "id": "magnetic-illit",
-      "title": "Magnetic",
-      "artist": "ILLIT",
-      "artistKo": "아일릿",
-      "album": "SUPER REAL ME",
-      "spotifyDailyRank": 41,
-      "appleDailyRank": 38,
-      "youtubeMusicWeeklyRank": 32,
-      "youtubeShortsDailyRank": 18,
-      "reviewScore": 72,
-      "previousRank": 18,
-      "peakRank": 1,
-      "daysOnChart": 86,
-      "status": "steady",
-      "coverSeed": "magnetic-illit",
-      "finalScore": 67.9,
-      "videoUrl": "https://www.youtube.com/embed/Vk5-c_v4gMU"
+      "id": "redred-cortis",
+      "title": "REDRED",
+      "artist": "CORTIS",
+      "artistKo": "코르티스",
+      "album": "REDRED",
+      "spotifyDailyRank": 1,
+      "appleDailyRank": 1,
+      "youtubeMusicWeeklyRank": 1,
+      "youtubeShortsDailyRank": null,
+      "reviewScore": 88,
+      "previousRank": null,
+      "peakRank": 4,
+      "daysOnChart": 1,
+      "status": "new",
+      "coverSeed": "redred-cortis",
+      "finalScore": 78.8,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 4
+        }
+      ]
     },
     {
-      "id": "supernova-aespa",
-      "title": "Supernova",
+      "id": "lemonade-aespa",
+      "title": "LEMONADE",
       "artist": "aespa",
       "artistKo": "에스파",
-      "album": "Armageddon",
-      "spotifyDailyRank": 46,
-      "appleDailyRank": 34,
-      "youtubeMusicWeeklyRank": 29,
-      "youtubeShortsDailyRank": 28,
-      "reviewScore": 73,
-      "previousRank": 17,
-      "peakRank": 1,
-      "daysOnChart": 130,
-      "status": "down",
-      "coverSeed": "supernova-aespa",
-      "finalScore": 65.95,
-      "videoUrl": "https://www.youtube.com/embed/phuiiNCxRMg"
+      "album": "LEMONADE - The 2nd Album",
+      "spotifyDailyRank": 3,
+      "appleDailyRank": 2,
+      "youtubeMusicWeeklyRank": 2,
+      "youtubeShortsDailyRank": null,
+      "reviewScore": 86,
+      "previousRank": null,
+      "peakRank": 5,
+      "daysOnChart": 1,
+      "status": "new",
+      "coverSeed": "lemonade-aespa",
+      "finalScore": 77.6,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 5
+        }
+      ]
     },
     {
-      "id": "perfect-night-lesserafim",
-      "title": "Perfect Night",
-      "artist": "LE SSERAFIM",
-      "artistKo": "르세라핌",
-      "album": "Perfect Night",
-      "spotifyDailyRank": 52,
-      "appleDailyRank": 48,
-      "youtubeMusicWeeklyRank": 35,
-      "youtubeShortsDailyRank": 24,
-      "reviewScore": 71,
-      "previousRank": 22,
-      "peakRank": 2,
-      "daysOnChart": 150,
-      "status": "up",
-      "coverSeed": "perfect-night-lesserafim",
-      "finalScore": 60.35,
-      "videoUrl": "https://www.youtube.com/embed/hLvWy2b857I"
+      "id": "love-attack-rescene",
+      "title": "LOVE ATTACK",
+      "artist": "RESCENE",
+      "artistKo": "리센느",
+      "album": "SCENEDROME",
+      "spotifyDailyRank": 5,
+      "appleDailyRank": 4,
+      "youtubeMusicWeeklyRank": 5,
+      "youtubeShortsDailyRank": null,
+      "reviewScore": 80,
+      "previousRank": null,
+      "peakRank": 6,
+      "daysOnChart": 1,
+      "status": "new",
+      "coverSeed": "love-attack-rescene",
+      "finalScore": 75.45,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 6
+        }
+      ]
     },
     {
-      "id": "plot-twist-tws",
-      "title": "첫 만남은 계획대로 되지 않아",
-      "artist": "TWS",
-      "artistKo": "투어스",
-      "album": "Sparkling Blue",
-      "spotifyDailyRank": 58,
-      "appleDailyRank": 51,
-      "youtubeMusicWeeklyRank": 42,
-      "youtubeShortsDailyRank": 31,
-      "reviewScore": 70,
-      "previousRank": 19,
-      "peakRank": 1,
-      "daysOnChart": 122,
-      "status": "steady",
-      "coverSeed": "plot-twist-tws",
-      "finalScore": 55.25,
-      "videoUrl": "https://www.youtube.com/embed/hVAc1Vf2ITU"
+      "id": "rude-hearts2hearts",
+      "title": "RUDE!",
+      "artist": "Hearts2Hearts",
+      "artistKo": "Hearts2Hearts",
+      "album": "RUDE!",
+      "spotifyDailyRank": 7,
+      "appleDailyRank": 8,
+      "youtubeMusicWeeklyRank": 6,
+      "youtubeShortsDailyRank": null,
+      "reviewScore": 78,
+      "previousRank": null,
+      "peakRank": 7,
+      "daysOnChart": 1,
+      "status": "new",
+      "coverSeed": "rude-hearts2hearts",
+      "finalScore": 73.5,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 7
+        }
+      ]
+    },
+    {
+      "id": "sarang-hanroro",
+      "title": "사랑하게 될 거야",
+      "artist": "HANRORO",
+      "artistKo": "한로로",
+      "album": "이상비행",
+      "spotifyDailyRank": 9,
+      "appleDailyRank": 13,
+      "youtubeMusicWeeklyRank": 10,
+      "youtubeShortsDailyRank": null,
+      "reviewScore": 87,
+      "previousRank": null,
+      "peakRank": 8,
+      "daysOnChart": 1,
+      "status": "new",
+      "coverSeed": "sarang-hanroro",
+      "finalScore": 71.95,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 8
+        }
+      ]
     },
     {
       "id": "drip-babymonster",
@@ -396,12 +223,43 @@
       "youtubeMusicWeeklyRank": 31,
       "youtubeShortsDailyRank": 27,
       "reviewScore": 76,
-      "previousRank": 23,
-      "peakRank": 13,
-      "daysOnChart": 90,
-      "status": "up",
+      "previousRank": null,
+      "peakRank": 9,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "drip-babymonster",
-      "finalScore": 54.4
+      "finalScore": 68,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 9
+        }
+      ]
+    },
+    {
+      "id": "magnetic-illit",
+      "title": "Magnetic",
+      "artist": "ILLIT",
+      "artistKo": "아일릿",
+      "album": "SUPER REAL ME",
+      "spotifyDailyRank": 41,
+      "appleDailyRank": 38,
+      "youtubeMusicWeeklyRank": 32,
+      "youtubeShortsDailyRank": 18,
+      "reviewScore": 72,
+      "previousRank": null,
+      "peakRank": 10,
+      "daysOnChart": 1,
+      "status": "new",
+      "coverSeed": "magnetic-illit",
+      "finalScore": 67.9,
+      "videoUrl": "https://www.youtube.com/embed/Vk5-c_v4gMU",
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 10
+        }
+      ]
     },
     {
       "id": "how-sweet-newjeans",
@@ -414,12 +272,18 @@
       "youtubeMusicWeeklyRank": 32,
       "youtubeShortsDailyRank": 28,
       "reviewScore": 76,
-      "previousRank": 20,
-      "peakRank": 14,
-      "daysOnChart": 88,
-      "status": "down",
+      "previousRank": null,
+      "peakRank": 11,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "how-sweet-newjeans",
-      "finalScore": 53.7
+      "finalScore": 67.1,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 11
+        }
+      ]
     },
     {
       "id": "armageddon-aespa",
@@ -432,12 +296,67 @@
       "youtubeMusicWeeklyRank": 33,
       "youtubeShortsDailyRank": 29,
       "reviewScore": 75,
-      "previousRank": 23,
-      "peakRank": 15,
-      "daysOnChart": 86,
-      "status": "steady",
+      "previousRank": null,
+      "peakRank": 12,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "armageddon-aespa",
-      "finalScore": 52.9
+      "finalScore": 66.1,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 12
+        }
+      ]
+    },
+    {
+      "id": "supernova-aespa",
+      "title": "Supernova",
+      "artist": "aespa",
+      "artistKo": "에스파",
+      "album": "Armageddon",
+      "spotifyDailyRank": 46,
+      "appleDailyRank": 34,
+      "youtubeMusicWeeklyRank": 29,
+      "youtubeShortsDailyRank": 28,
+      "reviewScore": 73,
+      "previousRank": null,
+      "peakRank": 13,
+      "daysOnChart": 1,
+      "status": "new",
+      "coverSeed": "supernova-aespa",
+      "finalScore": 65.95,
+      "videoUrl": "https://www.youtube.com/embed/phuiiNCxRMg",
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 13
+        }
+      ]
+    },
+    {
+      "id": "catch-catch-yena",
+      "title": "캐치 캐치",
+      "artist": "YENA",
+      "artistKo": "최예나",
+      "album": "LOVE CATCHER",
+      "spotifyDailyRank": 18,
+      "appleDailyRank": null,
+      "youtubeMusicWeeklyRank": 8,
+      "youtubeShortsDailyRank": 7,
+      "reviewScore": 76,
+      "previousRank": null,
+      "peakRank": 14,
+      "daysOnChart": 1,
+      "status": "new",
+      "coverSeed": "catch-catch-yena",
+      "finalScore": 65.25,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 14
+        }
+      ]
     },
     {
       "id": "smart-lesserafim",
@@ -450,12 +369,18 @@
       "youtubeMusicWeeklyRank": 34,
       "youtubeShortsDailyRank": 30,
       "reviewScore": 75,
-      "previousRank": 26,
-      "peakRank": 16,
-      "daysOnChart": 84,
-      "status": "up",
+      "previousRank": null,
+      "peakRank": 15,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "smart-lesserafim",
-      "finalScore": 52.1
+      "finalScore": 65.2,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 15
+        }
+      ]
     },
     {
       "id": "cherish-illit",
@@ -468,12 +393,18 @@
       "youtubeMusicWeeklyRank": 35,
       "youtubeShortsDailyRank": 31,
       "reviewScore": 75,
-      "previousRank": 23,
-      "peakRank": 17,
-      "daysOnChart": 82,
-      "status": "down",
+      "previousRank": null,
+      "peakRank": 16,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "cherish-illit",
-      "finalScore": 51.2
+      "finalScore": 64.3,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 16
+        }
+      ]
     },
     {
       "id": "fate-gidle",
@@ -486,12 +417,18 @@
       "youtubeMusicWeeklyRank": 36,
       "youtubeShortsDailyRank": 32,
       "reviewScore": 74,
-      "previousRank": 28,
-      "peakRank": 18,
-      "daysOnChart": 80,
-      "status": "up",
+      "previousRank": null,
+      "peakRank": 17,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "fate-gidle",
-      "finalScore": 50.6
+      "finalScore": 63.3,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 17
+        }
+      ]
     },
     {
       "id": "heya-ive",
@@ -504,12 +441,18 @@
       "youtubeMusicWeeklyRank": 37,
       "youtubeShortsDailyRank": 33,
       "reviewScore": 74,
-      "previousRank": 27,
-      "peakRank": 19,
-      "daysOnChart": 78,
-      "status": "steady",
+      "previousRank": null,
+      "peakRank": 18,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "heya-ive",
-      "finalScore": 49.7
+      "finalScore": 62.4,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 18
+        }
+      ]
     },
     {
       "id": "accendio-ive",
@@ -522,12 +465,18 @@
       "youtubeMusicWeeklyRank": 38,
       "youtubeShortsDailyRank": 34,
       "reviewScore": 74,
-      "previousRank": 26,
-      "peakRank": 20,
-      "daysOnChart": 76,
-      "status": "down",
+      "previousRank": null,
+      "peakRank": 19,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "accendio-ive",
-      "finalScore": 48.8
+      "finalScore": 61.5,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 19
+        }
+      ]
     },
     {
       "id": "earth-wind-fire-boynextdoor",
@@ -540,12 +489,67 @@
       "youtubeMusicWeeklyRank": 39,
       "youtubeShortsDailyRank": 35,
       "reviewScore": 73,
-      "previousRank": 31,
-      "peakRank": 21,
-      "daysOnChart": 74,
-      "status": "up",
+      "previousRank": null,
+      "peakRank": 20,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "earth-wind-fire-boynextdoor",
-      "finalScore": 47.9
+      "finalScore": 60.5,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 20
+        }
+      ]
+    },
+    {
+      "id": "perfect-night-lesserafim",
+      "title": "Perfect Night",
+      "artist": "LE SSERAFIM",
+      "artistKo": "르세라핌",
+      "album": "Perfect Night",
+      "spotifyDailyRank": 52,
+      "appleDailyRank": 48,
+      "youtubeMusicWeeklyRank": 35,
+      "youtubeShortsDailyRank": 24,
+      "reviewScore": 71,
+      "previousRank": null,
+      "peakRank": 21,
+      "daysOnChart": 1,
+      "status": "new",
+      "coverSeed": "perfect-night-lesserafim",
+      "finalScore": 60.35,
+      "videoUrl": "https://www.youtube.com/embed/hLvWy2b857I",
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 21
+        }
+      ]
+    },
+    {
+      "id": "lemon-tang-hearts2hearts",
+      "title": "Lemon Tang",
+      "artist": "Hearts2Hearts",
+      "artistKo": "Hearts2Hearts",
+      "album": "Lemon Tang - The 2nd Mini Album",
+      "spotifyDailyRank": 10,
+      "appleDailyRank": 3,
+      "youtubeMusicWeeklyRank": null,
+      "youtubeShortsDailyRank": null,
+      "reviewScore": 83,
+      "previousRank": null,
+      "peakRank": 22,
+      "daysOnChart": 1,
+      "status": "new",
+      "coverSeed": "lemon-tang-hearts2hearts",
+      "finalScore": 60.1,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 22
+        }
+      ]
     },
     {
       "id": "boom-boom-bass-riize",
@@ -558,12 +562,18 @@
       "youtubeMusicWeeklyRank": 40,
       "youtubeShortsDailyRank": 36,
       "reviewScore": 73,
-      "previousRank": 30,
-      "peakRank": 22,
-      "daysOnChart": 72,
-      "status": "steady",
+      "previousRank": null,
+      "peakRank": 23,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "boom-boom-bass-riize",
-      "finalScore": 47.1
+      "finalScore": 59.6,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 23
+        }
+      ]
     },
     {
       "id": "impossible-riize",
@@ -576,12 +586,18 @@
       "youtubeMusicWeeklyRank": 41,
       "youtubeShortsDailyRank": 37,
       "reviewScore": 73,
-      "previousRank": 29,
-      "peakRank": 23,
-      "daysOnChart": 70,
-      "status": "down",
+      "previousRank": null,
+      "peakRank": 24,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "impossible-riize",
-      "finalScore": 46.4
+      "finalScore": 58.7,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 24
+        }
+      ]
     },
     {
       "id": "plot-twist-tws-2",
@@ -594,12 +610,18 @@
       "youtubeMusicWeeklyRank": 42,
       "youtubeShortsDailyRank": 38,
       "reviewScore": 72,
-      "previousRank": 34,
-      "peakRank": 24,
-      "daysOnChart": 68,
-      "status": "up",
+      "previousRank": null,
+      "peakRank": 25,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "plot-twist-tws-2",
-      "finalScore": 45.6
+      "finalScore": 57.7,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 25
+        }
+      ]
     },
     {
       "id": "crazy-lesserafim",
@@ -613,11 +635,17 @@
       "youtubeShortsDailyRank": 39,
       "reviewScore": 72,
       "previousRank": null,
-      "peakRank": 25,
-      "daysOnChart": 66,
+      "peakRank": 26,
+      "daysOnChart": 1,
       "status": "new",
       "coverSeed": "crazy-lesserafim",
-      "finalScore": 44.8
+      "finalScore": 56.8,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 26
+        }
+      ]
     },
     {
       "id": "klaxon-gidle",
@@ -630,12 +658,67 @@
       "youtubeMusicWeeklyRank": 44,
       "youtubeShortsDailyRank": 40,
       "reviewScore": 71,
-      "previousRank": 36,
-      "peakRank": 26,
-      "daysOnChart": 64,
-      "status": "up",
+      "previousRank": null,
+      "peakRank": 27,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "klaxon-gidle",
-      "finalScore": 44.1
+      "finalScore": 55.8,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 27
+        }
+      ]
+    },
+    {
+      "id": "zero-zero-hanroro",
+      "title": "0+0",
+      "artist": "HANRORO",
+      "artistKo": "한로로",
+      "album": "자몽살구클럽",
+      "spotifyDailyRank": 8,
+      "appleDailyRank": 22,
+      "youtubeMusicWeeklyRank": null,
+      "youtubeShortsDailyRank": null,
+      "reviewScore": 80,
+      "previousRank": null,
+      "peakRank": 28,
+      "daysOnChart": 1,
+      "status": "new",
+      "coverSeed": "zero-zero-hanroro",
+      "finalScore": 55.65,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 28
+        }
+      ]
+    },
+    {
+      "id": "plot-twist-tws",
+      "title": "첫 만남은 계획대로 되지 않아",
+      "artist": "TWS",
+      "artistKo": "투어스",
+      "album": "Sparkling Blue",
+      "spotifyDailyRank": 58,
+      "appleDailyRank": 51,
+      "youtubeMusicWeeklyRank": 42,
+      "youtubeShortsDailyRank": 31,
+      "reviewScore": 70,
+      "previousRank": null,
+      "peakRank": 29,
+      "daysOnChart": 1,
+      "status": "new",
+      "coverSeed": "plot-twist-tws",
+      "finalScore": 55.25,
+      "videoUrl": "https://www.youtube.com/embed/hVAc1Vf2ITU",
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 29
+        }
+      ]
     },
     {
       "id": "sticky-kiss-of-life",
@@ -648,12 +731,18 @@
       "youtubeMusicWeeklyRank": 45,
       "youtubeShortsDailyRank": 41,
       "reviewScore": 71,
-      "previousRank": 35,
-      "peakRank": 27,
-      "daysOnChart": 62,
-      "status": "steady",
+      "previousRank": null,
+      "peakRank": 30,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "sticky-kiss-of-life",
-      "finalScore": 43.3
+      "finalScore": 54.9,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 30
+        }
+      ]
     },
     {
       "id": "midas-touch-kiss-of-life",
@@ -666,12 +755,18 @@
       "youtubeMusicWeeklyRank": 46,
       "youtubeShortsDailyRank": 42,
       "reviewScore": 71,
-      "previousRank": 34,
-      "peakRank": 28,
-      "daysOnChart": 60,
-      "status": "down",
+      "previousRank": null,
+      "peakRank": 31,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "midas-touch-kiss-of-life",
-      "finalScore": 42.7
+      "finalScore": 54,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 31
+        }
+      ]
     },
     {
       "id": "work-ateez",
@@ -684,12 +779,18 @@
       "youtubeMusicWeeklyRank": 47,
       "youtubeShortsDailyRank": 43,
       "reviewScore": 70,
-      "previousRank": 39,
-      "peakRank": 29,
-      "daysOnChart": 58,
-      "status": "up",
+      "previousRank": null,
+      "peakRank": 32,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "work-ateez",
-      "finalScore": 42
+      "finalScore": 53,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 32
+        }
+      ]
     },
     {
       "id": "maestro-seventeen",
@@ -702,12 +803,18 @@
       "youtubeMusicWeeklyRank": 48,
       "youtubeShortsDailyRank": 44,
       "reviewScore": 70,
-      "previousRank": 38,
-      "peakRank": 30,
-      "daysOnChart": 56,
-      "status": "steady",
+      "previousRank": null,
+      "peakRank": 33,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "maestro-seventeen",
-      "finalScore": 41.4
+      "finalScore": 52.1,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 33
+        }
+      ]
     },
     {
       "id": "deja-vu-txt",
@@ -720,12 +827,42 @@
       "youtubeMusicWeeklyRank": 49,
       "youtubeShortsDailyRank": 45,
       "reviewScore": 70,
-      "previousRank": 37,
-      "peakRank": 31,
-      "daysOnChart": 54,
-      "status": "down",
+      "previousRank": null,
+      "peakRank": 34,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "deja-vu-txt",
-      "finalScore": 40.8
+      "finalScore": 51.2,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 34
+        }
+      ]
+    },
+    {
+      "id": "fake-love-juns",
+      "title": "가짜사랑",
+      "artist": "CHOIJUNSEONG",
+      "artistKo": "최준성",
+      "album": "가짜사랑",
+      "spotifyDailyRank": 23,
+      "appleDailyRank": null,
+      "youtubeMusicWeeklyRank": null,
+      "youtubeShortsDailyRank": 3,
+      "reviewScore": 74,
+      "previousRank": null,
+      "peakRank": 35,
+      "daysOnChart": 1,
+      "status": "new",
+      "coverSeed": "fake-love-juns",
+      "finalScore": 50.4,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 35
+        }
+      ]
     },
     {
       "id": "love-119-riize",
@@ -738,12 +875,18 @@
       "youtubeMusicWeeklyRank": 50,
       "youtubeShortsDailyRank": 46,
       "reviewScore": 69,
-      "previousRank": 42,
-      "peakRank": 32,
-      "daysOnChart": 52,
-      "status": "up",
+      "previousRank": null,
+      "peakRank": 36,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "love-119-riize",
-      "finalScore": 40.1
+      "finalScore": 50.2,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 36
+        }
+      ]
     },
     {
       "id": "baddie-ive",
@@ -756,12 +899,18 @@
       "youtubeMusicWeeklyRank": 51,
       "youtubeShortsDailyRank": 47,
       "reviewScore": 69,
-      "previousRank": 41,
-      "peakRank": 33,
-      "daysOnChart": 50,
-      "status": "steady",
+      "previousRank": null,
+      "peakRank": 37,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "baddie-ive",
-      "finalScore": 39.5
+      "finalScore": 49.3,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 37
+        }
+      ]
     },
     {
       "id": "get-a-guitar-riize",
@@ -774,12 +923,18 @@
       "youtubeMusicWeeklyRank": 52,
       "youtubeShortsDailyRank": 48,
       "reviewScore": 69,
-      "previousRank": 40,
-      "peakRank": 34,
-      "daysOnChart": 48,
-      "status": "down",
+      "previousRank": null,
+      "peakRank": 38,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "get-a-guitar-riize",
-      "finalScore": 39
+      "finalScore": 48.4,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 38
+        }
+      ]
     },
     {
       "id": "eta-newjeans",
@@ -792,12 +947,18 @@
       "youtubeMusicWeeklyRank": 53,
       "youtubeShortsDailyRank": 49,
       "reviewScore": 68,
-      "previousRank": 45,
-      "peakRank": 35,
-      "daysOnChart": 46,
-      "status": "up",
+      "previousRank": null,
+      "peakRank": 39,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "eta-newjeans",
-      "finalScore": 38.4
+      "finalScore": 47.4,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 39
+        }
+      ]
     },
     {
       "id": "super-shy-newjeans",
@@ -810,12 +971,18 @@
       "youtubeMusicWeeklyRank": 54,
       "youtubeShortsDailyRank": 50,
       "reviewScore": 68,
-      "previousRank": 44,
-      "peakRank": 36,
-      "daysOnChart": 44,
-      "status": "steady",
+      "previousRank": null,
+      "peakRank": 40,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "super-shy-newjeans",
-      "finalScore": 37.9
+      "finalScore": 46.5,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 40
+        }
+      ]
     },
     {
       "id": "spicy-aespa",
@@ -828,12 +995,18 @@
       "youtubeMusicWeeklyRank": 55,
       "youtubeShortsDailyRank": 51,
       "reviewScore": 68,
-      "previousRank": 43,
-      "peakRank": 37,
-      "daysOnChart": 42,
-      "status": "down",
+      "previousRank": null,
+      "peakRank": 41,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "spicy-aespa",
-      "finalScore": 37.2
+      "finalScore": 45.6,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 41
+        }
+      ]
     },
     {
       "id": "queencard-gidle",
@@ -846,12 +1019,18 @@
       "youtubeMusicWeeklyRank": 56,
       "youtubeShortsDailyRank": 52,
       "reviewScore": 67,
-      "previousRank": 48,
-      "peakRank": 38,
-      "daysOnChart": 40,
-      "status": "up",
+      "previousRank": null,
+      "peakRank": 42,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "queencard-gidle",
-      "finalScore": 36.5
+      "finalScore": 44.6,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 42
+        }
+      ]
     },
     {
       "id": "omg-newjeans",
@@ -864,12 +1043,18 @@
       "youtubeMusicWeeklyRank": 57,
       "youtubeShortsDailyRank": 53,
       "reviewScore": 67,
-      "previousRank": 47,
-      "peakRank": 39,
-      "daysOnChart": 38,
-      "status": "steady",
+      "previousRank": null,
+      "peakRank": 43,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "omg-newjeans",
-      "finalScore": 35.9
+      "finalScore": 43.7,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 43
+        }
+      ]
     },
     {
       "id": "ditto-newjeans",
@@ -882,12 +1067,18 @@
       "youtubeMusicWeeklyRank": 58,
       "youtubeShortsDailyRank": 54,
       "reviewScore": 67,
-      "previousRank": 46,
-      "peakRank": 40,
-      "daysOnChart": 36,
-      "status": "down",
+      "previousRank": null,
+      "peakRank": 44,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "ditto-newjeans",
-      "finalScore": 35.2
+      "finalScore": 42.8,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 44
+        }
+      ]
     },
     {
       "id": "hype-boy-newjeans",
@@ -900,12 +1091,42 @@
       "youtubeMusicWeeklyRank": 59,
       "youtubeShortsDailyRank": 55,
       "reviewScore": 66,
-      "previousRank": 51,
-      "peakRank": 41,
-      "daysOnChart": 34,
-      "status": "up",
+      "previousRank": null,
+      "peakRank": 45,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "hype-boy-newjeans",
-      "finalScore": 34.8
+      "finalScore": 41.8,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 45
+        }
+      ]
+    },
+    {
+      "id": "boompala-lesserafim",
+      "title": "BOOMPALA",
+      "artist": "LE SSERAFIM",
+      "artistKo": "르세라핌",
+      "album": "PUREFLOW, Pt. 1",
+      "spotifyDailyRank": null,
+      "appleDailyRank": 24,
+      "youtubeMusicWeeklyRank": 7,
+      "youtubeShortsDailyRank": null,
+      "reviewScore": 78,
+      "previousRank": null,
+      "peakRank": 46,
+      "daysOnChart": 1,
+      "status": "new",
+      "coverSeed": "boompala-lesserafim",
+      "finalScore": 41.15,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 46
+        }
+      ]
     },
     {
       "id": "antifragile-lesserafim",
@@ -918,12 +1139,91 @@
       "youtubeMusicWeeklyRank": 60,
       "youtubeShortsDailyRank": 56,
       "reviewScore": 66,
-      "previousRank": 50,
-      "peakRank": 42,
-      "daysOnChart": 32,
-      "status": "steady",
+      "previousRank": null,
+      "peakRank": 47,
+      "daysOnChart": 1,
+      "status": "new",
       "coverSeed": "antifragile-lesserafim",
-      "finalScore": 34.2
+      "finalScore": 40.9,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 47
+        }
+      ]
+    },
+    {
+      "id": "seven-jungkook",
+      "title": "Seven (feat. Latto)",
+      "artist": "Jung Kook, Latto",
+      "artistKo": "정국, Latto",
+      "album": "GOLDEN",
+      "spotifyDailyRank": 2,
+      "appleDailyRank": null,
+      "youtubeMusicWeeklyRank": null,
+      "youtubeShortsDailyRank": null,
+      "reviewScore": 79,
+      "previousRank": null,
+      "peakRank": 48,
+      "daysOnChart": 1,
+      "status": "new",
+      "coverSeed": "seven-jungkook",
+      "finalScore": 37.6,
+      "videoUrl": "https://www.youtube.com/embed/QU9c0053UAU",
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 48
+        }
+      ]
+    },
+    {
+      "id": "youngcreatorcrew-cortis",
+      "title": "YOUNGCREATORCREW",
+      "artist": "CORTIS",
+      "artistKo": "코르티스",
+      "album": "GREENGREEN - EP",
+      "spotifyDailyRank": null,
+      "appleDailyRank": 6,
+      "youtubeMusicWeeklyRank": null,
+      "youtubeShortsDailyRank": null,
+      "reviewScore": 77,
+      "previousRank": null,
+      "peakRank": 49,
+      "daysOnChart": 1,
+      "status": "new",
+      "coverSeed": "youngcreatorcrew-cortis",
+      "finalScore": 31.45,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 49
+        }
+      ]
+    },
+    {
+      "id": "i-like-you-choi",
+      "title": "I Like You",
+      "artist": "Choi Sung Gon",
+      "artistKo": "최성곤",
+      "album": "I Like You",
+      "spotifyDailyRank": null,
+      "appleDailyRank": null,
+      "youtubeMusicWeeklyRank": null,
+      "youtubeShortsDailyRank": 1,
+      "reviewScore": 70,
+      "previousRank": null,
+      "peakRank": 50,
+      "daysOnChart": 1,
+      "status": "new",
+      "coverSeed": "i-like-you-choi",
+      "finalScore": 27,
+      "rankHistory": [
+        {
+          "chartDate": "2026-06-25",
+          "rank": 50
+        }
+      ]
     }
   ]
 }

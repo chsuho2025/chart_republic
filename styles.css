@@ -694,6 +694,34 @@ h1 {
   padding: 0 8px;
 }
 
+.graph-empty {
+  display: grid;
+  min-height: 124px;
+  place-items: center;
+  padding: 18px;
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--muted);
+  text-align: center;
+}
+
+.graph-empty span {
+  font-size: 11px;
+}
+
+.graph-empty strong {
+  color: #fff;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.graph-empty p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
 .graph-frame {
   position: relative;
 }

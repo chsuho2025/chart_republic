@@ -44,13 +44,14 @@ Community and login features are intentionally deferred.
 
 Use Google Sheets as the free MVP admin/source-of-truth layer, then export committed JSON files so previous chart dates are never erased.
 
-Publish a prepared chart JSON with:
+Recalculate and publish a prepared chart JSON with:
 
 ```bash
-npm run publish:chart -- path/to/chart.json
+npm run recalculate:chart -- path/to/chart.json
+npm run validate:data
 ```
 
-The command writes both `data/latest.json` and `data/snapshots/YYYY-MM-DD.json`, then runs validation.
+`recalculate:chart` recomputes final scores, current ranks, previous-rank status, peak rank, and available rank history from stored snapshots. It writes `data/latest.json`, `data/chart.json`, and `data/snapshots/YYYY-MM-DD.json`.
 
 See [`docs/data-management.md`](./docs/data-management.md) for the daily update flow, sheet schema, snapshot rules, and Supabase migration criteria.
 

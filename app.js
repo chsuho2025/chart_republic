@@ -248,31 +248,51 @@ function detailMetric(label, value) {
 }
 
 function rankHistory(track, rank) {
-  const previous = track.previousRank || rank + 2;
-  const peak = track.peakRank || rank;
-  const values = [
-    previous + 3,
-    previous + 2,
-    previous + 1,
-    Math.max(peak, previous),
-    Math.max(peak, rank + 1),
-    previous,
-    rank,
-  ].map((value) => Math.max(1, Math.min(20, value)));
-  return values;
+  const history = Array.isArray(track.rankHistory) ? track.rankHistory : [];
+  const normalized = history
+    .filter((entry) => entry && entry.chartDate && Number.isInteger(entry.rank))
+    .map((entry) => ({ chartDate: entry.chartDate, rank: entry.rank }))
+    .sort((a, b) => a.chartDate.localeCompare(b.chartDate));
+
+  if (!normalized.some((entry) => entry.chartDate === state.data.chartDate)) {
+    normalized.push({ chartDate: state.data.chartDate, rank });
+  }
+
+  return normalized.slice(-7);
+}
+
+function rankHistoryLabel(entry, index, total) {
+  if (entry.chartDate === state.data.chartDate || index === total - 1) {
+    return state.lang === "ko" ? "오늘" : "Today";
+  }
+  const [, month, day] = entry.chartDate.split("-");
+  return `${Number(month)}.${Number(day)}`;
 }
 
 function renderRankGraph(track, rank) {
-  const values = rankHistory(track, rank);
+  const history = rankHistory(track, rank);
+  if (history.length < 2) {
+    const current = history[0] || { chartDate: state.data.chartDate, rank };
+    return `
+      <section class="rank-graph">
+        <h3>${state.lang === "ko" ? "최근 7일 순위 변화" : "7-day rank trend"}</h3>
+        <div class="graph-empty">
+          <span>${rankHistoryLabel(current, 0, 1)}</span>
+          <strong>#${current.rank}</strong>
+          <p>${state.lang === "ko" ? "7일 순위 데이터는 오늘부터 누적됩니다." : "7-day rank history starts from today's chart."}</p>
+        </div>
+      </section>
+    `;
+  }
   const width = 300;
   const height = 126;
   const padX = 18;
   const padY = 16;
-  const maxRank = 20;
-  const points = values.map((value, index) => {
-    const x = padX + (index / (values.length - 1)) * (width - padX * 2);
-    const y = padY + ((value - 1) / (maxRank - 1)) * (height - 48);
-    return { x, y, value, label: index === values.length - 1 ? (state.lang === "ko" ? "오늘" : "Today") : `${6 - index}${state.lang === "ko" ? "일 전" : "d ago"}` };
+  const maxRank = Math.max(20, ...history.map((entry) => entry.rank));
+  const points = history.map((entry, index) => {
+    const x = padX + (index / (history.length - 1)) * (width - padX * 2);
+    const y = padY + ((entry.rank - 1) / (maxRank - 1)) * (height - 48);
+    return { x, y, value: entry.rank, label: rankHistoryLabel(entry, index, history.length) };
   });
   const path = points.reduce((d, point, index, list) => {
     if (index === 0) return `M${point.x.toFixed(1)} ${point.y.toFixed(1)}`;
@@ -455,8 +475,9 @@ function bindEvents() {
 async function init() {
   bindEvents();
   applyTranslations();
-  const response = await fetch("./data/latest.json").then((result) => {
-    if (!result.ok) return fetch("./data/chart.json");
+  const cacheKey = Date.now();
+  const response = await fetch(`./data/latest.json?v=${cacheKey}`, { cache: "no-store" }).then((result) => {
+    if (!result.ok) return fetch(`./data/chart.json?v=${cacheKey}`, { cache: "no-store" });
     return result;
   });
   state.data = await response.json();
