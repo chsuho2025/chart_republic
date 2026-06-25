@@ -58,7 +58,7 @@ See [`docs/data-management.md`](./docs/data-management.md) for the daily update 
 
 - Keep the beta brand as Chart Republic.
 - Connect the GitHub repo to Vercel.
-- Current beta URL: `https://chartrepublic.vercel.app/`.
+- Current beta URL: `https://chart-republic.vercel.app/`.
 - If a custom domain is added later, update `index.html`, `robots.txt`, and `sitemap.xml`.
 - Create the Google Sheets source-of-truth workbook.
 - Run `npm run validate:data` before pushing chart updates.
