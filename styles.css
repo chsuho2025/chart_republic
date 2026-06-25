@@ -358,18 +358,18 @@ h1 {
 
 .chart-list {
   display: grid;
-  padding-left: 20px;
+  padding-left: 18px;
 }
 
 .chart-row {
   position: relative;
   display: grid;
-  grid-template-columns: 66px 42px minmax(0, 1fr) 34px;
-  gap: 10px;
+  grid-template-columns: 54px 30px minmax(0, 1fr) 28px;
+  gap: 5px;
   align-items: center;
   width: 100%;
-  min-height: 66px;
-  padding: 7px 16px 7px 0;
+  min-height: 60px;
+  padding: 5px 14px 5px 0;
   border: 0;
   background: transparent;
   color: inherit;
@@ -379,9 +379,9 @@ h1 {
 .chart-row::after {
   content: "";
   position: absolute;
-  right: 16px;
+  right: 14px;
   bottom: 0;
-  left: 66px;
+  left: 54px;
   height: 1px;
   background: rgba(255, 255, 255, 0.08);
   transform: scaleY(0.45);
@@ -393,12 +393,12 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 4px;
+  gap: 3px;
 }
 
 .rank-number {
   color: #fff;
-  font-size: 21px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1;
 }
@@ -421,7 +421,7 @@ h1 {
 
 .rank-cell .movement {
   gap: 2px;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .movement i,
@@ -459,8 +459,8 @@ h1 {
   grid-column: 1;
   grid-row: 1;
   display: grid;
-  width: 54px;
-  height: 54px;
+  width: 48px;
+  height: 48px;
   place-items: center;
   overflow: hidden;
   border-radius: 8px;
@@ -468,7 +468,7 @@ h1 {
     linear-gradient(135deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0)),
     var(--cover);
   color: rgba(255, 255, 255, 0.86);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
   object-fit: cover;
@@ -480,12 +480,12 @@ h1 {
 }
 
 .track-title {
-  margin: 0 0 4px;
+  margin: 0 0 3px;
   overflow: hidden;
   color: #fff;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 400;
-  line-height: 1.17;
+  line-height: 1.14;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -494,9 +494,9 @@ h1 {
   display: block;
   overflow: hidden;
   color: rgba(255, 255, 255, 0.48);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.16;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -508,13 +508,13 @@ h1 {
   justify-content: flex-end;
   gap: 0;
   color: rgba(255, 255, 255, 0.48);
-  font-size: 17px;
+  font-size: 16px;
 }
 
 .more-dot {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
-  letter-spacing: -1px;
+  letter-spacing: -0.8px;
   line-height: 1;
 }
 
@@ -841,13 +841,13 @@ h1 {
   }
 
   .chart-row {
-    grid-template-columns: 62px 40px minmax(0, 1fr) 30px;
-    gap: 9px;
+    grid-template-columns: 54px 30px minmax(0, 1fr) 28px;
+    gap: 5px;
   }
 
   .cover {
-    width: 52px;
-    height: 52px;
+    width: 48px;
+    height: 48px;
   }
 
 }
