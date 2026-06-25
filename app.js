@@ -3,12 +3,12 @@ const state = {
   data: null,
   tracks: [],
   filter: "all",
-  limit: 20,
+  limit: 10,
 };
 
 const translations = {
   ko: {
-    title: "Chart Republic 오늘의 HOT 50",
+    title: "Chart Republic 오늘의 HOT 25",
     subtitle: "한국 10·20대 스트리밍과 숏폼 바이럴 반응을 반영한 글로벌 K-pop 트렌드 차트",
     language: "English",
     chartIntro: "한국 10·20대에게 가장 인기 있는 음악. 매일 업데이트됩니다.",
@@ -35,7 +35,7 @@ const translations = {
     out: "-",
   },
   en: {
-    title: "Chart Republic Today's Hot 50",
+    title: "Chart Republic Today's Hot 25",
     subtitle: "A global K-pop trend chart tracking Korea's youth streaming and short-form viral signals.",
     language: "Korean",
     chartIntro: "The most popular music among Korean teens and twenties. Updated daily.",
@@ -169,7 +169,7 @@ function renderHeroRank() {
     <div class="hero-image" aria-hidden="true"></div>
     <div class="hero-shade"></div>
     <div class="hero-copy">
-      <h1>${state.lang === "ko" ? "오늘의 HOT 50" : "Today's Hot 50"}</h1>
+      <h1>${state.lang === "ko" ? "오늘의 HOT 25" : "Today's Hot 25"}</h1>
       <button class="subtitle" type="button" data-chart-info>${state.lang === "ko" ? "Chart Republic 제공" : "Presented by Chart Republic"}</button>
     </div>
   `;
@@ -227,7 +227,7 @@ function renderChart() {
       `;
     })
     .join("");
-  loadMore.hidden = state.limit >= 50 || state.tracks.length <= state.limit || state.filter !== "all";
+  loadMore.hidden = state.limit >= 25 || Math.min(state.tracks.length, 25) <= state.limit || state.filter !== "all";
 }
 
 function detailMetric(label, value) {
@@ -337,7 +337,7 @@ function videoEmbedUrl(track, artist) {
 function openDetail(trackId) {
   const index = state.tracks.findIndex((track) => track.id === trackId);
   const track = state.tracks[index];
-  if (!track) return;
+  if (!track || index >= 25) return;
   const rank = index + 1;
   const artist = state.lang === "ko" ? track.artistKo || track.artist : track.artist;
   const move = movement(track, rank);
@@ -413,7 +413,7 @@ function bindEvents() {
       document.querySelectorAll(".tab").forEach((item) => item.classList.remove("active"));
       tab.classList.add("active");
       state.filter = tab.dataset.filter;
-      state.limit = 20;
+      state.limit = 10;
       renderChart();
     });
   });
@@ -425,7 +425,7 @@ function bindEvents() {
   });
 
   document.getElementById("loadMore").addEventListener("click", () => {
-    state.limit = 50;
+    state.limit = 25;
     renderChart();
   });
 
@@ -469,8 +469,7 @@ async function init() {
   });
   state.data = await response.json();
   state.tracks = state.data.tracks
-    .sort((a, b) => b.finalScore - a.finalScore)
-    .slice(0, 50);
+    .sort((a, b) => b.finalScore - a.finalScore);
   renderHeroRank();
   renderChart();
 

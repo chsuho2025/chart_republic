@@ -32,11 +32,13 @@ Recommended Vercel settings:
 
 - One daily chart only
 - Korean and English UI
-- Weighted algorithm display
+- Public chart displays TOP 25 only
+- Internal collection, scoring, and admin review keep all 50 candidate tracks
 - Track detail panel
 - Share links for fandom/SNS traffic
 - Latest chart data served from `data/latest.json`
 - Historical daily snapshots preserved in `data/snapshots/`
+- Admin page at `/admin` for review-score editing, preview ranking, snapshot lookup, and live publishing
 
 Community and login features are intentionally deferred.
 
@@ -57,6 +59,18 @@ npm run validate:data
 
 See [`docs/data-management.md`](./docs/data-management.md) for the daily update flow, sheet schema, snapshot rules, and Supabase migration criteria.
 
+## Admin Publishing
+
+The admin page is available at `/admin`. It edits a draft in the browser first, then publishes live data through `/api/admin`.
+
+Set these Vercel environment variables before using live publishing:
+
+- `ADMIN_PASSWORD`: password required by the admin API
+- `GITHUB_TOKEN`: fine-grained GitHub token with repository Contents read/write permission
+- `GITHUB_OWNER`: optional, defaults to `chsuho2025`
+- `GITHUB_REPO`: optional, defaults to `chart_republic`
+- `GITHUB_BRANCH`: optional, defaults to `main`
+
 ## Launch Checklist
 
 - Keep the beta brand as Chart Republic.
@@ -64,5 +78,6 @@ See [`docs/data-management.md`](./docs/data-management.md) for the daily update 
 - Current beta URL: `https://chart-republic.vercel.app/`.
 - If a custom domain is added later, update `index.html`, `robots.txt`, and `sitemap.xml`.
 - Create the Google Sheets source-of-truth workbook.
+- Add `ADMIN_PASSWORD` and `GITHUB_TOKEN` to Vercel project environment variables.
 - Run `npm run validate:data` before pushing chart updates.
 - Add Google Search Console and analytics after the first production deploy.

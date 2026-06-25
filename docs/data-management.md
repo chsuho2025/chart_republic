@@ -4,6 +4,8 @@
 
 Daily chart updates must never erase previous rankings. The service should always keep an immutable daily snapshot, while the website reads one small latest file for fast static hosting.
 
+The public service displays only TOP 25. Collection, scoring, admin review, and archive files still keep 50 candidate tracks so future ranking changes are not lost.
+
 ## Recommended MVP Stack
 
 Use Google Sheets as the free editorial/admin database, then export committed JSON files into this repository.
@@ -111,6 +113,23 @@ Apple artwork is attempted first because it does not require local credentials. 
    - `data/latest.json`
    - `data/snapshots/YYYY-MM-DD.json`
 8. Commit those files. Do not edit or replace older snapshot files.
+
+## Admin Review Flow
+
+Use `/admin` for final editorial review before publishing.
+
+- The admin API requires `ADMIN_PASSWORD`.
+- Live publishing requires `GITHUB_TOKEN` with repository Contents read/write permission.
+- The score editor loads all 50 candidate tracks.
+- Changing a review score immediately recalculates the admin preview ranking in the browser.
+- The public website is not changed until the operator clicks `라이브에 반영`.
+- Live publishing writes:
+  - `data/latest.json`
+  - `data/chart.json`
+  - `data/snapshots/YYYY-MM-DD.json`
+  - `data/admin/audit/YYYY-MM-DDTHH-MM-SS-sssZ.json`
+
+The audit file stores the full published chart and every changed review score so admin decisions can be traced later.
 
 ## Data Integrity Rules
 

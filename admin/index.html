@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Chart Republic Admin</title>
+    <link rel="stylesheet" href="./admin.css" />
+  </head>
+  <body>
+    <main class="admin-shell">
+      <header class="admin-header">
+        <div>
+          <p class="eyebrow">Chart Republic Admin</p>
+          <h1>차트 데이터 관리</h1>
+        </div>
+        <a href="/" class="home-link">라이브 페이지</a>
+      </header>
+
+      <section class="panel auth-panel">
+        <label>
+          <span>관리자 비밀번호</span>
+          <input id="password" type="password" autocomplete="current-password" placeholder="ADMIN_PASSWORD" />
+        </label>
+        <button id="loadData" type="button">데이터 불러오기</button>
+        <p id="status" class="status">비밀번호 입력 후 데이터를 불러오세요.</p>
+      </section>
+
+      <section class="metrics" id="metrics" hidden></section>
+
+      <section class="layout" id="workspace" hidden>
+        <section class="panel editor-panel">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Review Score</p>
+              <h2>심사점수 등록</h2>
+            </div>
+            <button id="publishLive" type="button" class="danger">라이브에 반영</button>
+          </div>
+          <p class="hint">심사점수 변경 시 어드민 미리보기 순위가 즉시 재계산됩니다. 공개 페이지에는 라이브 반영 후 적용됩니다.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>예상</th>
+                  <th>곡</th>
+                  <th>심사점수</th>
+                  <th>최종점수</th>
+                  <th>Spotify</th>
+                  <th>Apple</th>
+                  <th>YT Music</th>
+                  <th>Shorts</th>
+                </tr>
+              </thead>
+              <tbody id="scoreRows"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <aside class="panel preview-panel">
+          <div class="section-head compact">
+            <div>
+              <p class="eyebrow">Admin Preview</p>
+              <h2>간이 차트 순위표</h2>
+            </div>
+          </div>
+          <ol id="previewList" class="preview-list"></ol>
+        </aside>
+      </section>
+
+      <section class="panel" id="historyPanel" hidden>
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Archive</p>
+            <h2>과거 데이터 조회</h2>
+          </div>
+          <select id="snapshotSelect" aria-label="Snapshot date"></select>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>순위</th>
+                <th>곡</th>
+                <th>최종점수</th>
+                <th>심사점수</th>
+                <th>전일</th>
+                <th>최고</th>
+                <th>상태</th>
+              </tr>
+            </thead>
+            <tbody id="snapshotRows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel" id="rawPanel" hidden>
+        <div class="section-head compact">
+          <div>
+            <p class="eyebrow">Raw Data</p>
+            <h2>전체 후보 상세 데이터</h2>
+          </div>
+        </div>
+        <pre id="rawData"></pre>
+      </section>
+    </main>
+
+    <script src="./admin.js" type="module"></script>
+  </body>
+</html>
