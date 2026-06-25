@@ -251,17 +251,14 @@ h1 {
   min-height: 33px;
   margin: 9px 0 15px;
   padding: 0 15px;
-  border: 1px solid rgba(255, 255, 255, 0.56);
+  border: 1px solid rgba(255, 255, 255, 0.34);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.58);
+  background: rgba(255, 255, 255, 0.5);
   color: #000;
   font-size: 12px;
   font-weight: 500;
   line-height: 1;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.76),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.22),
-    0 8px 26px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.24);
   backdrop-filter: blur(22px) saturate(1.8);
   -webkit-backdrop-filter: blur(22px) saturate(1.8);
 }
@@ -424,7 +421,7 @@ h1 {
 
 .rank-cell .movement {
   gap: 2px;
-  font-size: 12px;
+  font-size: 11.4px;
 }
 
 .movement i,
@@ -617,7 +614,11 @@ h1 {
 }
 
 .close-button {
-  margin-left: auto;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  margin-right: auto;
+  margin-left: 0;
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
 }
