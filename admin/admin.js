@@ -1,5 +1,4 @@
 const state = {
-  password: sessionStorage.getItem("chartRepublicAdminPassword") || "",
   latest: null,
   snapshots: [],
   draftTracks: [],
@@ -145,7 +144,6 @@ async function api(path, options = {}) {
     ...options,
     headers: {
       "Content-Type": "application/json",
-      "X-Admin-Password": state.password,
       ...(options.headers || {}),
     },
   });
@@ -155,8 +153,6 @@ async function api(path, options = {}) {
 }
 
 async function loadData() {
-  state.password = $("#password").value.trim();
-  sessionStorage.setItem("chartRepublicAdminPassword", state.password);
   setStatus("데이터 불러오는 중...");
   const payload = await api("/api/admin");
   state.latest = payload.latest;
@@ -196,7 +192,6 @@ async function publishLive() {
 }
 
 function bindEvents() {
-  $("#password").value = state.password;
   $("#loadData").addEventListener("click", () => loadData().catch((error) => setStatus(error.message, "danger")));
   $("#publishLive").addEventListener("click", () => publishLive().catch((error) => setStatus(error.message, "danger")));
   $("#snapshotSelect").addEventListener("change", (event) => renderSnapshotRows(event.target.value));

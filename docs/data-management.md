@@ -118,7 +118,6 @@ Apple artwork is attempted first because it does not require local credentials. 
 
 Use `/admin` for final editorial review before publishing.
 
-- The admin API requires `ADMIN_PASSWORD`.
 - Live publishing requires `GITHUB_TOKEN` with repository Contents read/write permission.
 - The score editor loads all 50 candidate tracks.
 - Changing a review score immediately recalculates the admin preview ranking in the browser.

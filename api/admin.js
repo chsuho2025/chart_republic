@@ -5,7 +5,6 @@ const owner = process.env.GITHUB_OWNER || "chsuho2025";
 const repo = process.env.GITHUB_REPO || "chart_republic";
 const branch = process.env.GITHUB_BRANCH || "main";
 const token = process.env.GITHUB_TOKEN;
-const adminPassword = process.env.ADMIN_PASSWORD;
 
 const weights = {
   spotifyDailyRank: 0.3,
@@ -19,11 +18,6 @@ function send(res, status, payload) {
   res.statusCode = status;
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(payload));
-}
-
-function unauthorized(req) {
-  const password = req.headers["x-admin-password"];
-  return !adminPassword || password !== adminPassword;
 }
 
 function rankScore(rank) {
@@ -198,13 +192,11 @@ function validateChartPayload(chart) {
 }
 
 async function handleGet(req, res) {
-  if (unauthorized(req)) return send(res, 401, { error: "Unauthorized or ADMIN_PASSWORD is not configured." });
   const payload = await readAdminData();
   return send(res, 200, payload);
 }
 
 async function handlePost(req, res) {
-  if (unauthorized(req)) return send(res, 401, { error: "Unauthorized or ADMIN_PASSWORD is not configured." });
   if (!token) return send(res, 500, { error: "GITHUB_TOKEN is required to publish live data." });
 
   let raw = "";
