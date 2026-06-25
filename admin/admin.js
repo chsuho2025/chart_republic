@@ -1,4 +1,5 @@
 const state = {
+  githubToken: sessionStorage.getItem("chartRepublicGithubToken") || "",
   latest: null,
   snapshots: [],
   draftTracks: [],
@@ -19,6 +20,15 @@ function setStatus(message, tone = "muted") {
   const status = $("#status");
   status.textContent = message;
   status.style.color = tone === "danger" ? "#ff9ca6" : tone === "ok" ? "#72efad" : "rgba(244,244,244,0.58)";
+}
+
+function syncGithubToken() {
+  state.githubToken = $("#githubToken").value.trim();
+  if (state.githubToken) {
+    sessionStorage.setItem("chartRepublicGithubToken", state.githubToken);
+  } else {
+    sessionStorage.removeItem("chartRepublicGithubToken");
+  }
 }
 
 function rankScore(rank) {
@@ -140,10 +150,12 @@ function showWorkspace(mode) {
 }
 
 async function api(path, options = {}) {
+  const tokenHeaders = state.githubToken ? { "X-Github-Token": state.githubToken } : {};
   const response = await fetch(path, {
     ...options,
     headers: {
       "Content-Type": "application/json",
+      ...tokenHeaders,
       ...(options.headers || {}),
     },
   });
@@ -153,17 +165,24 @@ async function api(path, options = {}) {
 }
 
 async function loadData() {
+  syncGithubToken();
   setStatus("데이터 불러오는 중...");
   const payload = await api("/api/admin");
   state.latest = payload.latest;
   state.snapshots = payload.snapshots || [];
   state.draftTracks = payload.latest.tracks.map((track) => ({ ...track }));
   showWorkspace(payload.mode);
-  setStatus("관리자 데이터 로드 완료.", "ok");
+  setStatus(payload.mode === "github" ? "GitHub 최신 데이터 로드 완료." : "번들 데이터 로드 완료. 라이브 반영은 GitHub token 입력 후 가능합니다.", "ok");
 }
 
 async function publishLive() {
   if (!state.latest) return;
+  syncGithubToken();
+  if (!state.githubToken) {
+    $("#githubToken").focus();
+    setStatus("라이브 반영을 하려면 GitHub token을 입력해야 합니다.", "danger");
+    return;
+  }
   const ok = window.confirm("현재 어드민 미리보기 순위를 라이브 차트에 반영할까요?");
   if (!ok) return;
 
@@ -192,6 +211,7 @@ async function publishLive() {
 }
 
 function bindEvents() {
+  $("#githubToken").value = state.githubToken;
   $("#loadData").addEventListener("click", () => loadData().catch((error) => setStatus(error.message, "danger")));
   $("#publishLive").addEventListener("click", () => publishLive().catch((error) => setStatus(error.message, "danger")));
   $("#snapshotSelect").addEventListener("change", (event) => renderSnapshotRows(event.target.value));

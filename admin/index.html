@@ -18,8 +18,12 @@
       </header>
 
       <section class="panel auth-panel">
+        <label>
+          <span>GitHub token</span>
+          <input id="githubToken" type="password" autocomplete="off" placeholder="ghp_ 또는 fine-grained token" />
+        </label>
         <button id="loadData" type="button">데이터 불러오기</button>
-        <p id="status" class="status">데이터를 불러오세요.</p>
+        <p id="status" class="status">토큰을 입력하면 GitHub 최신 데이터 기준으로 불러오고 라이브 반영까지 가능합니다.</p>
       </section>
 
       <section class="metrics" id="metrics" hidden></section>

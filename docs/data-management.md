@@ -118,7 +118,7 @@ Apple artwork is attempted first because it does not require local credentials. 
 
 Use `/admin` for final editorial review before publishing.
 
-- Live publishing requires `GITHUB_TOKEN` with repository Contents read/write permission.
+- Live publishing requires a GitHub token with repository Contents read/write permission. Enter it on `/admin`, or set `GITHUB_TOKEN` in Vercel.
 - The score editor loads all 50 candidate tracks.
 - Changing a review score immediately recalculates the admin preview ranking in the browser.
 - The public website is not changed until the operator clicks `라이브에 반영`.

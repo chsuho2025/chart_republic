@@ -4,7 +4,7 @@ const { join } = require("node:path");
 const owner = process.env.GITHUB_OWNER || "chsuho2025";
 const repo = process.env.GITHUB_REPO || "chart_republic";
 const branch = process.env.GITHUB_BRANCH || "main";
-const token = process.env.GITHUB_TOKEN;
+const envToken = process.env.GITHUB_TOKEN;
 
 const weights = {
   spotifyDailyRank: 0.3,
@@ -98,13 +98,19 @@ function decodeBase64(value) {
   return Buffer.from(value || "", "base64").toString("utf8");
 }
 
-async function github(path, options = {}) {
-  if (!token) throw new Error("GITHUB_TOKEN is not configured.");
+function tokenFromRequest(req) {
+  const header = req.headers["x-github-token"];
+  const headerToken = Array.isArray(header) ? header[0] : header;
+  return String(headerToken || envToken || "").trim();
+}
+
+async function github(path, activeToken, options = {}) {
+  if (!activeToken) throw new Error("GitHub token is required.");
   const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
     ...options,
     headers: {
       Accept: "application/vnd.github+json",
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${activeToken}`,
       "X-GitHub-Api-Version": "2022-11-28",
       ...(options.headers || {}),
     },
@@ -118,8 +124,8 @@ async function github(path, options = {}) {
   return data;
 }
 
-async function getGithubJson(path, allowMissing = false) {
-  const file = await github(`${path}?ref=${encodeURIComponent(branch)}`, { allowMissing });
+async function getGithubJson(path, activeToken, allowMissing = false) {
+  const file = await github(`${path}?ref=${encodeURIComponent(branch)}`, activeToken, { allowMissing });
   if (!file) return null;
   return {
     sha: file.sha,
@@ -127,8 +133,8 @@ async function getGithubJson(path, allowMissing = false) {
   };
 }
 
-async function putGithubJson(path, data, message) {
-  const current = await github(`${path}?ref=${encodeURIComponent(branch)}`, { allowMissing: true });
+async function putGithubJson(path, data, message, activeToken) {
+  const current = await github(`${path}?ref=${encodeURIComponent(branch)}`, activeToken, { allowMissing: true });
   const content = `${JSON.stringify(data, null, 2)}\n`;
   const body = {
     message,
@@ -141,7 +147,7 @@ async function putGithubJson(path, data, message) {
   };
   if (current?.sha) body.sha = current.sha;
 
-  return github(path, {
+  return github(path, activeToken, {
     method: "PUT",
     body: JSON.stringify(body),
     headers: { "Content-Type": "application/json" },
@@ -158,26 +164,26 @@ async function localSnapshots() {
   return Promise.all(files.map((file) => localJson(join("data", "snapshots", file))));
 }
 
-async function githubSnapshots() {
-  const entries = await github(`data/snapshots?ref=${encodeURIComponent(branch)}`);
+async function githubSnapshots(activeToken) {
+  const entries = await github(`data/snapshots?ref=${encodeURIComponent(branch)}`, activeToken);
   const jsonFiles = entries.filter((entry) => entry.type === "file" && entry.name.endsWith(".json"));
   const snapshots = [];
   for (const entry of jsonFiles) {
-    const snapshot = await getGithubJson(entry.path);
+    const snapshot = await getGithubJson(entry.path, activeToken);
     snapshots.push(snapshot.data);
   }
   return snapshots.sort((a, b) => a.chartDate.localeCompare(b.chartDate));
 }
 
-async function readAdminData() {
-  if (!token) {
+async function readAdminData(activeToken) {
+  if (!activeToken) {
     const latest = await localJson("data/latest.json");
     const snapshots = await localSnapshots();
     return { latest, snapshots, mode: "local-readonly" };
   }
 
-  const latest = await getGithubJson("data/latest.json");
-  const snapshots = await githubSnapshots();
+  const latest = await getGithubJson("data/latest.json", activeToken);
+  const snapshots = await githubSnapshots(activeToken);
   return { latest: latest.data, snapshots, mode: "github" };
 }
 
@@ -192,12 +198,14 @@ function validateChartPayload(chart) {
 }
 
 async function handleGet(req, res) {
-  const payload = await readAdminData();
+  const activeToken = tokenFromRequest(req);
+  const payload = await readAdminData(activeToken);
   return send(res, 200, payload);
 }
 
 async function handlePost(req, res) {
-  if (!token) return send(res, 500, { error: "GITHUB_TOKEN is required to publish live data." });
+  const activeToken = tokenFromRequest(req);
+  if (!activeToken) return send(res, 400, { error: "GitHub token is required. Enter it on the admin page or set GITHUB_TOKEN in Vercel." });
 
   let raw = "";
   for await (const chunk of req) raw += chunk;
@@ -205,7 +213,7 @@ async function handlePost(req, res) {
   const chart = body.chart;
   validateChartPayload(chart);
 
-  const existing = await readAdminData();
+  const existing = await readAdminData(activeToken);
   const recalculated = recalculateChart(chart, existing.snapshots);
   const message = `Publish Chart Republic ${recalculated.chartDate} admin update`;
   const auditStamp = new Date().toISOString().replace(/[:.]/g, "-");
@@ -233,10 +241,10 @@ async function handlePost(req, res) {
     chart: recalculated,
   };
 
-  await putGithubJson("data/latest.json", recalculated, message);
-  await putGithubJson("data/chart.json", recalculated, message);
-  await putGithubJson(`data/snapshots/${recalculated.chartDate}.json`, recalculated, message);
-  await putGithubJson(`data/admin/audit/${auditStamp}.json`, audit, message);
+  await putGithubJson("data/latest.json", recalculated, message, activeToken);
+  await putGithubJson("data/chart.json", recalculated, message, activeToken);
+  await putGithubJson(`data/snapshots/${recalculated.chartDate}.json`, recalculated, message, activeToken);
+  await putGithubJson(`data/admin/audit/${auditStamp}.json`, audit, message, activeToken);
 
   return send(res, 200, {
     ok: true,

@@ -63,7 +63,7 @@ See [`docs/data-management.md`](./docs/data-management.md) for the daily update 
 
 The admin page is available at `/admin`. It edits a draft in the browser first, then publishes live data through `/api/admin`.
 
-Set this Vercel environment variable before using live publishing:
+Live publishing needs a GitHub token with repository Contents read/write permission. You can enter it directly on `/admin`, or set it as a Vercel environment variable:
 
 - `GITHUB_TOKEN`: fine-grained GitHub token with repository Contents read/write permission
 - `GITHUB_OWNER`: optional, defaults to `chsuho2025`
@@ -77,6 +77,6 @@ Set this Vercel environment variable before using live publishing:
 - Current beta URL: `https://chart-republic.vercel.app/`.
 - If a custom domain is added later, update `index.html`, `robots.txt`, and `sitemap.xml`.
 - Create the Google Sheets source-of-truth workbook.
-- Add `GITHUB_TOKEN` to Vercel project environment variables.
+- Prepare a GitHub token for `/admin` live publishing, or add `GITHUB_TOKEN` to Vercel project environment variables.
 - Run `npm run validate:data` before pushing chart updates.
 - Add Google Search Console and analytics after the first production deploy.
