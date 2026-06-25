@@ -1,10 +1,8 @@
 const { readFile, readdir } = require("node:fs/promises");
 const { join } = require("node:path");
 
-const owner = process.env.GITHUB_OWNER || "chsuho2025";
-const repo = process.env.GITHUB_REPO || "chart_republic";
-const branch = process.env.GITHUB_BRANCH || "main";
-const envToken = process.env.GITHUB_TOKEN;
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 const weights = {
   spotifyDailyRank: 0.3,
@@ -18,6 +16,34 @@ function send(res, status, payload) {
   res.statusCode = status;
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(payload));
+}
+
+function hasSupabase() {
+  return Boolean(supabaseUrl && supabaseKey);
+}
+
+function supabaseHeaders(extra = {}) {
+  const headers = {
+    apikey: supabaseKey,
+    "Content-Type": "application/json",
+    ...extra,
+  };
+  if (!supabaseKey.startsWith("sb_")) headers.Authorization = `Bearer ${supabaseKey}`;
+  return headers;
+}
+
+async function supabase(path, options = {}) {
+  if (!hasSupabase()) throw new Error("SUPABASE_URL and SUPABASE_SECRET_KEY are required.");
+  const response = await fetch(`${supabaseUrl.replace(/\/$/, "")}/rest/v1/${path}`, {
+    ...options,
+    headers: supabaseHeaders(options.headers || {}),
+  });
+  const text = await response.text();
+  const data = text ? JSON.parse(text) : null;
+  if (!response.ok) {
+    throw new Error(data?.message || data?.hint || `Supabase request failed: ${response.status}`);
+  }
+  return data;
 }
 
 function rankScore(rank) {
@@ -90,70 +116,6 @@ function recalculateChart(chart, snapshots = []) {
   };
 }
 
-function encodeBase64(value) {
-  return Buffer.from(value, "utf8").toString("base64");
-}
-
-function decodeBase64(value) {
-  return Buffer.from(value || "", "base64").toString("utf8");
-}
-
-function tokenFromRequest(req) {
-  const header = req.headers["x-github-token"];
-  const headerToken = Array.isArray(header) ? header[0] : header;
-  return String(headerToken || envToken || "").trim();
-}
-
-async function github(path, activeToken, options = {}) {
-  if (!activeToken) throw new Error("GitHub token is required.");
-  const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
-    ...options,
-    headers: {
-      Accept: "application/vnd.github+json",
-      Authorization: `Bearer ${activeToken}`,
-      "X-GitHub-Api-Version": "2022-11-28",
-      ...(options.headers || {}),
-    },
-  });
-
-  if (response.status === 404 && options.allowMissing) return null;
-  const data = await response.json().catch(() => ({}));
-  if (!response.ok) {
-    throw new Error(data.message || `GitHub request failed for ${path}`);
-  }
-  return data;
-}
-
-async function getGithubJson(path, activeToken, allowMissing = false) {
-  const file = await github(`${path}?ref=${encodeURIComponent(branch)}`, activeToken, { allowMissing });
-  if (!file) return null;
-  return {
-    sha: file.sha,
-    data: JSON.parse(decodeBase64(file.content)),
-  };
-}
-
-async function putGithubJson(path, data, message, activeToken) {
-  const current = await github(`${path}?ref=${encodeURIComponent(branch)}`, activeToken, { allowMissing: true });
-  const content = `${JSON.stringify(data, null, 2)}\n`;
-  const body = {
-    message,
-    content: encodeBase64(content),
-    branch,
-    committer: {
-      name: "Chart Republic Admin",
-      email: "admin@chart-republic.local",
-    },
-  };
-  if (current?.sha) body.sha = current.sha;
-
-  return github(path, activeToken, {
-    method: "PUT",
-    body: JSON.stringify(body),
-    headers: { "Content-Type": "application/json" },
-  });
-}
-
 async function localJson(path) {
   return JSON.parse(await readFile(join(process.cwd(), path), "utf8"));
 }
@@ -164,27 +126,29 @@ async function localSnapshots() {
   return Promise.all(files.map((file) => localJson(join("data", "snapshots", file))));
 }
 
-async function githubSnapshots(activeToken) {
-  const entries = await github(`data/snapshots?ref=${encodeURIComponent(branch)}`, activeToken);
-  const jsonFiles = entries.filter((entry) => entry.type === "file" && entry.name.endsWith(".json"));
-  const snapshots = [];
-  for (const entry of jsonFiles) {
-    const snapshot = await getGithubJson(entry.path, activeToken);
-    snapshots.push(snapshot.data);
-  }
-  return snapshots.sort((a, b) => a.chartDate.localeCompare(b.chartDate));
+async function supabasePublications() {
+  const rows = await supabase("chart_publications?select=chart,chart_date,published_at&status=eq.published&order=published_at.desc");
+  return rows.map((row) => row.chart);
 }
 
-async function readAdminData(activeToken) {
-  if (!activeToken) {
+async function readAdminData() {
+  if (!hasSupabase()) {
     const latest = await localJson("data/latest.json");
     const snapshots = await localSnapshots();
     return { latest, snapshots, mode: "local-readonly" };
   }
 
-  const latest = await getGithubJson("data/latest.json", activeToken);
-  const snapshots = await githubSnapshots(activeToken);
-  return { latest: latest.data, snapshots, mode: "github" };
+  const snapshots = await supabasePublications();
+  if (!snapshots.length) {
+    const latest = await localJson("data/latest.json");
+    return { latest, snapshots: [latest], mode: "supabase-empty" };
+  }
+  const latest = snapshots[0];
+  return {
+    latest,
+    snapshots: snapshots.slice().sort((a, b) => a.chartDate.localeCompare(b.chartDate)),
+    mode: "supabase",
+  };
 }
 
 function validateChartPayload(chart) {
@@ -197,36 +161,33 @@ function validateChartPayload(chart) {
   }
 }
 
-async function handleGet(req, res) {
-  const activeToken = tokenFromRequest(req);
-  const payload = await readAdminData(activeToken);
-  return send(res, 200, payload);
-}
+async function publishChart(chart, previousLatest) {
+  const payload = {
+    chart_date: chart.chartDate,
+    generated_at: chart.generatedAt,
+    status: "published",
+    public_limit: 25,
+    candidate_count: chart.tracks.length,
+    chart,
+    published_at: new Date().toISOString(),
+  };
 
-async function handlePost(req, res) {
-  const activeToken = tokenFromRequest(req);
-  if (!activeToken) return send(res, 400, { error: "GitHub token is required. Enter it on the admin page or set GITHUB_TOKEN in Vercel." });
+  await supabase("chart_publications?on_conflict=chart_date", {
+    method: "POST",
+    headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
+    body: JSON.stringify(payload),
+  });
 
-  let raw = "";
-  for await (const chunk of req) raw += chunk;
-  const body = JSON.parse(raw || "{}");
-  const chart = body.chart;
-  validateChartPayload(chart);
-
-  const existing = await readAdminData(activeToken);
-  const recalculated = recalculateChart(chart, existing.snapshots);
-  const message = `Publish Chart Republic ${recalculated.chartDate} admin update`;
-  const auditStamp = new Date().toISOString().replace(/[:.]/g, "-");
   const audit = {
-    publishedAt: new Date().toISOString(),
-    chartDate: recalculated.chartDate,
-    publicLimit: 25,
-    candidateCount: recalculated.tracks.length,
-    previousGeneratedAt: existing.latest.generatedAt,
-    newGeneratedAt: recalculated.generatedAt,
-    changedReviewScores: recalculated.tracks
+    published_at: payload.published_at,
+    chart_date: chart.chartDate,
+    previous_generated_at: previousLatest?.generatedAt || null,
+    new_generated_at: chart.generatedAt,
+    public_limit: 25,
+    candidate_count: chart.tracks.length,
+    changed_review_scores: chart.tracks
       .map((track) => {
-        const before = existing.latest.tracks.find((item) => item.id === track.id);
+        const before = previousLatest?.tracks?.find((item) => item.id === track.id);
         return before && Number(before.reviewScore) !== Number(track.reviewScore)
           ? {
               id: track.id,
@@ -238,13 +199,33 @@ async function handlePost(req, res) {
           : null;
       })
       .filter(Boolean),
-    chart: recalculated,
+    chart,
   };
 
-  await putGithubJson("data/latest.json", recalculated, message, activeToken);
-  await putGithubJson("data/chart.json", recalculated, message, activeToken);
-  await putGithubJson(`data/snapshots/${recalculated.chartDate}.json`, recalculated, message, activeToken);
-  await putGithubJson(`data/admin/audit/${auditStamp}.json`, audit, message, activeToken);
+  await supabase("chart_admin_audits", {
+    method: "POST",
+    headers: { Prefer: "return=minimal" },
+    body: JSON.stringify(audit),
+  });
+}
+
+async function handleGet(req, res) {
+  const payload = await readAdminData();
+  return send(res, 200, payload);
+}
+
+async function handlePost(req, res) {
+  if (!hasSupabase()) return send(res, 500, { error: "Supabase is not configured. Set SUPABASE_URL and SUPABASE_SECRET_KEY in Vercel." });
+
+  let raw = "";
+  for await (const chunk of req) raw += chunk;
+  const body = JSON.parse(raw || "{}");
+  const chart = body.chart;
+  validateChartPayload(chart);
+
+  const existing = await readAdminData();
+  const recalculated = recalculateChart(chart, existing.snapshots);
+  await publishChart(recalculated, existing.latest);
 
   return send(res, 200, {
     ok: true,

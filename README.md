@@ -36,15 +36,15 @@ Recommended Vercel settings:
 - Internal collection, scoring, and admin review keep all 50 candidate tracks
 - Track detail panel
 - Share links for fandom/SNS traffic
-- Latest chart data served from `data/latest.json`
-- Historical daily snapshots preserved in `data/snapshots/`
+- Latest chart data served from `/api/chart`, backed by Supabase
+- Fallback seed data preserved in `data/latest.json` and `data/snapshots/`
 - Admin page at `/admin` for review-score editing, preview ranking, snapshot lookup, and live publishing
 
 Community and login features are intentionally deferred.
 
 ## Data Operations
 
-Use Google Sheets as the free MVP admin/source-of-truth layer, then export committed JSON files so previous chart dates are never erased.
+Use Supabase as the live data store for admin publishing, with committed JSON files kept as a fallback seed.
 
 Recalculate and publish a prepared chart JSON with:
 
@@ -54,21 +54,20 @@ npm run enrich:artwork
 npm run validate:data
 ```
 
-`recalculate:chart` recomputes final scores, current ranks, previous-rank status, peak rank, and available rank history from stored snapshots. It writes `data/latest.json`, `data/chart.json`, and `data/snapshots/YYYY-MM-DD.json`.
+`recalculate:chart` recomputes final scores, current ranks, previous-rank status, peak rank, and available rank history from stored snapshots. It writes `data/latest.json`, `data/chart.json`, and `data/snapshots/YYYY-MM-DD.json` for fallback/static seed data.
 `enrich:artwork` fills missing album artwork from Apple first, then Spotify if `SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET` are configured.
 
 See [`docs/data-management.md`](./docs/data-management.md) for the daily update flow, sheet schema, snapshot rules, and Supabase migration criteria.
 
 ## Admin Publishing
 
-The admin page is available at `/admin`. It edits a draft in the browser first, then publishes live data through `/api/admin`.
+The admin page is available at `/admin`. It edits a draft in the browser first, then publishes live data to Supabase through `/api/admin`.
 
-Live publishing needs a GitHub token with repository Contents read/write permission. You can enter it directly on `/admin`, or set it as a Vercel environment variable:
+Run [`docs/supabase-schema.sql`](./docs/supabase-schema.sql) in the Supabase SQL Editor, then set these Vercel environment variables:
 
-- `GITHUB_TOKEN`: fine-grained GitHub token with repository Contents read/write permission
-- `GITHUB_OWNER`: optional, defaults to `chsuho2025`
-- `GITHUB_REPO`: optional, defaults to `chart_republic`
-- `GITHUB_BRANCH`: optional, defaults to `main`
+- `SUPABASE_URL`
+- `SUPABASE_SECRET_KEY` or `SUPABASE_SERVICE_ROLE_KEY`
+- `SUPABASE_ANON_KEY`: optional fallback for public chart reads
 
 ## Launch Checklist
 
@@ -76,7 +75,7 @@ Live publishing needs a GitHub token with repository Contents read/write permiss
 - Connect the GitHub repo to Vercel.
 - Current beta URL: `https://chart-republic.vercel.app/`.
 - If a custom domain is added later, update `index.html`, `robots.txt`, and `sitemap.xml`.
-- Create the Google Sheets source-of-truth workbook.
-- Prepare a GitHub token for `/admin` live publishing, or add `GITHUB_TOKEN` to Vercel project environment variables.
+- Create the Supabase project and run `docs/supabase-schema.sql`.
+- Add `SUPABASE_URL` and `SUPABASE_SECRET_KEY` to Vercel project environment variables.
 - Run `npm run validate:data` before pushing chart updates.
 - Add Google Search Console and analytics after the first production deploy.

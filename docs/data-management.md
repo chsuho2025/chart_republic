@@ -2,20 +2,20 @@
 
 ## Goal
 
-Daily chart updates must never erase previous rankings. The service should always keep an immutable daily snapshot, while the website reads one small latest file for fast static hosting.
+Daily chart updates must never erase previous rankings. The service should keep published chart rows in Supabase, while committed JSON files remain a fallback seed.
 
 The public service displays only TOP 25. Collection, scoring, admin review, and archive files still keep 50 candidate tracks so future ranking changes are not lost.
 
 ## Recommended MVP Stack
 
-Use Google Sheets as the free editorial/admin database, then export committed JSON files into this repository.
+Use Supabase as the live editorial/admin database. Google Sheets may still be used as a collection workspace, but `/admin` publishes to Supabase.
 
-- Source of truth: Google Sheets
-- Public website input: `data/latest.json`
-- Archive: `data/snapshots/YYYY-MM-DD.json`
-- Compatibility fallback: `data/chart.json`
+- Live source of truth: Supabase
+- Public website input: `/api/chart`
+- Admin publishing input: `/api/admin`
+- Fallback seed: `data/latest.json`, `data/chart.json`, `data/snapshots/YYYY-MM-DD.json`
 
-This keeps Vercel deployment simple and free because the frontend still serves static JSON files.
+This keeps GitHub as code-only infrastructure and prevents admin changes from committing data files to the repository.
 
 ## File Layout
 
@@ -28,7 +28,38 @@ data/
     YYYY-MM-DD.json              # one file per chart date
 ```
 
-## Google Sheets Structure
+## Supabase Structure
+
+Run `docs/supabase-schema.sql` in the Supabase SQL Editor.
+
+### `chart_publications`
+
+One row per published chart date.
+
+| column | example | note |
+| --- | --- | --- |
+| chart_date | 2026-06-25 | Primary daily key |
+| generated_at | 2026-06-25T12:50:00+09:00 | Recalculation timestamp |
+| published_at | 2026-06-25T12:55:00+09:00 | Admin publish timestamp |
+| status | published | Public API reads published rows |
+| public_limit | 25 | Public display limit |
+| candidate_count | 50 | Internal candidate count |
+| chart | `{...}` | Full chart JSON, including tracks, source ranks, scores, artwork, and rank history |
+
+### `chart_admin_audits`
+
+Append-only audit trail for admin publishes.
+
+| column | example | note |
+| --- | --- | --- |
+| published_at | 2026-06-25T12:55:00+09:00 | Publish time |
+| chart_date | 2026-06-25 | Published chart date |
+| previous_generated_at | 2026-06-25T11:00:00+09:00 | Previous live chart timestamp |
+| new_generated_at | 2026-06-25T12:55:00+09:00 | New chart timestamp |
+| changed_review_scores | `[...]` | Review score changes |
+| chart | `{...}` | Full published chart snapshot |
+
+## Optional Google Sheets Workspace
 
 Create one spreadsheet with these tabs.
 
@@ -109,60 +140,33 @@ npm run enrich:artwork
 
 Apple artwork is attempted first because it does not require local credentials. If `SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET` are present, Spotify Search is used as a fallback.
 
-7. Export exactly two JSON files:
-   - `data/latest.json`
-   - `data/snapshots/YYYY-MM-DD.json`
-8. Commit those files. Do not edit or replace older snapshot files.
+7. Open `/admin`, adjust review scores, and confirm the preview ranking.
+8. Click `라이브에 반영` to write the full 50-track chart to Supabase.
 
 ## Admin Review Flow
 
 Use `/admin` for final editorial review before publishing.
 
-- Live publishing requires a GitHub token with repository Contents read/write permission. Enter it on `/admin`, or set `GITHUB_TOKEN` in Vercel.
+- Live publishing requires `SUPABASE_URL` and `SUPABASE_SECRET_KEY` or `SUPABASE_SERVICE_ROLE_KEY` configured in Vercel.
 - The score editor loads all 50 candidate tracks.
 - Changing a review score immediately recalculates the admin preview ranking in the browser.
 - The public website is not changed until the operator clicks `라이브에 반영`.
 - Live publishing writes:
-  - `data/latest.json`
-  - `data/chart.json`
-  - `data/snapshots/YYYY-MM-DD.json`
-  - `data/admin/audit/YYYY-MM-DDTHH-MM-SS-sssZ.json`
+  - `chart_publications`
+  - `chart_admin_audits`
 
-The audit file stores the full published chart and every changed review score so admin decisions can be traced later.
+The audit row stores the full published chart and every changed review score so admin decisions can be traced later.
 
 ## Data Integrity Rules
 
-- Never overwrite a file under `data/snapshots/`.
+- Never delete rows from `chart_publications` or `chart_admin_audits`.
 - Never reuse a `chart_date` unless correcting the same day's draft before publication.
 - Use stable `track_id` values so historical rank, peak rank, and days on chart remain reliable.
 - Keep score formulas private. The public app may show final score, but not source contribution weights.
 - If a scraped source is temporarily blocked, keep the cell empty and record the failure in `source_snapshots`.
 
-## When Google Sheets Is Enough
+## Why Supabase Instead Of GitHub
 
-Google Sheets is enough for the first phase if:
+GitHub should only deploy code. Admin edits should not commit chart data into the repository because review scores, audit trails, and historical chart rows are application data. Supabase keeps that data queryable and updateable without redeploying code.
 
-- Only the operator or a very small team edits data.
-- Updates happen daily or hourly but are exported as static JSON.
-- The website only reads `latest.json`, not the sheet directly.
-- Historical analysis can be done from snapshot JSON or the sheet itself.
-
-## When To Move To Supabase
-
-Move to Supabase when any of these become true:
-
-- Multiple admins need permissioned editing.
-- Community, accounts, voting, comments, or saved artists are added.
-- You need API queries for historical rank pages.
-- Snapshot files become too large for convenient Git commits.
-- You want server-side scheduled jobs, audit logs, and relational constraints.
-
-Recommended Supabase tables would mirror the Google Sheets tabs:
-
-- `chart_runs`
-- `tracks`
-- `chart_entries`
-- `source_snapshots`
-- `review_scores`
-
-For now, Google Sheets plus committed JSON snapshots is the lowest-cost and lowest-risk path.
+Google Sheets can still be useful as a manual collection workspace, but the live website should read from Supabase.

@@ -463,9 +463,12 @@ async function init() {
   bindEvents();
   applyTranslations();
   const cacheKey = Date.now();
-  const response = await fetch(`./data/latest.json?v=${cacheKey}`, { cache: "no-store" }).then((result) => {
-    if (!result.ok) return fetch(`./data/chart.json?v=${cacheKey}`, { cache: "no-store" });
-    return result;
+  const response = await fetch(`./api/chart?v=${cacheKey}`, { cache: "no-store" }).then((result) => {
+    if (result.ok) return result;
+    return fetch(`./data/latest.json?v=${cacheKey}`, { cache: "no-store" });
+  }).then((result) => {
+    if (result.ok) return result;
+    return fetch(`./data/chart.json?v=${cacheKey}`, { cache: "no-store" });
   });
   state.data = await response.json();
   state.tracks = state.data.tracks
