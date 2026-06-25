@@ -297,43 +297,6 @@ h1 {
   font-weight: 500;
 }
 
-.search-card {
-  padding: 0 20px 14px;
-  background: #000;
-}
-
-.search {
-  display: flex;
-  align-items: center;
-  height: 42px;
-  padding: 0 14px;
-  border-radius: 9px;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.search svg {
-  width: 18px;
-  height: 18px;
-  flex: 0 0 auto;
-  fill: var(--muted);
-}
-
-.search input {
-  min-width: 0;
-  width: 100%;
-  border: 0;
-  outline: 0;
-  padding: 0 0 0 9px;
-  background: transparent;
-  color: #fff;
-  font-size: 15px;
-  font-weight: 400;
-}
-
-.search input::placeholder {
-  color: rgba(255, 255, 255, 0.42);
-}
-
 .chart-panel {
   background: #000;
 }

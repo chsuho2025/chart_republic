@@ -48,10 +48,12 @@ Recalculate and publish a prepared chart JSON with:
 
 ```bash
 npm run recalculate:chart -- path/to/chart.json
+npm run enrich:artwork
 npm run validate:data
 ```
 
 `recalculate:chart` recomputes final scores, current ranks, previous-rank status, peak rank, and available rank history from stored snapshots. It writes `data/latest.json`, `data/chart.json`, and `data/snapshots/YYYY-MM-DD.json`.
+`enrich:artwork` fills missing album artwork from Apple first, then Spotify if `SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET` are configured.
 
 See [`docs/data-management.md`](./docs/data-management.md) for the daily update flow, sheet schema, snapshot rules, and Supabase migration criteria.
 

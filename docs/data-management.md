@@ -53,6 +53,8 @@ One row per track identity.
 | artist_ko | 코르티스 | Korean artist |
 | album | REDRED | Album title |
 | artwork_url | https://... | Optional scraped artwork |
+| artwork_source | apple | apple / spotify / manual |
+| artwork_attribution_url | https://... | Apple Music or Spotify track URL |
 | video_url | https://www.youtube.com/embed/... | Detail page MV |
 
 ### `chart_entries`
@@ -94,13 +96,21 @@ Optional raw evidence table for debugging crawler results.
 
 1. Collect Spotify, Apple Music, YouTube Music weekly, and YouTube Shorts chart rows.
 2. Append raw rows to `source_snapshots`.
-3. Update or add track metadata in `tracks`.
+3. Update or add track metadata in `tracks`, including album artwork from Apple Music or Spotify when available.
 4. Add a new `chart_entries` row for each ranked track under today's `chart_date`.
 5. Compute final scores and ranks in the sheet or in an export script.
-6. Export exactly two JSON files:
+6. Enrich missing artwork before publication:
+
+```bash
+npm run enrich:artwork
+```
+
+Apple artwork is attempted first because it does not require local credentials. If `SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET` are present, Spotify Search is used as a fallback.
+
+7. Export exactly two JSON files:
    - `data/latest.json`
    - `data/snapshots/YYYY-MM-DD.json`
-7. Commit those files. Do not edit or replace older snapshot files.
+8. Commit those files. Do not edit or replace older snapshot files.
 
 ## Data Integrity Rules
 

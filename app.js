@@ -3,7 +3,6 @@ const state = {
   data: null,
   tracks: [],
   filter: "all",
-  query: "",
   limit: 20,
 };
 
@@ -17,7 +16,6 @@ const translations = {
     filterAll: "전체",
     filterGen3: "3세대",
     filterGen4: "4세대",
-    search: "곡 또는 아티스트 검색",
     asOf: "업데이트",
     entries: "곡",
     rank: "순위",
@@ -32,7 +30,7 @@ const translations = {
     share: "X에 공유",
     copy: "링크 복사",
     copied: "복사됨",
-    empty: "검색 결과가 없습니다.",
+    empty: "표시할 곡이 없습니다.",
     loadMore: "더 보기",
     out: "-",
   },
@@ -45,7 +43,6 @@ const translations = {
     filterAll: "All",
     filterGen3: "3rd gen",
     filterGen4: "4th gen",
-    search: "Search track or artist",
     asOf: "Updated",
     entries: "Songs",
     rank: "Rank",
@@ -60,7 +57,7 @@ const translations = {
     share: "Share on X",
     copy: "Copy link",
     copied: "Copied",
-    empty: "No matching tracks.",
+    empty: "No tracks to show.",
     loadMore: "Show more",
     out: "-",
   },
@@ -163,9 +160,6 @@ function applyTranslations() {
   document.querySelectorAll("[data-i18n]").forEach((node) => {
     node.textContent = t(node.dataset.i18n);
   });
-  document.querySelectorAll("[data-i18n-placeholder]").forEach((node) => {
-    node.placeholder = t(node.dataset.i18nPlaceholder);
-  });
 }
 
 function renderHeroRank() {
@@ -189,14 +183,12 @@ function trackGeneration(track) {
 }
 
 function filteredTracks() {
-  const query = state.query.trim().toLowerCase();
   return state.tracks
     .map((track, index) => ({ ...track, rank: index + 1 }))
     .slice(0, state.limit)
     .filter((track) => {
       if (state.filter !== "all" && trackGeneration(track) !== state.filter) return false;
-      if (!query) return true;
-      return `${track.title} ${track.artist} ${track.artistKo}`.toLowerCase().includes(query);
+      return true;
     });
 }
 
@@ -235,7 +227,7 @@ function renderChart() {
       `;
     })
     .join("");
-  loadMore.hidden = state.limit >= 50 || state.tracks.length <= state.limit || state.filter !== "all" || Boolean(state.query);
+  loadMore.hidden = state.limit >= 50 || state.tracks.length <= state.limit || state.filter !== "all";
 }
 
 function detailMetric(label, value) {
@@ -424,11 +416,6 @@ function bindEvents() {
       state.limit = 20;
       renderChart();
     });
-  });
-
-  document.getElementById("searchInput").addEventListener("input", (event) => {
-    state.query = event.target.value;
-    renderChart();
   });
 
   document.getElementById("chartList").addEventListener("click", (event) => {

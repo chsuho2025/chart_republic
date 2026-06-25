@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-25T08:25:53.698Z",
+  "generatedAt": "2026-06-25T12:38:00.317Z",
   "chartDate": "2026-06-25",
   "sources": {
     "spotifyDaily": {
@@ -42,7 +42,10 @@
           "chartDate": "2026-06-25",
           "rank": 1
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/db/56/04/db5604ab-c7f4-b982-8c76-98ee766ac294/823375069195_Cover.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/its-me/1887194024?i=1887194026&uo=4"
     },
     {
       "id": "gapjagi-ioi",
@@ -66,7 +69,10 @@
           "chartDate": "2026-06-25",
           "rank": 2
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/4e/f0/d9/4ef0d927-e14f-49c7-b273-e92ed3ce354b/888272181623_Cover.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/%EA%B0%91%EC%9E%90%EA%B8%B0/6769328211?i=6769328214&uo=4"
     },
     {
       "id": "somun-akmu",
@@ -90,7 +96,10 @@
           "chartDate": "2026-06-25",
           "rank": 3
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/43/aa/35/43aa3529-1776-70fb-fe49-2bb59a7680f2/8800367489775_cover.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/%EC%86%8C%EB%AC%B8%EC%9D%98-%EB%82%99%EC%9B%90/1887773334?i=1887773335&uo=4"
     },
     {
       "id": "redred-cortis",
@@ -114,7 +123,10 @@
           "chartDate": "2026-06-25",
           "rank": 4
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/9b/5f/47/9b5f4711-dc78-2dea-6721-d06709ea5121/198704992810_Cover.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/redred/1887671065?i=1887671067&uo=4"
     },
     {
       "id": "lemonade-aespa",
@@ -138,7 +150,10 @@
           "chartDate": "2026-06-25",
           "rank": 5
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/00/1d/e6/001de64e-c2f1-fd4b-3604-3d2e16641968/888735955211.png/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/lemonade/1893599771?i=1893599773&uo=4"
     },
     {
       "id": "love-attack-rescene",
@@ -162,7 +177,10 @@
           "chartDate": "2026-06-25",
           "rank": 6
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/43/0b/4c/430b4c8e-3cb8-da27-648f-435ec3b391a6/8804775334160.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/love-attack/1764485168?i=1764485170&uo=4"
     },
     {
       "id": "rude-hearts2hearts",
@@ -186,7 +204,10 @@
           "chartDate": "2026-06-25",
           "rank": 7
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/78/b9/fb/78b9fb30-169a-eab0-38e9-8df725f8f2d6/888735954603.png/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/rude/1875146814?i=1875146815&uo=4"
     },
     {
       "id": "sarang-hanroro",
@@ -210,7 +231,10 @@
           "chartDate": "2026-06-25",
           "rank": 8
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/c2/ef/87/c2ef8779-f3bb-5a1c-ef6f-c27185e62446/8809936067307.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/%EC%82%AC%EB%9E%91%ED%95%98%EA%B2%8C-%EB%90%A0-%EA%B1%B0%EC%95%BC/1703196819?i=1703196825&uo=4"
     },
     {
       "id": "drip-babymonster",
@@ -234,7 +258,10 @@
           "chartDate": "2026-06-25",
           "rank": 9
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/b9/e1/ef/b9e1ef3a-e3eb-8152-e91b-20aca0fc9ffd/BM_DRIP_Digital-Cover_4000.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/drip/1773262053?i=1773262055&uo=4"
     },
     {
       "id": "magnetic-illit",
@@ -259,7 +286,10 @@
           "chartDate": "2026-06-25",
           "rank": 10
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/3e/49/1e/3e491e43-4961-21ab-2abe-37fb1c0feb40/196922879227_Cover.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/magnetic/1734500886?i=1734500896&uo=4"
     },
     {
       "id": "how-sweet-newjeans",
@@ -283,7 +313,10 @@
           "chartDate": "2026-06-25",
           "rank": 11
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/bf/68/ca/bf68ca64-4acd-543f-bc78-455f11f06105/196922889738_Cover.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/how-sweet/1744448415?i=1744448416&uo=4"
     },
     {
       "id": "armageddon-aespa",
@@ -307,7 +340,10 @@
           "chartDate": "2026-06-25",
           "rank": 12
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/cf/97/05/cf970525-a2fd-a7e3-2812-0f9c3f3d2c33/888735947551.png/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/armageddon/1745285216?i=1745285228&uo=4"
     },
     {
       "id": "supernova-aespa",
@@ -332,7 +368,10 @@
           "chartDate": "2026-06-25",
           "rank": 13
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/d5/3f/af/d53faff0-5395-5520-f450-8ca8bedf057b/888735949180.png/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/supernova/1767989464?i=1767989473&uo=4"
     },
     {
       "id": "catch-catch-yena",
@@ -356,7 +395,10 @@
           "chartDate": "2026-06-25",
           "rank": 14
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/2d/1f/99/2d1f997c-6d8b-c312-2156-c2a1ae969c03/888272177749_Cover.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/%EC%BA%90%EC%B9%98-%EC%BA%90%EC%B9%98/1882581635?i=1882581639&uo=4"
     },
     {
       "id": "smart-lesserafim",
@@ -380,7 +422,10 @@
           "chartDate": "2026-06-25",
           "rank": 15
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/e7/bd/8b/e7bd8bf2-eaf7-0166-c206-b7564a6e13fd/196922796562_Cover.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/smart/1736798243?i=1736798252&uo=4"
     },
     {
       "id": "cherish-illit",
@@ -404,7 +449,10 @@
           "chartDate": "2026-06-25",
           "rank": 16
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/11/f4/ed/11f4ed06-8a08-2aae-740e-448409e7e089/198704217340_Cover.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/cherish-my-love-slowed-reverb/1775992277?i=1775992468&uo=4"
     },
     {
       "id": "fate-gidle",
@@ -428,7 +476,10 @@
           "chartDate": "2026-06-25",
           "rank": 17
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/96/da/6d/96da6de4-8824-f449-7a7a-243aaa9f3a75/cover_KM0019415_1.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/%EB%82%98%EB%8A%94-%EC%95%84%ED%94%88-%EA%B1%B4-%EB%94%B1-%EC%A7%88%EC%83%89%EC%9D%B4%EB%8B%88%EA%B9%8C/1727258590?i=1727258596&uo=4"
     },
     {
       "id": "heya-ive",
@@ -452,7 +503,10 @@
           "chartDate": "2026-06-25",
           "rank": 18
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/97/18/44/97184494-ff70-dc93-3e38-02418a8a1e4c/cover_KM0019762_1.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/%ED%95%B4%EC%95%BC/1743111714?i=1743111719&uo=4"
     },
     {
       "id": "accendio-ive",
@@ -476,7 +530,10 @@
           "chartDate": "2026-06-25",
           "rank": 19
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/97/18/44/97184494-ff70-dc93-3e38-02418a8a1e4c/cover_KM0019762_1.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/accendio/1743111714?i=1743111720&uo=4"
     },
     {
       "id": "earth-wind-fire-boynextdoor",
@@ -500,7 +557,10 @@
           "chartDate": "2026-06-25",
           "rank": 20
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/3e/38/bf/3e38bf61-7171-1cfc-7dc4-8e74751f2b6b/196922852268_Cover.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/earth-wind-fire/1738692227?i=1738692253&uo=4"
     },
     {
       "id": "perfect-night-lesserafim",
@@ -525,7 +585,10 @@
           "chartDate": "2026-06-25",
           "rank": 21
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/a0/cd/40/a0cd4013-89cf-0554-0aa5-1ac5a0bb3db1/196922680779_Cover.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/perfect-night/1712730735?i=1712731159&uo=4"
     },
     {
       "id": "lemon-tang-hearts2hearts",
@@ -549,7 +612,10 @@
           "chartDate": "2026-06-25",
           "rank": 22
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/00/a4/c1/00a4c1fb-c2c9-83c9-af2e-44cb5da80bc4/888735956140.png/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/lemon-tang/6779521284?i=6779521286&uo=4"
     },
     {
       "id": "boom-boom-bass-riize",
@@ -573,7 +639,10 @@
           "chartDate": "2026-06-25",
           "rank": 23
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/41/1e/ad/411eadf4-7685-17d0-6dca-830553600b9b/888735948763.png/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/boom-boom-bass/1762577701?i=1762577703&uo=4"
     },
     {
       "id": "impossible-riize",
@@ -597,7 +666,10 @@
           "chartDate": "2026-06-25",
           "rank": 24
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/75/66/a0/7566a0c0-59a2-4a3e-94d6-a17eca627519/888735947346.png/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/impossible/1739150376?i=1739150377&uo=4"
     },
     {
       "id": "plot-twist-tws-2",
@@ -621,7 +693,10 @@
           "chartDate": "2026-06-25",
           "rank": 25
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/20/66/32/2066323d-435f-e6d7-5c32-907903719e36/196922975615_Cover.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/hey-hey/1747782767?i=1747783884&uo=4"
     },
     {
       "id": "crazy-lesserafim",
@@ -645,7 +720,10 @@
           "chartDate": "2026-06-25",
           "rank": 26
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/a6/61/15/a66115bc-4880-5088-a391-e53aece2b5d1/198704128295_Cover.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/crazy-english-ver/1765435484?i=1765435486&uo=4"
     },
     {
       "id": "klaxon-gidle",
@@ -669,7 +747,10 @@
           "chartDate": "2026-06-25",
           "rank": 27
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/30/c0/56/30c056d6-35e7-19a6-6252-4f44ba2ef3ab/cover_KM0020047_1.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/%ED%81%B4%EB%9D%BD%EC%85%98/1753829503?i=1753829505&uo=4"
     },
     {
       "id": "zero-zero-hanroro",
@@ -693,7 +774,10 @@
           "chartDate": "2026-06-25",
           "rank": 28
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/c8/a4/c6/c8a4c64f-89b3-9ef2-473f-4ad423a03c5b/887928030421.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/0-0/1828393588?i=1828393595&uo=4"
     },
     {
       "id": "plot-twist-tws",
@@ -718,7 +802,10 @@
           "chartDate": "2026-06-25",
           "rank": 29
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/17/bb/d4/17bbd45f-fee7-a9dd-ff01-e7b174cc1462/196922759543_Cover.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/%EC%B2%AB-%EB%A7%8C%EB%82%A8%EC%9D%80-%EA%B3%84%ED%9A%8D%EB%8C%80%EB%A1%9C-%EB%90%98%EC%A7%80-%EC%95%8A%EC%95%84/1723932647?i=1723932648&uo=4"
     },
     {
       "id": "sticky-kiss-of-life",
@@ -742,7 +829,10 @@
           "chartDate": "2026-06-25",
           "rank": 30
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/9b/00/c7/9b00c7e0-2e78-af06-bcfe-89d7a00e5a6d/cover_KM0019987_1.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/sticky/1753900852?i=1753900853&uo=4"
     },
     {
       "id": "midas-touch-kiss-of-life",
@@ -766,7 +856,10 @@
           "chartDate": "2026-06-25",
           "rank": 31
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/e1/6f/c2/e16fc273-6872-31a0-a667-3e8777da2636/8804775348402.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/midas-touch/1737365430?i=1737365431&uo=4"
     },
     {
       "id": "work-ateez",
@@ -790,7 +883,10 @@
           "chartDate": "2026-06-25",
           "rank": 32
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/b9/24/ee/b924ee3e-ea9b-8c00-0a84-19037929a3c7/888272134216_Cover.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/work/1748071551?i=1748071554&uo=4"
     },
     {
       "id": "maestro-seventeen",
@@ -814,7 +910,10 @@
           "chartDate": "2026-06-25",
           "rank": 33
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/f0/69/16/f0691679-835f-8b9b-5baa-292b7e49423f/196922894992_Cover.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/maestro/1741446411?i=1741446418&uo=4"
     },
     {
       "id": "deja-vu-txt",
@@ -838,7 +937,10 @@
           "chartDate": "2026-06-25",
           "rank": 34
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/9d/c4/16/9dc41676-d81e-b1ff-d62f-c3d7cd0757a6/196922842283_Cover.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/deja-vu/1733096604?i=1733097066&uo=4"
     },
     {
       "id": "fake-love-juns",
@@ -862,7 +964,10 @@
           "chartDate": "2026-06-25",
           "rank": 35
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/e5/1e/12/e51e12fd-efc2-06d1-a329-f17b3dbd2e76/191953523286.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/%EA%B0%80%EC%A7%9C%EC%82%AC%EB%9E%91/1885503617?i=1885503618&uo=4"
     },
     {
       "id": "love-119-riize",
@@ -886,7 +991,10 @@
           "chartDate": "2026-06-25",
           "rank": 36
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/e1/8d/3f/e18d3f88-d4f5-e48a-21db-38da628a9896/888735946431.png/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/love-119/1721331012?i=1721331014&uo=4"
     },
     {
       "id": "baddie-ive",
@@ -910,7 +1018,10 @@
           "chartDate": "2026-06-25",
           "rank": 37
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/88/4e/1a/884e1a49-7ce1-7521-7216-cb9adc497090/cover_KM0018202_1.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/baddie/1711153844?i=1711153996&uo=4"
     },
     {
       "id": "get-a-guitar-riize",
@@ -934,7 +1045,10 @@
           "chartDate": "2026-06-25",
           "rank": 38
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/f0/5d/f4/f05df46a-3490-6b6e-19b7-64ca0d33448a/888735944888.png/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/get-a-guitar/1702800317?i=1702800318&uo=4"
     },
     {
       "id": "eta-newjeans",
@@ -958,7 +1072,10 @@
           "chartDate": "2026-06-25",
           "rank": 39
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/d3/4b/7e/d34b7e1e-af3b-43b6-2949-7a8c652a1bc9/196922462726_Cover.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/eta/1695951888?i=1695951900&uo=4"
     },
     {
       "id": "super-shy-newjeans",
@@ -982,7 +1099,10 @@
           "chartDate": "2026-06-25",
           "rank": 40
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/63/e5/e2/63e5e2e4-829b-924d-a1dc-8058a1d69bd4/196922462702_Cover.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/super-shy/1692686264?i=1692686518&uo=4"
     },
     {
       "id": "spicy-aespa",
@@ -1006,7 +1126,10 @@
           "chartDate": "2026-06-25",
           "rank": 41
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/6b/fd/bc/6bfdbc99-ec10-5ae9-ea73-aa8985991aa7/888735952289.png/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/spicy/1890393509?i=1890393511&uo=4"
     },
     {
       "id": "queencard-gidle",
@@ -1030,7 +1153,10 @@
           "chartDate": "2026-06-25",
           "rank": 42
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/29/27/57/29275797-c35d-df22-1394-61189a2aae43/cover_KM0017301_1.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/%ED%80%B8%EC%B9%B4/1687024222?i=1687024225&uo=4"
     },
     {
       "id": "omg-newjeans",
@@ -1054,7 +1180,10 @@
           "chartDate": "2026-06-25",
           "rank": 43
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/48/96/08/4896085e-b550-cb0a-3e5b-1f203521cb82/196922265464_Cover.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/omg/1659513441?i=1659513445&uo=4"
     },
     {
       "id": "ditto-newjeans",
@@ -1078,7 +1207,10 @@
           "chartDate": "2026-06-25",
           "rank": 44
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/f6/29/42/f629426e-92fe-535c-cbe4-76e70850819b/196922287107_Cover.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/ditto/1657231957?i=1657231962&uo=4"
     },
     {
       "id": "hype-boy-newjeans",
@@ -1102,7 +1234,10 @@
           "chartDate": "2026-06-25",
           "rank": 45
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/4e/64/34/4e64344b-3ac6-c503-2c41-257a15401416/192641873096_Cover.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/hype-boy/1635469682?i=1635469851&uo=4"
     },
     {
       "id": "boompala-lesserafim",
@@ -1126,7 +1261,10 @@
           "chartDate": "2026-06-25",
           "rank": 46
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/b8/0c/98/b80c980c-52c6-a180-ff3e-2afaaab75fdd/823375107286_Cover.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/boompala/1894802719?i=1894802726&uo=4"
     },
     {
       "id": "antifragile-lesserafim",
@@ -1150,7 +1288,10 @@
           "chartDate": "2026-06-25",
           "rank": 47
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/c8/79/da/c879dadf-db1e-95a5-caf5-b18c7c81d2b6/192641874413_Cover.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/antifragile/1647830231?i=1647830390&uo=4"
     },
     {
       "id": "seven-jungkook",
@@ -1175,7 +1316,10 @@
           "chartDate": "2026-06-25",
           "rank": 48
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/a5/a6/56/a5a6561a-f570-2fb1-5a3a-95b150c18f18/196922550928_Cover.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/seven/1697147751?i=1697147752&uo=4"
     },
     {
       "id": "youngcreatorcrew-cortis",
@@ -1199,7 +1343,10 @@
           "chartDate": "2026-06-25",
           "rank": 49
         }
-      ]
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/9b/5f/47/9b5f4711-dc78-2dea-6721-d06709ea5121/198704992810_Cover.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/youngcreatorcrew/1887671065?i=1887671072&uo=4"
     },
     {
       "id": "i-like-you-choi",

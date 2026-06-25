@@ -44,6 +44,8 @@ function validateTrack(track, index, seenIds) {
   assert(Number.isFinite(track.finalScore), `${label}.finalScore must be a number`);
   assert(allowedStatus.has(track.status), `${label}.status must be up, down, steady, or new`);
   if (track.artworkUrl) assert(/^https?:\/\//.test(track.artworkUrl), `${label}.artworkUrl must be an http URL`);
+  if (track.artworkSource) assert(["apple", "spotify", "manual"].includes(track.artworkSource), `${label}.artworkSource must be apple, spotify, or manual`);
+  if (track.artworkAttributionUrl) assert(/^https?:\/\//.test(track.artworkAttributionUrl), `${label}.artworkAttributionUrl must be an http URL`);
   if (track.videoUrl) assert(/^https:\/\/www\.youtube\.com\/embed\//.test(track.videoUrl), `${label}.videoUrl must be a YouTube embed URL`);
 }
 
