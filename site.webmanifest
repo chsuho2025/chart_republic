@@ -1,0 +1,17 @@
+{
+  "name": "Chart Republic",
+  "short_name": "Chart Republic",
+  "description": "Korea youth-driven K-pop HOT 50 chart.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "lang": "ko",
+  "icons": [
+    {
+      "src": "/public/icons/settings.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    }
+  ]
+}
