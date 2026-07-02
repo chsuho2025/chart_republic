@@ -36,15 +36,15 @@ Recommended Vercel settings:
 - Internal collection, scoring, and admin review keep all 50 candidate tracks
 - Track detail panel
 - Share links for fandom/SNS traffic
-- Latest chart data served from `/api/chart`, backed by Supabase
-- Fallback seed data preserved in `data/latest.json` and `data/snapshots/`
-- Admin page at `/admin` for review-score editing, preview ranking, snapshot lookup, and live publishing
+- Latest chart data served from committed JSON files through `/api/chart`
+- Archive seed data preserved in `data/latest.json` and `data/snapshots/`
+- Admin page at `/admin` for review-score editing, preview ranking, snapshot lookup, and JSON export
 
 Community and login features are intentionally deferred.
 
 ## Data Operations
 
-Use Supabase as the live data store for admin publishing, with committed JSON files kept as a fallback seed.
+Use committed JSON files as the live data source. Updating the public chart means updating `data/latest.json`, `data/chart.json`, and `data/snapshots/YYYY-MM-DD.json`, then redeploying through Vercel.
 
 Recalculate and publish a prepared chart JSON with:
 
@@ -57,17 +57,11 @@ npm run validate:data
 `recalculate:chart` recomputes final scores, current ranks, previous-rank status, peak rank, and available rank history from stored snapshots. It writes `data/latest.json`, `data/chart.json`, and `data/snapshots/YYYY-MM-DD.json` for fallback/static seed data.
 `enrich:artwork` fills missing album artwork from Apple first, then Spotify if `SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET` are configured.
 
-See [`docs/data-management.md`](./docs/data-management.md) for the daily update flow, sheet schema, snapshot rules, and Supabase migration criteria.
+See [`docs/data-management.md`](./docs/data-management.md) for the daily update flow and snapshot rules.
 
 ## Admin Publishing
 
-The admin page is available at `/admin`. It edits a draft in the browser first, then publishes live data to Supabase through `/api/admin`.
-
-Run [`docs/supabase-schema.sql`](./docs/supabase-schema.sql) in the Supabase SQL Editor, then set these Vercel environment variables:
-
-- `SUPABASE_URL`
-- `SUPABASE_SECRET_KEY` or `SUPABASE_SERVICE_ROLE_KEY`
-- `SUPABASE_ANON_KEY`: optional fallback for public chart reads
+The admin page is available at `/admin`. It edits a draft in the browser and exports the recalculated JSON. The exported JSON must be copied into the data files and deployed with the repository.
 
 ## Launch Checklist
 
@@ -75,7 +69,5 @@ Run [`docs/supabase-schema.sql`](./docs/supabase-schema.sql) in the Supabase SQL
 - Connect the GitHub repo to Vercel.
 - Current beta URL: `https://chart-republic.vercel.app/`.
 - If a custom domain is added later, update `index.html`, `robots.txt`, and `sitemap.xml`.
-- Create the Supabase project and run `docs/supabase-schema.sql`.
-- Add `SUPABASE_URL` and `SUPABASE_SECRET_KEY` to Vercel project environment variables.
 - Run `npm run validate:data` before pushing chart updates.
 - Add Google Search Console and analytics after the first production deploy.

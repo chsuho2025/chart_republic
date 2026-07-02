@@ -159,41 +159,31 @@ async function loadData() {
   state.snapshots = payload.snapshots || [];
   state.draftTracks = payload.latest.tracks.map((track) => ({ ...track }));
   showWorkspace(payload.mode);
-  setStatus(payload.mode === "supabase" ? "Supabase 최신 데이터 로드 완료." : "번들 데이터 로드 완료. 라이브 반영은 Supabase 설정 후 가능합니다.", "ok");
+  setStatus("정적 JSON 데이터를 로드했습니다. 수정 후 JSON을 내보내고 재배포하세요.", "ok");
 }
 
-async function publishLive() {
+function exportJson() {
   if (!state.latest) return;
-  const ok = window.confirm("현재 어드민 미리보기 순위를 라이브 차트에 반영할까요?");
-  if (!ok) return;
-
   recalculatePreview();
   const chart = {
     ...state.latest,
+    generatedAt: new Date().toISOString(),
     tracks: state.preview.map((track) => ({ ...track })),
   };
 
-  setStatus("라이브 반영 중... Supabase에 차트 데이터를 저장합니다.");
-  const payload = await api("/api/admin", {
-    method: "POST",
-    body: JSON.stringify({ chart }),
-  });
-  if (payload.chart) {
-    state.latest = payload.chart;
-    state.draftTracks = payload.chart.tracks.map((track) => ({ ...track }));
-    if (!state.snapshots.some((snapshot) => snapshot.chartDate === payload.chart.chartDate)) {
-      state.snapshots.push(payload.chart);
-    } else {
-      state.snapshots = state.snapshots.map((snapshot) => (snapshot.chartDate === payload.chart.chartDate ? payload.chart : snapshot));
-    }
-    showWorkspace("supabase");
-  }
-  setStatus(`라이브 반영 완료. ${payload.chartDate} / ${payload.generatedAt}`, "ok");
+  const blob = new Blob([`${JSON.stringify(chart, null, 2)}\n`], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = `chart-${chart.chartDate}.json`;
+  anchor.click();
+  URL.revokeObjectURL(url);
+  setStatus("수정된 차트 JSON을 내보냈습니다. data/latest.json, data/chart.json, snapshots에 반영 후 배포하세요.", "ok");
 }
 
 function bindEvents() {
   $("#loadData").addEventListener("click", () => loadData().catch((error) => setStatus(error.message, "danger")));
-  $("#publishLive").addEventListener("click", () => publishLive().catch((error) => setStatus(error.message, "danger")));
+  $("#exportJson").addEventListener("click", exportJson);
   $("#snapshotSelect").addEventListener("change", (event) => renderSnapshotRows(event.target.value));
   $("#scoreRows").addEventListener("input", (event) => {
     const input = event.target.closest("[data-review-id]");
