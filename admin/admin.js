@@ -6,11 +6,12 @@ const state = {
 };
 
 const weights = {
-  spotifyDailyRank: 0.3,
-  appleDailyRank: 0.25,
+  appleDailyRank: 0.1,
+  appleSeoulRank: 0.2,
+  spotifyDailyRank: 0.15,
   youtubeMusicWeeklyRank: 0.15,
   youtubeShortsDailyRank: 0.2,
-  reviewScore: 0.1,
+  reviewScore: 0.2,
 };
 
 const $ = (selector) => document.querySelector(selector);
@@ -25,13 +26,19 @@ function rankScore(rank) {
   return Number.isInteger(rank) && rank > 0 ? Math.max(0, 101 - rank) : 0;
 }
 
+function normalizedReviewScore(score) {
+  const value = Number(score) || 0;
+  return value > 5 ? value : (value / 5) * 100;
+}
+
 function finalScore(track) {
   const score =
     rankScore(track.spotifyDailyRank) * weights.spotifyDailyRank +
     rankScore(track.appleDailyRank) * weights.appleDailyRank +
+    rankScore(track.appleSeoulRank) * weights.appleSeoulRank +
     rankScore(track.youtubeMusicWeeklyRank) * weights.youtubeMusicWeeklyRank +
     rankScore(track.youtubeShortsDailyRank) * weights.youtubeShortsDailyRank +
-    (Number(track.reviewScore) || 0) * weights.reviewScore;
+    normalizedReviewScore(track.reviewScore) * weights.reviewScore;
   return Math.round(score * 100) / 100;
 }
 
@@ -77,10 +84,11 @@ function renderScoreRows() {
       <tr>
         <td>${index + 1}</td>
         <td><strong>${track.title}</strong><span>${artist(track)}</span></td>
-        <td><input class="score-input" data-review-id="${track.id}" type="number" min="0" max="100" step="0.1" value="${track.reviewScore}" /></td>
+        <td><input class="score-input" data-review-id="${track.id}" type="number" min="0" max="5" step="0.5" value="${track.reviewScore}" /></td>
         <td>${track.finalScore.toFixed(2)}</td>
         <td>${displayRank(track.spotifyDailyRank)}</td>
         <td>${displayRank(track.appleDailyRank)}</td>
+        <td>${displayRank(track.appleSeoulRank)}</td>
         <td>${displayRank(track.youtubeMusicWeeklyRank)}</td>
         <td>${displayRank(track.youtubeShortsDailyRank)}</td>
       </tr>

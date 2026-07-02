@@ -5,6 +5,7 @@ const allowedStatus = new Set(["up", "down", "steady", "new"]);
 const nullableRankFields = [
   "spotifyDailyRank",
   "appleDailyRank",
+  "appleSeoulRank",
   "youtubeMusicWeeklyRank",
   "youtubeShortsDailyRank",
   "previousRank",
@@ -24,7 +25,7 @@ function isIsoDate(value) {
 }
 
 function isPositiveIntegerOrNull(value) {
-  return value === null || (Number.isInteger(value) && value > 0);
+  return value === undefined || value === null || (Number.isInteger(value) && value > 0);
 }
 
 function validateTrack(track, index, seenIds) {

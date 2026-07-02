@@ -2,15 +2,26 @@ import { readFile, readdir, writeFile, mkdir } from "node:fs/promises";
 import { join } from "node:path";
 
 const weights = {
-  spotifyDailyRank: 0.3,
-  appleDailyRank: 0.25,
+  appleDailyRank: 0.1,
+  appleSeoulRank: 0.2,
+  spotifyDailyRank: 0.15,
   youtubeMusicWeeklyRank: 0.15,
   youtubeShortsDailyRank: 0.2,
-  reviewScore: 0.1,
+  reviewScore: 0.2,
 };
 
-const chartDate = new Date().toISOString().slice(0, 10);
+const chartDate =
+  process.env.CHART_DATE ||
+  new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Seoul",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date());
 const spotifyPlaylistId = "37i9dQZEVXbNxXF4SkHj9F";
+const appleSeoulPlaylistId = "pl.d6f003a501da4b3c9d33b0c7b8cfa0ae";
+const appleSeoulPlaylistUrl =
+  "https://music.apple.com/kr/playlist/%EC%98%A4%EB%8A%98%EC%9D%98-top-25-%EC%84%9C%EC%9A%B8/pl.d6f003a501da4b3c9d33b0c7b8cfa0ae";
 const manualReviewScoresPath = join("data", "drafts", `${chartDate}-review-scores.json`);
 
 function normalize(value) {
@@ -43,13 +54,19 @@ function rankScore(rank) {
   return Number.isInteger(rank) && rank > 0 ? Math.max(0, 101 - rank) : 0;
 }
 
+function normalizedReviewScore(score) {
+  const value = Number(score) || 0;
+  return value > 5 ? value : (value / 5) * 100;
+}
+
 function finalScore(track) {
   const score =
     rankScore(track.spotifyDailyRank) * weights.spotifyDailyRank +
     rankScore(track.appleDailyRank) * weights.appleDailyRank +
+    rankScore(track.appleSeoulRank) * weights.appleSeoulRank +
     rankScore(track.youtubeMusicWeeklyRank) * weights.youtubeMusicWeeklyRank +
     rankScore(track.youtubeShortsDailyRank) * weights.youtubeShortsDailyRank +
-    (Number(track.reviewScore) || 0) * weights.reviewScore;
+    normalizedReviewScore(track.reviewScore) * weights.reviewScore;
   return Math.round(score * 100) / 100;
 }
 
@@ -92,6 +109,28 @@ async function fetchAppleRanks() {
     artworkAttributionUrl: item.url,
     sourceId: item.id,
   }));
+}
+
+async function fetchAppleSeoulRanks() {
+  const html = await fetchText(appleSeoulPlaylistUrl);
+  const pattern = new RegExp(
+    String.raw`\{"id":"track-lockup - ${appleSeoulPlaylistId} - ([^"]+)","title":"((?:\\.|[^"])*)"` +
+      String.raw`[\s\S]*?"rankingText":"(\d+)"[\s\S]*?"artistName":"((?:\\.|[^"])*)"`,
+    "g",
+  );
+  const tracks = [];
+  let match;
+  while ((match = pattern.exec(html)) && tracks.length < 25) {
+    tracks.push({
+      title: JSON.parse(`"${match[2]}"`),
+      artist: JSON.parse(`"${match[4]}"`),
+      rank: Number(match[3]),
+      artworkAttributionUrl: `https://music.apple.com/kr/song/${match[1]}`,
+      sourceId: match[1],
+    });
+  }
+  if (tracks.length < 20) throw new Error("Apple Music Seoul Top 25 parser returned too few tracks.");
+  return tracks;
 }
 
 async function fetchSpotifyRanks() {
@@ -175,6 +214,7 @@ function seedTrack(entry, source, existingByKey, existingByTitle) {
     album: existing?.album || entry.album || "Single",
     spotifyDailyRank: null,
     appleDailyRank: null,
+    appleSeoulRank: null,
     youtubeMusicWeeklyRank: null,
     youtubeShortsDailyRank: null,
     reviewScore: null,
@@ -267,9 +307,10 @@ async function main() {
     if (!existingByTitle.has(key)) existingByTitle.set(key, track);
   }
 
-  const [spotify, apple, youtubeWeekly, youtubeShorts] = await Promise.all([
+  const [spotify, apple, appleSeoul, youtubeWeekly, youtubeShorts] = await Promise.all([
     fetchSpotifyRanks(),
     fetchAppleRanks(),
+    fetchAppleSeoulRanks(),
     fetchYouTubeChart("TRACKS", "WEEKLY"),
     fetchYouTubeChart("SHORTS_TRACKS_BY_USAGE", "DAILY"),
   ]);
@@ -287,6 +328,7 @@ async function main() {
 
   spotify.forEach((entry) => add(entry, "spotifyDailyRank", "spotify"));
   apple.forEach((entry) => add(entry, "appleDailyRank", "apple"));
+  appleSeoul.forEach((entry) => add(entry, "appleSeoulRank", "apple"));
   youtubeWeekly.tracks.forEach((entry) => add(entry, "youtubeMusicWeeklyRank", "manual"));
   youtubeShorts.tracks.forEach((entry) => add(entry, "youtubeShortsDailyRank", "manual"));
 
@@ -305,6 +347,7 @@ async function main() {
       artist: track.artist,
       spotifyDailyRank: track.spotifyDailyRank,
       appleDailyRank: track.appleDailyRank,
+      appleSeoulRank: track.appleSeoulRank,
       youtubeMusicWeeklyRank: track.youtubeMusicWeeklyRank,
       youtubeShortsDailyRank: track.youtubeShortsDailyRank,
       reviewScore: null,
@@ -366,10 +409,16 @@ async function main() {
         fetchedCount: spotify.length,
       },
       appleDaily: {
-        name: "Apple Music Most Played 100 - Korea",
+        name: "Apple Music Top 100 - Korea",
         url: "https://rss.applemarketingtools.com/api/v2/kr/music/most-played/100/songs.json",
         weight: weights.appleDailyRank,
         fetchedCount: apple.length,
+      },
+      appleSeoul: {
+        name: "Apple Music Today's Top 25 - Seoul",
+        url: appleSeoulPlaylistUrl,
+        weight: weights.appleSeoulRank,
+        fetchedCount: appleSeoul.length,
       },
       youtubeMusicWeekly: {
         name: "YouTube Weekly Top Songs - Korea",
