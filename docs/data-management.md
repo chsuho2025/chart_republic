@@ -29,7 +29,7 @@ data/
 
 ## Daily Update Flow
 
-1. Collect Apple Music Top 100 Korea, Apple Music Top 25 Seoul, Spotify, YouTube Music weekly, and YouTube Shorts chart rows.
+1. Collect Apple Music Top 100 Korea, Apple Music Top 25 Seoul, Spotify Top 50 Korea, Spotify Viral Hits Korea, YouTube Music weekly, and YouTube Shorts chart rows.
 2. Add manual review scores in `data/drafts/YYYY-MM-DD-review-scores.json`.
 3. Run the update script:
 

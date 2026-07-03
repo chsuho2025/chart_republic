@@ -4,9 +4,10 @@ import { join } from "node:path";
 const weights = {
   appleDailyRank: 0.1,
   appleSeoulRank: 0.2,
-  spotifyDailyRank: 0.15,
-  youtubeMusicWeeklyRank: 0.15,
-  youtubeShortsDailyRank: 0.2,
+  spotifyDailyRank: 0.1,
+  spotifyViralRank: 0.2,
+  youtubeMusicWeeklyRank: 0.05,
+  youtubeShortsDailyRank: 0.15,
   reviewScore: 0.2,
 };
 
@@ -19,6 +20,7 @@ const chartDate =
     day: "2-digit",
   }).format(new Date());
 const spotifyPlaylistId = "37i9dQZEVXbNxXF4SkHj9F";
+const spotifyViralPlaylistId = process.env.SPOTIFY_VIRAL_PLAYLIST_ID || "37i9dQZF1DX8R890mYSheX";
 const appleSeoulPlaylistId = "pl.d6f003a501da4b3c9d33b0c7b8cfa0ae";
 const appleSeoulPlaylistUrl =
   "https://music.apple.com/kr/playlist/%EC%98%A4%EB%8A%98%EC%9D%98-top-25-%EC%84%9C%EC%9A%B8/pl.d6f003a501da4b3c9d33b0c7b8cfa0ae";
@@ -34,6 +36,15 @@ function normalize(value) {
     .trim();
 }
 
+const titleAliases = new Map([
+  ["catch catch", "캐치 캐치"],
+]);
+
+function canonicalTitle(title) {
+  const normalized = normalize(title);
+  return titleAliases.get(normalized) || normalized;
+}
+
 function slug(value) {
   return normalize(value)
     .replace(/\s+/g, "-")
@@ -43,11 +54,11 @@ function slug(value) {
 
 function trackKey(title, artist) {
   const primaryArtist = String(artist || "").split(/,|&| x | X | feat\.?| featuring /i)[0];
-  return `${normalize(title)}__${normalize(primaryArtist)}`;
+  return `${canonicalTitle(title)}__${normalize(primaryArtist)}`;
 }
 
 function titleKey(title) {
-  return normalize(title);
+  return canonicalTitle(title);
 }
 
 function rankScore(rank) {
@@ -62,6 +73,7 @@ function normalizedReviewScore(score) {
 function finalScore(track) {
   const score =
     rankScore(track.spotifyDailyRank) * weights.spotifyDailyRank +
+    rankScore(track.spotifyViralRank) * weights.spotifyViralRank +
     rankScore(track.appleDailyRank) * weights.appleDailyRank +
     rankScore(track.appleSeoulRank) * weights.appleSeoulRank +
     rankScore(track.youtubeMusicWeeklyRank) * weights.youtubeMusicWeeklyRank +
@@ -133,10 +145,11 @@ async function fetchAppleSeoulRanks() {
   return tracks;
 }
 
-async function fetchSpotifyRanks() {
-  const html = await fetchText(`https://open.spotify.com/embed/playlist/${spotifyPlaylistId}`);
+async function fetchSpotifyPlaylistRanks(playlistId, label) {
+  if (!playlistId) throw new Error(`${label} playlist id is not configured.`);
+  const html = await fetchText(`https://open.spotify.com/embed/playlist/${playlistId}`);
   const match = html.match(/<script id="__NEXT_DATA__" type="application\/json">([\s\S]*?)<\/script>/);
-  if (!match) throw new Error("Spotify embed did not include __NEXT_DATA__.");
+  if (!match) throw new Error(`${label} embed did not include __NEXT_DATA__.`);
   const data = JSON.parse(match[1]);
   const entity = data.props?.pageProps?.state?.data?.entity || {};
   const tracks = entity.trackList || [];
@@ -161,6 +174,14 @@ async function fetchSpotifyRanks() {
     sourceId: item.uri,
     ...(byUri.get(item.uri) || {}),
   }));
+}
+
+async function fetchSpotifyRanks() {
+  return fetchSpotifyPlaylistRanks(spotifyPlaylistId, "Spotify Top 50 - South Korea");
+}
+
+async function fetchSpotifyViralRanks() {
+  return fetchSpotifyPlaylistRanks(spotifyViralPlaylistId, "Spotify Viral Hits Korea");
 }
 
 async function fetchYouTubeChart(chartType, periodType) {
@@ -213,6 +234,7 @@ function seedTrack(entry, source, existingByKey, existingByTitle) {
     artistKo: existing?.artistKo || "",
     album: existing?.album || entry.album || "Single",
     spotifyDailyRank: null,
+    spotifyViralRank: null,
     appleDailyRank: null,
     appleSeoulRank: null,
     youtubeMusicWeeklyRank: null,
@@ -307,8 +329,9 @@ async function main() {
     if (!existingByTitle.has(key)) existingByTitle.set(key, track);
   }
 
-  const [spotify, apple, appleSeoul, youtubeWeekly, youtubeShorts] = await Promise.all([
+  const [spotify, spotifyViral, apple, appleSeoul, youtubeWeekly, youtubeShorts] = await Promise.all([
     fetchSpotifyRanks(),
+    fetchSpotifyViralRanks(),
     fetchAppleRanks(),
     fetchAppleSeoulRanks(),
     fetchYouTubeChart("TRACKS", "WEEKLY"),
@@ -327,6 +350,7 @@ async function main() {
   };
 
   spotify.forEach((entry) => add(entry, "spotifyDailyRank", "spotify"));
+  spotifyViral.forEach((entry) => add(entry, "spotifyViralRank", "spotify"));
   apple.forEach((entry) => add(entry, "appleDailyRank", "apple"));
   appleSeoul.forEach((entry) => add(entry, "appleSeoulRank", "apple"));
   youtubeWeekly.tracks.forEach((entry) => add(entry, "youtubeMusicWeeklyRank", "manual"));
@@ -346,6 +370,7 @@ async function main() {
       title: track.title,
       artist: track.artist,
       spotifyDailyRank: track.spotifyDailyRank,
+      spotifyViralRank: track.spotifyViralRank,
       appleDailyRank: track.appleDailyRank,
       appleSeoulRank: track.appleSeoulRank,
       youtubeMusicWeeklyRank: track.youtubeMusicWeeklyRank,
@@ -407,6 +432,12 @@ async function main() {
         url: `https://open.spotify.com/playlist/${spotifyPlaylistId}`,
         weight: weights.spotifyDailyRank,
         fetchedCount: spotify.length,
+      },
+      spotifyViral: {
+        name: "Spotify Viral Hits Korea",
+        url: `https://open.spotify.com/playlist/${spotifyViralPlaylistId}`,
+        weight: weights.spotifyViralRank,
+        fetchedCount: spotifyViral.length,
       },
       appleDaily: {
         name: "Apple Music Top 100 - Korea",

@@ -8,9 +8,10 @@ const state = {
 const weights = {
   appleDailyRank: 0.1,
   appleSeoulRank: 0.2,
-  spotifyDailyRank: 0.15,
-  youtubeMusicWeeklyRank: 0.15,
-  youtubeShortsDailyRank: 0.2,
+  spotifyDailyRank: 0.1,
+  spotifyViralRank: 0.2,
+  youtubeMusicWeeklyRank: 0.05,
+  youtubeShortsDailyRank: 0.15,
   reviewScore: 0.2,
 };
 
@@ -34,6 +35,7 @@ function normalizedReviewScore(score) {
 function finalScore(track) {
   const score =
     rankScore(track.spotifyDailyRank) * weights.spotifyDailyRank +
+    rankScore(track.spotifyViralRank) * weights.spotifyViralRank +
     rankScore(track.appleDailyRank) * weights.appleDailyRank +
     rankScore(track.appleSeoulRank) * weights.appleSeoulRank +
     rankScore(track.youtubeMusicWeeklyRank) * weights.youtubeMusicWeeklyRank +
@@ -87,6 +89,7 @@ function renderScoreRows() {
         <td><input class="score-input" data-review-id="${track.id}" type="number" min="0" max="5" step="0.5" value="${track.reviewScore}" /></td>
         <td>${track.finalScore.toFixed(2)}</td>
         <td>${displayRank(track.spotifyDailyRank)}</td>
+        <td>${displayRank(track.spotifyViralRank)}</td>
         <td>${displayRank(track.appleDailyRank)}</td>
         <td>${displayRank(track.appleSeoulRank)}</td>
         <td>${displayRank(track.youtubeMusicWeeklyRank)}</td>

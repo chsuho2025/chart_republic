@@ -5,9 +5,10 @@ const chartPath = process.argv[2] || "data/latest.json";
 const weights = {
   appleDailyRank: 0.1,
   appleSeoulRank: 0.2,
-  spotifyDailyRank: 0.15,
-  youtubeMusicWeeklyRank: 0.15,
-  youtubeShortsDailyRank: 0.2,
+  spotifyDailyRank: 0.1,
+  spotifyViralRank: 0.2,
+  youtubeMusicWeeklyRank: 0.05,
+  youtubeShortsDailyRank: 0.15,
   reviewScore: 0.2,
 };
 
@@ -23,6 +24,7 @@ function normalizedReviewScore(score) {
 function finalScore(track) {
   const score =
     rankScore(track.spotifyDailyRank) * weights.spotifyDailyRank +
+    rankScore(track.spotifyViralRank) * weights.spotifyViralRank +
     rankScore(track.appleDailyRank) * weights.appleDailyRank +
     rankScore(track.appleSeoulRank) * weights.appleSeoulRank +
     rankScore(track.youtubeMusicWeeklyRank) * weights.youtubeMusicWeeklyRank +

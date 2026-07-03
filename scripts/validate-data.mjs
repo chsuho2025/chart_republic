@@ -4,6 +4,7 @@ const root = new URL("../", import.meta.url);
 const allowedStatus = new Set(["up", "down", "steady", "new"]);
 const nullableRankFields = [
   "spotifyDailyRank",
+  "spotifyViralRank",
   "appleDailyRank",
   "appleSeoulRank",
   "youtubeMusicWeeklyRank",
