@@ -1,4 +1,10 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/ai-academy-assistant",
+      "destination": "/ai-academy-assistant/index.html"
+    }
+  ]
 }
