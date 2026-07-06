@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Academy Assistant</title>
+    <meta
+      name="description"
+      content="RAG 기반 수학학원 상담 AI와 Evaluation Dashboard"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="./">AI Academy Assistant</a>
+        <nav class="nav" aria-label="주요 메뉴">
+          <a href="#chat" data-route="chat">상담</a>
+          <a href="#dashboard" data-route="dashboard">대시보드</a>
+          <a href="#knowledge" data-route="knowledge">지식 관리</a>
+          <a href="#evals" data-route="evals">답변 평가</a>
+          <a href="#logs" data-route="logs">로그</a>
+        </nav>
+      </header>
+      <main id="app"></main>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>
