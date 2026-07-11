@@ -2,28 +2,38 @@
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AI Academy Assistant</title>
-    <meta
-      name="description"
-      content="RAG 기반 수학학원 상담 AI와 Evaluation Dashboard"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f7f7f5" />
+    <title>아카데미 AI | 근거 기반 학원 상담</title>
+    <meta name="description" content="출처와 품질 평가를 제공하는 RAG 기반 학원 상담 AI 데모" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/ai-academy-assistant/styles.css" />
   </head>
   <body>
-    <div class="app-shell">
-      <header class="topbar">
-        <a class="brand" href="/ai-academy-assistant">AI Academy Assistant</a>
-        <nav class="nav" aria-label="주요 메뉴">
-          <a href="#chat" data-route="chat">상담</a>
-          <a href="#dashboard" data-route="dashboard">대시보드</a>
-          <a href="#knowledge" data-route="knowledge">지식 관리</a>
-          <a href="#evals" data-route="evals">답변 평가</a>
-          <a href="#logs" data-route="logs">로그</a>
-        </nav>
+    <div class="phone-shell">
+      <header class="app-header">
+        <button class="brand" data-go="chat" aria-label="상담 홈">
+          <span class="brand-mark">A</span>
+          <span><b>아카데미 AI</b><small>신뢰할 수 있는 학원 상담</small></span>
+        </button>
+        <button class="icon-button" id="notification" aria-label="알림">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg>
+          <i></i>
+        </button>
       </header>
-      <main id="app"></main>
+
+      <main id="app" aria-live="polite"></main>
+
+      <nav class="bottom-nav" aria-label="주요 메뉴">
+        <button data-route="chat"><svg viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg><span>상담</span></button>
+        <button data-route="dashboard"><svg viewBox="0 0 24 24"><path d="M4 19V9m8 10V5m8 14v-7"/></svg><span>품질</span></button>
+        <button data-route="knowledge"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 5.5v14"/></svg><span>지식</span></button>
+        <button data-route="evaluation"><svg viewBox="0 0 24 24"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>평가</span></button>
+      </nav>
     </div>
+    <div id="toast" class="toast" role="status"></div>
     <script src="/ai-academy-assistant/app.js"></script>
   </body>
 </html>
