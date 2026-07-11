@@ -85,6 +85,29 @@ main { min-height: 100dvh; padding: 94px 20px 132px; }
 .role-card small { color: var(--gray-700); font-size: 10px; }
 .role-card svg { width: 19px; height: 19px; margin-left: auto; fill: none; stroke: #777; stroke-width: 1.8; }
 
+.profile-setup { padding-top: 18px; }
+.profile-emoji { margin-bottom: 16px; font-size: 34px; line-height: 1; }
+.profile-setup h1 { margin: 0; font-size: 27px; line-height: 1.45; }
+.profile-setup > p { margin: 10px 0 28px; color: var(--gray-700); font-size: 13px; line-height: 1.75; }
+.profile-form { display: grid; gap: 18px; }
+.field { display: grid; gap: 8px; }
+.field label { font-size: 12px; font-weight: 700; }
+.field input, .field select, .field textarea {
+  width: 100%;
+  min-height: 52px;
+  padding: 14px 15px;
+  border: 1px solid var(--gray-200);
+  border-radius: 14px;
+  outline: none;
+  background: var(--gray-100);
+  color: var(--black);
+  font: inherit;
+  font-size: 13px;
+}
+.field textarea { min-height: 88px; resize: none; line-height: 1.65; }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--black); background: white; }
+.profile-submit { width: 100%; min-height: 54px; margin-top: 6px; border: 0; border-radius: 15px; background: var(--black); color: white; font-size: 13px; font-weight: 700; }
+
 .role-home { min-height: calc(100dvh - 226px); display: flex; flex-direction: column; justify-content: center; padding-bottom: 12px; }
 .role-badge { width: fit-content; margin: 0 auto 18px; padding: 6px 11px; border-radius: 20px; background: var(--gray-100); color: #555; font-size: 10px; font-weight: 600; }
 .role-home h1 { margin: 0; text-align: center; font-size: 27px; line-height: 1.42; }
@@ -160,6 +183,7 @@ main { min-height: 100dvh; padding: 94px 20px 132px; }
   background: rgba(255,255,255,.98);
   box-shadow: 0 -9px 32px rgba(0,0,0,.07);
 }
+.composer.hidden { display: none; }
 .composer textarea { flex: 1; height: 52px; max-height: 92px; padding: 15px 9px; resize: none; border: 0; outline: 0; background: transparent; color: var(--black); font-size: 13px; }
 .composer textarea::placeholder { color: #aaa; }
 .composer button { width: 52px; height: 52px; flex: 0 0 52px; display: grid; place-items: center; border: 0; border-radius: 50%; background: var(--gray-100); color: var(--black); }
