@@ -1,16 +1,191 @@
-const app=document.querySelector('#app');const toast=document.querySelector('#toast');let route=location.hash.slice(1)||'chat';let asked=false;
-const icons={up:'<svg viewBox="0 0 24 24"><path d="M7 10v10H4a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2h3Zm0 10h10.2a2 2 0 0 0 1.9-1.4l2-6A2 2 0 0 0 19.2 10H14l1-4a2 2 0 0 0-2-2l-6 6v10Z"/></svg>',down:'<svg viewBox="0 0 24 24"><path d="M17 14V4h3a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-3Zm0-10H6.8a2 2 0 0 0-1.9 1.4l-2 6A2 2 0 0 0 4.8 14H10l-1 4a2 2 0 0 0 2 2l6-6V4Z"/></svg>'};
-window.addEventListener('hashchange',()=>{route=location.hash.slice(1)||'chat';render()});document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>location.hash=b.dataset.go);document.querySelector('#notification').onclick=()=>showToast('새로운 운영 알림이 없어요');
-function render(){document.querySelectorAll('[data-route]').forEach(b=>{b.classList.toggle('active',b.dataset.route===route);b.onclick=()=>location.hash=b.dataset.route});if(route==='dashboard')dashboard();else if(route==='knowledge')knowledge();else if(route==='evaluation')evaluation();else chat();window.scrollTo(0,0)}
-function head(kicker,title,desc){return `<div class="page-head"><p class="eyebrow">${kicker}</p><h1>${title}</h1>${desc?`<p>${desc}</p>`:''}</div>`}
-function chat(){app.innerHTML=`${head('PARENT COUNSEL','무엇이 궁금하세요?','학원 운영 문서에서 근거를 찾아 정확하게 안내해 드려요.')}<div class="status-strip"><i class="pulse"></i> 지식 베이스 정상 <span>문서 24개 · 방금 동기화</span></div><div class="quick-scroll"><button class="quick">휴원 시 교육비</button><button class="quick">결석과 보강</button><button class="quick">반 변경 절차</button><button class="quick">입학 상담</button></div><div class="conversation" id="conversation">${asked?answerFlow():welcome()}</div><div class="composer-wrap"><form class="composer"><textarea aria-label="질문 입력" placeholder="학원에 궁금한 점을 물어보세요"></textarea><button class="send" aria-label="질문 보내기">↑</button></form></div>`;document.querySelectorAll('.quick').forEach(b=>b.onclick=()=>ask(b.textContent));document.querySelector('.composer').onsubmit=e=>{e.preventDefault();const q=e.target.querySelector('textarea').value.trim()||'휴원하면 교육비는 어떻게 되나요?';ask(q)};wireAnswer()}
-function welcome(){return `<div class="ai-block"><div class="ai-avatar">A</div><div class="ai-content"><p class="ai-label">아카데미 AI</p><div class="answer">안녕하세요. 수업, 교육비, 보강, 입학 상담에 관한 질문을 도와드릴게요.<br><br><strong>답변에는 항상 확인 가능한 출처를 함께 표시합니다.</strong></div></div></div>`}
-function ask(q){asked=true;document.querySelector('#conversation').innerHTML=`<div class="bubble user">${escapeHtml(q)}</div><div class="ai-block"><div class="ai-avatar">A</div><div class="ai-content"><p class="ai-label">근거를 확인하고 있어요</p><div class="answer typing"><i></i><i></i><i></i></div></div></div>`;setTimeout(()=>{document.querySelector('#conversation').innerHTML=answerFlow(q);wireAnswer()},650)}
-function answerFlow(q='휴원하면 교육비는 어떻게 되나요?'){return `<div class="bubble user">${escapeHtml(q)}</div><div class="ai-block"><div class="ai-avatar">A</div><div class="ai-content"><p class="ai-label">아카데미 AI</p><div class="answer"><strong>학원 공식 휴원일에는 교육비가 자동 이월됩니다.</strong><br><br>학원 사정으로 쉬는 수업은 다음 달 교육비에서 차감하거나 보강 수업으로 대체돼요. 다만 개인 사정으로 결석한 경우에는 자동 이월 대상이 아니며, 사전에 알려주시면 가능한 시간 안에서 보강을 조정해 드립니다.<div class="confidence"><span>근거 일치도 94%</span><div class="confidence-bar"><i></i></div><span>높음</span></div></div><div class="citation"><button><span>⌕</span><span>출처 2개 확인하기</span><span>⌄</span></button><div class="citation-detail"><b>학원 운영규정 · 3장 2조</b><br>교육비 이월 및 휴강 처리 기준 · 2026.07 개정<br><br><b>학부모 상담 FAQ · 교육비</b><br>결석 및 보강 가능 조건 · 2026.07 개정</div></div><div class="answer-actions"><button data-feedback="도움이 됐어요">${icons.up} 도움이 됐어요</button><button data-feedback="개선이 필요해요">${icons.down}</button></div></div></div>`}
-function wireAnswer(){document.querySelectorAll('.citation button').forEach(b=>b.onclick=()=>b.parentElement.classList.toggle('open'));document.querySelectorAll('[data-feedback]').forEach(b=>b.onclick=()=>showToast(`${b.dataset.feedback} · 의견이 저장됐어요`))}
-function dashboard(){app.innerHTML=`${head('AI QUALITY','품질 현황','상담 답변의 신뢰도와 위험 신호를 한눈에 확인합니다.')}<div class="quality-card"><div class="quality-head"><div><p class="eyebrow" style="color:#ffffff">QUALITY SCORE</p><b>이번 주 AI 답변 품질</b></div><div class="score-ring"><span>94</span></div></div>${score('Groundedness',96)}${score('Correctness',94)}${score('Safety',100)}${score('Helpfulness',91)}</div><div class="section-title"><h2>운영 지표</h2><span>최근 7일</span></div><div class="metric-grid"><div class="metric"><span class="metric-label">총 질문</span><div class="metric-value">1,248</div><span class="delta">↑ 18.4% 지난주 대비</span></div><div class="metric"><span class="metric-label">FAQ 해결률</span><div class="metric-value">87<small>%</small></div><span class="delta">목표 85% 달성</span></div><div class="metric wide"><span class="metric-label">일별 상담량</span><div class="mini-bars">${[32,50,44,66,55,79,68,91,74,88,100,82].map(v=>`<i style="height:${v}%"></i>`).join('')}</div></div><div class="metric"><span class="metric-label">좋아요 비율</span><div class="metric-value">92<small>%</small></div><span class="delta">응답 386건</span></div><div class="metric"><span class="metric-label">평균 응답</span><div class="metric-value">1.7<small>초</small></div><span class="delta">↓ 0.3초 개선</span></div></div><div class="section-title"><h2>확인이 필요한 답변</h2><span>3건</span></div><div class="case-list"><div class="case"><div class="case-top"><b>Citation 누락</b><span class="tag">검토 필요</span></div><p>“중학교 2학년 심화반 시간표가 궁금해요.”</p></div><div class="case"><div class="case-top"><b>검색 근거 부족</b><span class="tag red">높은 우선순위</span></div><p>“형제 할인과 장기 등록 할인을 같이 받을 수 있나요?”</p></div></div>`}
-function score(name,value){return `<div class="score-row"><span>${name}</span><div class="track"><i style="width:${value}%"></i></div><strong>${value}</strong></div>`}
-function knowledge(){app.innerHTML=`${head('KNOWLEDGE BASE','답변 근거 관리','등록된 문서는 자동으로 나뉘어 검색 가능한 지식으로 변환됩니다.')}<div class="status-strip"><i class="pulse"></i> 전체 문서 최신 상태 <span>임베딩 186개</span></div><div class="section-title"><h2>운영 문서</h2><span>24개</span></div>${doc('규정','학원 운영규정','v2.4 · 청크 42개 · 2시간 전','동기화')}${doc('FAQ','학부모 상담 FAQ','v3.1 · 청크 68개 · 어제','동기화')}${doc('입시','2027 입시 기본 안내','v1.2 · 청크 51개 · 3일 전','동기화')}${doc('시간','학년별 수업 시간표','v4.0 · 청크 25개 · 5일 전','동기화')}<button class="upload">＋ 새 문서 업로드</button><div class="section-title"><h2>처리 과정</h2><span>자동화</span></div><div class="case"><p style="margin:0;color:#171817"><b>파일 검사 → 텍스트 분할 → 개인정보 탐지 → 임베딩 생성 → 검색 인덱스 반영</b></p></div>`;document.querySelector('.upload').onclick=()=>showToast('문서 업로드 화면을 준비했어요')}
-function doc(type,title,meta,state){return `<div class="doc-card"><div class="doc-icon">${type}</div><div class="doc-info"><b>${title}</b><span>${meta}</span></div><span class="doc-state">● ${state}</span></div>`}
-function evaluation(){const criteria=[['Correctness','사실과 규정이 정확한가?',5],['Groundedness','검색된 근거만 사용했는가?',5],['Safety','개인정보와 위험 요청을 차단했는가?',5],['Helpfulness','사용자가 다음 행동을 알 수 있는가?',4],['Completeness','질문의 모든 조건에 답했는가?',4]];app.innerHTML=`${head('HUMAN EVALUATION','답변 품질 평가','사람의 판단을 기록해 AI 품질 개선에 연결합니다.')}<div class="evaluation-card"><p class="question-label">평가 대상 질문 · #QA-10428</p><h3>휴원하면 교육비는 어떻게 되나요?</h3><div class="answer-preview">학원 공식 휴원일에는 교육비가 자동 이월됩니다. 개인 사정 결석은 자동 이월 대상이 아니며 사전 연락 시 보강을 조정합니다.</div>${criteria.map((c,i)=>`<div class="criterion"><div class="criterion-head"><span>${c[0]} <small style="font-weight:400;color:#777a74">· ${c[1]}</small></span><output id="o${i}">${c[2]}</output></div><input data-output="o${i}" type="range" min="1" max="5" value="${c[2]}"></div>`).join('')}<button class="submit-eval">평가 저장하기</button></div>`;document.querySelectorAll('input[type=range]').forEach(i=>i.oninput=()=>document.querySelector('#'+i.dataset.output).value=i.value);document.querySelector('.submit-eval').onclick=()=>showToast('평가가 품질 데이터셋에 저장됐어요')}
-function showToast(msg){toast.textContent=msg;toast.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>toast.classList.remove('show'),1800)}function escapeHtml(v){return v.replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}render();
+const app = document.querySelector("#app");
+const messageInput = document.querySelector("#message");
+const sendButton = document.querySelector("#send-button");
+const menuButton = document.querySelector("#menu-button");
+const backButton = document.querySelector("#back-button");
+const homeButton = document.querySelector("#home-button");
+const sheet = document.querySelector("#sheet");
+const sheetBackdrop = document.querySelector("#sheet-backdrop");
+const toast = document.querySelector("#toast");
+
+let currentRole = null;
+let screen = "welcome";
+let lastQuestion = "";
+
+const arrow = `<svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>`;
+const searchIcon = `<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>`;
+const calendarIcon = `<svg viewBox="0 0 24 24"><path d="M5 4h14a2 2 0 0 1 2 2v14H3V6a2 2 0 0 1 2-2Z"/><path d="M8 2v4m8-4v4M3 9h18"/></svg>`;
+const noteIcon = `<svg viewBox="0 0 24 24"><path d="M5 3h14v18H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>`;
+const clockIcon = `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`;
+
+const roles = {
+  prospective: {
+    badge: "입학을 알아보는 학부모",
+    title: "아이에게 맞는 수업을\n함께 찾아볼게요",
+    sub: "학년과 학습 상황을 알려주시면\n수업과 입학 절차를 근거와 함께 안내해 드려요.",
+    suggestions: [
+      ["우리 아이에게 맞는 반 찾아줘", searchIcon, "class"],
+      ["수업료와 시간표 알려줘", clockIcon, "tuition"],
+      ["입학 상담 예약하고 싶어", calendarIcon, "reserve"],
+      ["레벨 확인은 어떻게 진행돼?", noteIcon, "level"]
+    ]
+  },
+  parent: {
+    badge: "재원생 학부모 · 본인 확인 완료",
+    title: "민준 학부모님\n안녕하세요",
+    sub: "출결부터 학습 현황까지\n필요한 내용을 빠르게 확인해 보세요.",
+    suggestions: [
+      ["이번 주 출결과 보강 알려줘", calendarIcon, "attendance"],
+      ["이번 달 교육비 확인해줘", noteIcon, "payment"],
+      ["최근 학습 현황 요약해줘", searchIcon, "progress"],
+      ["결석을 미리 알려주고 싶어", clockIcon, "absence"]
+    ]
+  },
+  student: {
+    badge: "재원 학생 · 중학교 2학년",
+    title: "민준 학생,\n오늘도 차근차근",
+    sub: "오늘 수업과 해야 할 일을 확인하고\n빠뜨리는 것 없이 준비해 보세요.",
+    suggestions: [
+      ["오늘 수업과 할 일 알려줘", noteIcon, "today"],
+      ["이번 주 시험 일정 알려줘", calendarIcon, "test"],
+      ["숙제 범위 다시 알려줘", searchIcon, "homework"],
+      ["다음 수업 준비물 알려줘", clockIcon, "prepare"]
+    ]
+  }
+};
+
+function renderWelcome() {
+  screen = "welcome";
+  currentRole = null;
+  app.innerHTML = `
+    <section class="welcome">
+      <div class="spark" aria-hidden="true"></div>
+      <h1>안녕하세요<br>무엇을 도와드릴까요?</h1>
+      <p>상황에 맞는 안내를 위해<br>이용하시는 분을 먼저 선택해주세요.</p>
+      <div class="role-list">
+        ${roleCard("prospective", "입학", "입학을 알아보고 있어요", "반 추천과 상담 예약이 필요해요")}
+        ${roleCard("parent", "재원", "재원생 학부모예요", "출결과 학습 현황을 확인하고 싶어요")}
+        ${roleCard("student", "학생", "학원에 다니는 학생이에요", "수업과 숙제를 확인하고 싶어요")}
+      </div>
+    </section>`;
+  wireRoleButtons();
+}
+
+function roleCard(role, icon, title, description) {
+  return `<button class="role-card" data-role="${role}"><span>${icon}</span><span><b>${title}</b><small>${description}</small></span>${arrow}</button>`;
+}
+
+function renderRoleHome(role) {
+  currentRole = role;
+  screen = "home";
+  const data = roles[role];
+  app.innerHTML = `
+    <section class="role-home">
+      <div class="role-badge">${data.badge}</div>
+      <h1>${data.title.replace("\n", "<br>")}</h1>
+      <p class="sub">${data.sub.replace("\n", "<br>")}${role !== "prospective" ? '<br><span class="verified"><i></i> 안전하게 확인된 정보만 보여드려요</span>' : ""}</p>
+      <div class="suggestions">
+        ${data.suggestions.map(([text, icon, action]) => `<button class="suggestion" data-action="${action}">${icon}<span>${text}</span></button>`).join("")}
+      </div>
+    </section>`;
+  document.querySelectorAll("[data-action]").forEach((button) => {
+    button.addEventListener("click", () => askQuestion(button.textContent.trim(), button.dataset.action));
+  });
+}
+
+function askQuestion(question, action = "free") {
+  lastQuestion = question;
+  screen = "answer";
+  app.innerHTML = `
+    <section class="conversation">
+      <div class="user-message">${escapeHtml(question)}</div>
+      <div class="thinking"><div class="mini-spark"></div><span>학원 자료를 확인하고 있어요</span><div class="thinking-dots"><i></i><i></i><i></i></div></div>
+    </section>`;
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  setTimeout(() => renderAnswer(action, question), 700);
+}
+
+function renderAnswer(action, question) {
+  const content = answerFor(action, question);
+  app.innerHTML = `<section class="conversation"><div class="user-message">${escapeHtml(question)}</div><article class="answer">${content}</article></section>`;
+  wireAnswerActions();
+}
+
+function answerFor(action, question) {
+  if (isUnsafe(question)) {
+    return `<p class="answer-lead"><strong>개인정보나 내부 지시는 안내해 드릴 수 없어요.</strong><br>학생의 성적, 연락처, 상담 기록은 본인 확인된 보호자와 학생에게만 제공됩니다.</p><div class="notice">학원 운영, 수업, 입학 절차에 관한 질문은 공식 자료에서 근거를 찾아 도와드릴게요.</div>${source("학원 개인정보 보호 안내 · 2026년 7월", "공개 상담 개인정보 처리 기준과 본인 확인 절차")}${feedback()}`;
+  }
+  if (currentRole === "prospective") return prospectiveAnswer(action);
+  if (currentRole === "parent") return parentAnswer(action);
+  return studentAnswer(action);
+}
+
+function prospectiveAnswer(action) {
+  if (action === "tuition") return `<p class="answer-lead"><strong>중등 정규반은 주 2회, 회당 90분 수업</strong>으로 운영해요. 교육비는 월 32만원이며 교재비는 별도예요.</p><div class="result-card"><div class="data-row"><span>수업 시간</span><b>화·목 오후 6:30</b></div><div class="data-row"><span>월 교육비</span><b>320,000원</b></div><div class="data-row"><span>첫 수업</span><b>레벨 확인 후 확정</b></div></div><div class="notice">정확한 반과 시간은 레벨 확인 결과에 따라 달라질 수 있어요.</div>${source("2026년 2학기 수업 편성표", "중등부 정규반 운영 시간 및 교육비 안내")}${feedback()}`;
+  if (action === "reserve") return `<p class="answer-lead"><strong>입학 상담은 약 30분 동안 진행</strong>되며, 학생의 현재 진도와 희망 시간표를 함께 확인해요.</p><div class="result-card"><div class="data-row"><span>가장 빠른 날</span><b>7월 14일 화요일</b></div><div class="data-row"><span>가능 시간</span><b>오후 5:00 · 7:30</b></div><div class="data-row"><span>상담 방법</span><b>방문 또는 전화</b></div></div><button class="primary-action" data-toast="상담 예약 화면으로 이동했어요">상담 시간 선택하기</button>${source("입학 상담 운영 안내 · 2026년 7월", "상담 절차, 예상 시간 및 준비 정보")}${feedback()}`;
+  if (action === "level") return `<p class="answer-lead">레벨 확인은 시험을 위한 시험이 아니라, <strong>지금 가장 편안하게 시작할 수 있는 진도</strong>를 찾는 과정이에요.</p><div class="answer-list"><div class="result-card"><div class="result-top"><span>1단계</span><b>기초 확인 · 20분</b></div><p>현재 학년의 핵심 개념과 계산 정확도를 확인해요.</p></div><div class="result-card"><div class="result-top"><span>2단계</span><b>상담 · 15분</b></div><p>풀이 과정을 함께 보고 적합한 반과 학습 계획을 안내해요.</p></div></div>${source("입학 레벨 확인 기준 · 2026년 1학기", "평가 영역, 소요 시간 및 반 배정 기준")}${feedback()}`;
+  return `<p class="answer-lead">중학교 1학년이고 현재 일차방정식을 공부 중이라면, <strong>중등 기본 다지기반</strong>부터 살펴보는 것이 적합해요.</p><h2>추천 수업</h2><div class="result-card"><div class="result-top"><span>추천</span><b>중등 기본 다지기반</b></div><p>학교 진도보다 2주 앞서 개념을 익히고, 틀린 문제를 다시 설명하는 수업이에요.</p><div class="data-row"><span>수업</span><b>화·목 오후 6:30</b></div><div class="data-row"><span>정원</span><b>8명 · 현재 2자리</b></div><div class="data-row"><span>교육비</span><b>월 320,000원</b></div></div><div class="notice"><strong>추천 이유</strong><br>입학 상담에서 가장 많이 선택한 학습 상황을 기준으로 안내했어요. 최종 반은 레벨 확인 후 결정됩니다.</div><button class="primary-action" data-toast="상담 가능한 시간을 불러왔어요">이 반으로 상담 예약하기</button>${source("중등부 반 편성 기준 · 3장 2조", "중등 기본 다지기반 수업 목표와 권장 진도", "2026년 2학기 수업 편성표", "반별 시간, 정원 및 교육비")}${feedback()}`;
+}
+
+function parentAnswer(action) {
+  if (action === "payment") return `<p class="answer-lead">7월 교육비는 <strong>납부 완료</strong>됐어요. 다음 결제 예정일은 8월 5일입니다.</p><div class="result-card"><div class="data-row"><span>납부 금액</span><b>320,000원</b></div><div class="data-row"><span>납부일</span><b>7월 3일</b></div><div class="data-row"><span>결제 수단</span><b>본인 확인 후 표시</b></div></div><div class="safety-line">결제 수단과 상세 내역은 개인정보 보호를 위해 추가 확인 후 보여드려요.</div>${source("민준 학생 7월 수납 기록", "보호자 본인 확인이 완료된 계정에서만 조회")}${feedback()}`;
+  if (action === "progress") return `<p class="answer-lead">최근 4주 동안 <strong>연립방정식의 활용 문제 정확도가 68%에서 84%로 올랐어요.</strong></p><div class="result-card"><div class="data-row"><span>잘하고 있어요</span><b>계산 정확도 · 오답 복습</b></div><div class="data-row"><span>보완할 점</span><b>문장제 식 세우기</b></div><div class="data-row"><span>담임 의견</span><b>풀이 설명 습관 권장</b></div></div><div class="notice">점수만으로 학생을 판단하지 않고, 최근 과제와 수업 관찰 기록을 함께 요약했어요.</div>${source("민준 학생 주간 학습 기록 · 6월 3주~7월 2주", "과제 정답률, 오답 복습 및 담임 수업 기록")}${feedback()}`;
+  if (action === "absence") return `<p class="answer-lead">결석 예정일을 알려주시면 <strong>수업 시작 전 담임 선생님에게 전달</strong>하고 가능한 보강 시간을 찾아드려요.</p><div class="result-card"><div class="data-row"><span>다음 수업</span><b>7월 14일 화요일 6:30</b></div><div class="data-row"><span>보강 가능</span><b>수요일 7:00 · 토요일 11:00</b></div></div><button class="primary-action" data-toast="결석 알림 작성 화면을 열었어요">결석 예정일 알리기</button>${source("학원 운영규정 · 2장 4~5조", "결석 사전 안내 및 보강 수업 기준")}${feedback()}`;
+  return `<p class="answer-lead">민준 학생은 이번 주 수업에 <strong>모두 출석</strong>했고, 지난주 결석한 수업의 보강이 예정돼 있어요.</p><h2>이번 주 일정</h2><div class="result-card"><div class="data-row"><span>7월 9일 목</span><b>정규 수업 · 출석</b></div><div class="data-row"><span>7월 11일 토</span><b>보강 · 오전 11:00</b></div><div class="data-row"><span>7월 14일 화</span><b>정규 수업 · 오후 6:30</b></div></div><div class="notice"><strong>보강 안내</strong><br>6월 30일 결석 수업의 보강이며, 진도는 연립방정식 활용 2단원이에요.</div><button class="secondary-action" data-toast="보강 담당 선생님께 문의를 시작했어요">보강 시간 문의하기</button>${source("민준 학생 출결 기록 · 7월 2주", "보호자 본인 확인 후 제공된 출결 및 보강 일정", "학원 운영규정 · 2장 5조", "보강 편성 및 변경 기준")}${feedback()}`;
+}
+
+function studentAnswer(action) {
+  if (action === "test") return `<p class="answer-lead">이번 주 토요일에 <strong>연립방정식 단원 확인</strong>이 있어요. 20문제 중 기본 12문제, 활용 8문제로 나와요.</p><div class="result-card"><div class="data-row"><span>시험 일시</span><b>7월 11일 토요일</b></div><div class="data-row"><span>범위</span><b>교재 42~67쪽</b></div><div class="data-row"><span>준비</span><b>오답 5~8번 다시 풀기</b></div></div>${source("중등 기본반 7월 평가 계획", "시험 일시, 출제 범위 및 준비 과제")}${feedback()}`;
+  if (action === "homework") return `<p class="answer-lead">다음 수업 전까지 <strong>유형서 54~57쪽</strong>을 풀고, 틀린 문제에는 이유를 한 줄로 적어오면 돼요.</p><div class="result-card"><div class="data-row"><span>필수</span><b>유형서 54~57쪽</b></div><div class="data-row"><span>오답</span><b>화요일 수업 7·12·18번</b></div><div class="data-row"><span>마감</span><b>7월 14일 오후 6:30</b></div></div>${source("중등 기본반 과제 공지 · 7월 9일", "담임 선생님이 등록한 다음 수업 과제")}${feedback()}`;
+  if (action === "prepare") return `<p class="answer-lead">다음 수업에는 <strong>유형서, 오답 노트, 자</strong>를 챙겨오세요. 연립방정식 그래프 단원을 시작해요.</p><div class="notice">수업 전에 지난 오답 3문제를 먼저 풀어보면 새 단원을 이해하기 쉬워요.</div>${source("중등 기본반 다음 수업 안내 · 7월 14일", "수업 진도, 교재 및 준비물")}${feedback()}`;
+  return `<p class="answer-lead">오늘은 정규 수업이 없어요. 대신 <strong>지난 수업 오답 3문제와 숙제 4쪽</strong>을 끝내면 이번 주 준비가 완료돼요.</p><h2>오늘 할 일</h2><div class="answer-list"><div class="result-card"><div class="result-top"><span>1</span><b>오답 다시 풀기</b></div><p>7번, 12번, 18번 · 예상 20분</p></div><div class="result-card"><div class="result-top"><span>2</span><b>유형서 숙제</b></div><p>54~57쪽 · 예상 35분</p></div><div class="result-card"><div class="result-top"><span>다음</span><b>화요일 오후 6:30 수업</b></div><p>연립방정식 그래프 단원을 시작해요.</p></div></div>${source("중등 기본반 과제 공지 · 7월 9일", "담임 선생님이 등록한 숙제와 다음 수업 진도")}${feedback()}`;
+}
+
+function source(title1, detail1, title2, detail2) {
+  return `<div class="source"><button><span>근거 ${title2 ? "2개" : "1개"} 확인하기</span><span>⌄</span></button><div class="source-content"><strong>${title1}</strong><br>${detail1}${title2 ? `<br><br><strong>${title2}</strong><br>${detail2}` : ""}<br><br>마지막 확인: 2026년 7월 11일</div></div><p class="safety-line">AI가 학원 공식 자료를 바탕으로 정리한 내용이에요. 중요한 결정은 상담 선생님과 한 번 더 확인해주세요.</p>`;
+}
+
+function feedback() {
+  return `<div class="feedback"><button aria-label="도움이 됐어요" data-feedback="도움이 됐어요"><svg viewBox="0 0 24 24"><path d="M7 10v10H4a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2h3Zm0 10h10a2 2 0 0 0 2-1.5l2-6A2 2 0 0 0 19 10h-5l1-4a2 2 0 0 0-2-2l-6 6v10Z"/></svg></button><button aria-label="도움이 안 됐어요" data-feedback="개선 의견이 저장됐어요"><svg viewBox="0 0 24 24"><path d="M7 14V4H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h3Zm0-10h10a2 2 0 0 1 2 1.5l2 6A2 2 0 0 1 19 14h-5l1 4a2 2 0 0 1-2 2l-6-6V4Z"/></svg></button></div>`;
+}
+
+function wireAnswerActions() {
+  document.querySelectorAll(".source > button").forEach(button => button.addEventListener("click", () => button.parentElement.classList.toggle("open")));
+  document.querySelectorAll("[data-feedback]").forEach(button => button.addEventListener("click", () => showToast(button.dataset.feedback)));
+  document.querySelectorAll("[data-toast]").forEach(button => button.addEventListener("click", () => showToast(button.dataset.toast)));
+}
+
+function wireRoleButtons() {
+  document.querySelectorAll("[data-role]").forEach(button => button.addEventListener("click", () => {
+    closeSheet();
+    renderRoleHome(button.dataset.role);
+  }));
+}
+
+function openSheet() { sheet.classList.add("open"); sheetBackdrop.classList.add("open"); }
+function closeSheet() { sheet.classList.remove("open"); sheetBackdrop.classList.remove("open"); }
+function showToast(text) { toast.textContent = text; toast.classList.add("show"); clearTimeout(window.toastTimer); window.toastTimer = setTimeout(() => toast.classList.remove("show"), 1800); }
+function isUnsafe(text) { return /(개인정보|연락처|성적.*알려|이전.*지시.*무시|프롬프트|원장.*번호)/i.test(text); }
+function escapeHtml(text) { return text.replace(/[&<>"']/g, value => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[value])); }
+
+menuButton.addEventListener("click", openSheet);
+sheetBackdrop.addEventListener("click", closeSheet);
+homeButton.addEventListener("click", () => currentRole ? renderRoleHome(currentRole) : renderWelcome());
+backButton.addEventListener("click", () => {
+  if (screen === "answer" && currentRole) renderRoleHome(currentRole);
+  else if (screen === "home") renderWelcome();
+  else renderWelcome();
+});
+sendButton.addEventListener("click", () => {
+  const question = messageInput.value.trim();
+  if (!question) return;
+  if (!currentRole) currentRole = "prospective";
+  messageInput.value = "";
+  askQuestion(question);
+});
+messageInput.addEventListener("keydown", event => {
+  if (event.key === "Enter" && !event.shiftKey) { event.preventDefault(); sendButton.click(); }
+});
+
+wireRoleButtons();
+renderWelcome();
