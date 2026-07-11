@@ -24,21 +24,21 @@ const roles = {
     title: "아이에게 맞는 수업을\n함께 찾아볼게요",
     sub: "학년과 학습 상황을 알려주시면\n수업과 입학 절차를 근거와 함께 안내해 드려요.",
     suggestions: [
-      ["우리 아이에게 맞는 반 찾아줘", searchIcon, "class"],
-      ["수업료와 시간표 알려줘", clockIcon, "tuition"],
-      ["입학 상담 예약하고 싶어", calendarIcon, "reserve"],
-      ["레벨 확인은 어떻게 진행돼?", noteIcon, "level"]
+      ["우리 아이에게 맞는 반을 찾아주세요", searchIcon, "class"],
+      ["수업료와 시간표를 알려주세요", clockIcon, "tuition"],
+      ["입학 상담을 예약하고 싶어요", calendarIcon, "reserve"],
+      ["레벨 확인은 어떻게 진행되나요?", noteIcon, "level"]
     ]
   },
   parent: {
-    badge: "재원생 학부모 · 본인 확인 완료",
+    badge: "재원생 학부모",
     title: "민준 학부모님\n안녕하세요",
     sub: "출결부터 학습 현황까지\n필요한 내용을 빠르게 확인해 보세요.",
     suggestions: [
-      ["이번 주 출결과 보강 알려줘", calendarIcon, "attendance"],
-      ["이번 달 교육비 확인해줘", noteIcon, "payment"],
-      ["최근 학습 현황 요약해줘", searchIcon, "progress"],
-      ["결석을 미리 알려주고 싶어", clockIcon, "absence"]
+      ["이번 주 출결과 보강을 알려주세요", calendarIcon, "attendance"],
+      ["이번 달 교육비를 확인해 주세요", noteIcon, "payment"],
+      ["최근 학습 현황을 요약해 주세요", searchIcon, "progress"],
+      ["결석을 미리 알리고 싶어요", clockIcon, "absence"]
     ]
   },
   student: {
@@ -46,10 +46,10 @@ const roles = {
     title: "민준 학생,\n오늘도 차근차근",
     sub: "오늘 수업과 해야 할 일을 확인하고\n빠뜨리는 것 없이 준비해 보세요.",
     suggestions: [
-      ["오늘 수업과 할 일 알려줘", noteIcon, "today"],
-      ["이번 주 시험 일정 알려줘", calendarIcon, "test"],
-      ["숙제 범위 다시 알려줘", searchIcon, "homework"],
-      ["다음 수업 준비물 알려줘", clockIcon, "prepare"]
+      ["오늘 수업과 할 일을 알려주세요", noteIcon, "today"],
+      ["이번 주 시험 일정을 알려주세요", calendarIcon, "test"],
+      ["숙제 범위를 다시 알려주세요", searchIcon, "homework"],
+      ["다음 수업 준비물을 알려주세요", clockIcon, "prepare"]
     ]
   }
 };
@@ -59,13 +59,13 @@ function renderWelcome() {
   currentRole = null;
   app.innerHTML = `
     <section class="welcome">
-      <div class="spark" aria-hidden="true"></div>
+      <div class="welcome-emoji" aria-hidden="true">👋</div>
       <h1>안녕하세요<br>무엇을 도와드릴까요?</h1>
-      <p>상황에 맞는 안내를 위해<br>이용하시는 분을 먼저 선택해주세요.</p>
+      <p>상황에 맞는 안내를 위해<br>이용하시는 분을 먼저 선택해 주세요.</p>
       <div class="role-list">
-        ${roleCard("prospective", "입학", "입학을 알아보고 있어요", "반 추천과 상담 예약이 필요해요")}
-        ${roleCard("parent", "재원", "재원생 학부모예요", "출결과 학습 현황을 확인하고 싶어요")}
-        ${roleCard("student", "학생", "학원에 다니는 학생이에요", "수업과 숙제를 확인하고 싶어요")}
+        ${roleCard("prospective", "🔎", "입학을 알아보고 있어요", "반 추천과 상담 예약이 필요해요")}
+        ${roleCard("parent", "📚", "재원생 학부모예요", "출결과 학습 현황을 확인하고 싶어요")}
+        ${roleCard("student", "✏️", "학원에 다니는 학생이에요", "수업과 숙제를 확인하고 싶어요")}
       </div>
     </section>`;
   wireRoleButtons();
@@ -83,7 +83,7 @@ function renderRoleHome(role) {
     <section class="role-home">
       <div class="role-badge">${data.badge}</div>
       <h1>${data.title.replace("\n", "<br>")}</h1>
-      <p class="sub">${data.sub.replace("\n", "<br>")}${role !== "prospective" ? '<br><span class="verified"><i></i> 안전하게 확인된 정보만 보여드려요</span>' : ""}</p>
+      <p class="sub">${data.sub.replace("\n", "<br>")}</p>
       <div class="suggestions">
         ${data.suggestions.map(([text, icon, action]) => `<button class="suggestion" data-action="${action}">${icon}<span>${text}</span></button>`).join("")}
       </div>
@@ -99,7 +99,7 @@ function askQuestion(question, action = "free") {
   app.innerHTML = `
     <section class="conversation">
       <div class="user-message">${escapeHtml(question)}</div>
-      <div class="thinking"><div class="mini-spark"></div><span>학원 자료를 확인하고 있어요</span><div class="thinking-dots"><i></i><i></i><i></i></div></div>
+      <div class="thinking"><div class="thinking-emoji">🔎</div><span>학원 자료를 확인하고 있어요</span><div class="thinking-dots"><i></i><i></i><i></i></div></div>
     </section>`;
   window.scrollTo({ top: 0, behavior: "smooth" });
   setTimeout(() => renderAnswer(action, question), 700);
@@ -113,7 +113,7 @@ function renderAnswer(action, question) {
 
 function answerFor(action, question) {
   if (isUnsafe(question)) {
-    return `<p class="answer-lead"><strong>개인정보나 내부 지시는 안내해 드릴 수 없어요.</strong><br>학생의 성적, 연락처, 상담 기록은 본인 확인된 보호자와 학생에게만 제공됩니다.</p><div class="notice">학원 운영, 수업, 입학 절차에 관한 질문은 공식 자료에서 근거를 찾아 도와드릴게요.</div>${source("학원 개인정보 보호 안내 · 2026년 7월", "공개 상담 개인정보 처리 기준과 본인 확인 절차")}${feedback()}`;
+    return `<p class="answer-lead"><strong>요청하신 내용은 안내해 드릴 수 없어요.</strong><br>학생의 성적이나 연락처처럼 개인적인 정보는 알려드리지 않아요.</p><div class="notice">수업, 교육비, 보강, 입학 절차처럼 학원 이용에 필요한 내용은 편하게 물어보세요.</div>${feedback()}`;
   }
   if (currentRole === "prospective") return prospectiveAnswer(action);
   if (currentRole === "parent") return parentAnswer(action);
@@ -124,14 +124,14 @@ function prospectiveAnswer(action) {
   if (action === "tuition") return `<p class="answer-lead"><strong>중등 정규반은 주 2회, 회당 90분 수업</strong>으로 운영해요. 교육비는 월 32만원이며 교재비는 별도예요.</p><div class="result-card"><div class="data-row"><span>수업 시간</span><b>화·목 오후 6:30</b></div><div class="data-row"><span>월 교육비</span><b>320,000원</b></div><div class="data-row"><span>첫 수업</span><b>레벨 확인 후 확정</b></div></div><div class="notice">정확한 반과 시간은 레벨 확인 결과에 따라 달라질 수 있어요.</div>${source("2026년 2학기 수업 편성표", "중등부 정규반 운영 시간 및 교육비 안내")}${feedback()}`;
   if (action === "reserve") return `<p class="answer-lead"><strong>입학 상담은 약 30분 동안 진행</strong>되며, 학생의 현재 진도와 희망 시간표를 함께 확인해요.</p><div class="result-card"><div class="data-row"><span>가장 빠른 날</span><b>7월 14일 화요일</b></div><div class="data-row"><span>가능 시간</span><b>오후 5:00 · 7:30</b></div><div class="data-row"><span>상담 방법</span><b>방문 또는 전화</b></div></div><button class="primary-action" data-toast="상담 예약 화면으로 이동했어요">상담 시간 선택하기</button>${source("입학 상담 운영 안내 · 2026년 7월", "상담 절차, 예상 시간 및 준비 정보")}${feedback()}`;
   if (action === "level") return `<p class="answer-lead">레벨 확인은 시험을 위한 시험이 아니라, <strong>지금 가장 편안하게 시작할 수 있는 진도</strong>를 찾는 과정이에요.</p><div class="answer-list"><div class="result-card"><div class="result-top"><span>1단계</span><b>기초 확인 · 20분</b></div><p>현재 학년의 핵심 개념과 계산 정확도를 확인해요.</p></div><div class="result-card"><div class="result-top"><span>2단계</span><b>상담 · 15분</b></div><p>풀이 과정을 함께 보고 적합한 반과 학습 계획을 안내해요.</p></div></div>${source("입학 레벨 확인 기준 · 2026년 1학기", "평가 영역, 소요 시간 및 반 배정 기준")}${feedback()}`;
-  return `<p class="answer-lead">중학교 1학년이고 현재 일차방정식을 공부 중이라면, <strong>중등 기본 다지기반</strong>부터 살펴보는 것이 적합해요.</p><h2>추천 수업</h2><div class="result-card"><div class="result-top"><span>추천</span><b>중등 기본 다지기반</b></div><p>학교 진도보다 2주 앞서 개념을 익히고, 틀린 문제를 다시 설명하는 수업이에요.</p><div class="data-row"><span>수업</span><b>화·목 오후 6:30</b></div><div class="data-row"><span>정원</span><b>8명 · 현재 2자리</b></div><div class="data-row"><span>교육비</span><b>월 320,000원</b></div></div><div class="notice"><strong>추천 이유</strong><br>입학 상담에서 가장 많이 선택한 학습 상황을 기준으로 안내했어요. 최종 반은 레벨 확인 후 결정됩니다.</div><button class="primary-action" data-toast="상담 가능한 시간을 불러왔어요">이 반으로 상담 예약하기</button>${source("중등부 반 편성 기준 · 3장 2조", "중등 기본 다지기반 수업 목표와 권장 진도", "2026년 2학기 수업 편성표", "반별 시간, 정원 및 교육비")}${feedback()}`;
+  return `<p class="answer-lead">중학교 1학년이고 현재 일차방정식을 공부 중이라면, <strong>중등 기본 다지기반</strong>부터 살펴보는 것이 적합해요.</p><h2>추천 수업</h2><div class="result-card"><div class="result-top"><span>추천</span><b>중등 기본 다지기반</b></div><p>학교 진도보다 2주 앞서 개념을 익히고, 틀린 문제를 다시 설명하는 수업이에요.</p><div class="data-row"><span>수업</span><b>화·목 오후 6:30</b></div><div class="data-row"><span>정원</span><b>8명 · 현재 2자리</b></div><div class="data-row"><span>교육비</span><b>월 320,000원</b></div></div><div class="notice"><strong>추천 이유</strong><br>입학 상담에서 가장 많이 선택한 학습 상황을 기준으로 안내했어요. 최종 반은 레벨 확인 후 결정돼요.</div><button class="primary-action" data-toast="상담 가능한 시간을 불러왔어요">이 반으로 상담 예약하기</button>${source("중등부 반 편성 기준 · 3장 2조", "중등 기본 다지기반 수업 목표와 권장 진도", "2026년 2학기 수업 편성표", "반별 시간, 정원 및 교육비")}${feedback()}`;
 }
 
 function parentAnswer(action) {
-  if (action === "payment") return `<p class="answer-lead">7월 교육비는 <strong>납부 완료</strong>됐어요. 다음 결제 예정일은 8월 5일입니다.</p><div class="result-card"><div class="data-row"><span>납부 금액</span><b>320,000원</b></div><div class="data-row"><span>납부일</span><b>7월 3일</b></div><div class="data-row"><span>결제 수단</span><b>본인 확인 후 표시</b></div></div><div class="safety-line">결제 수단과 상세 내역은 개인정보 보호를 위해 추가 확인 후 보여드려요.</div>${source("민준 학생 7월 수납 기록", "보호자 본인 확인이 완료된 계정에서만 조회")}${feedback()}`;
+  if (action === "payment") return `<p class="answer-lead">7월 교육비는 <strong>납부 완료</strong>됐어요. 다음 결제 예정일은 8월 5일이에요.</p><div class="result-card"><div class="data-row"><span>납부 금액</span><b>320,000원</b></div><div class="data-row"><span>납부일</span><b>7월 3일</b></div><div class="data-row"><span>다음 결제일</span><b>8월 5일</b></div></div>${source("민준 학생 7월 수납 기록", "7월 교육비 납부 내역과 다음 결제 예정일")}${feedback()}`;
   if (action === "progress") return `<p class="answer-lead">최근 4주 동안 <strong>연립방정식의 활용 문제 정확도가 68%에서 84%로 올랐어요.</strong></p><div class="result-card"><div class="data-row"><span>잘하고 있어요</span><b>계산 정확도 · 오답 복습</b></div><div class="data-row"><span>보완할 점</span><b>문장제 식 세우기</b></div><div class="data-row"><span>담임 의견</span><b>풀이 설명 습관 권장</b></div></div><div class="notice">점수만으로 학생을 판단하지 않고, 최근 과제와 수업 관찰 기록을 함께 요약했어요.</div>${source("민준 학생 주간 학습 기록 · 6월 3주~7월 2주", "과제 정답률, 오답 복습 및 담임 수업 기록")}${feedback()}`;
   if (action === "absence") return `<p class="answer-lead">결석 예정일을 알려주시면 <strong>수업 시작 전 담임 선생님에게 전달</strong>하고 가능한 보강 시간을 찾아드려요.</p><div class="result-card"><div class="data-row"><span>다음 수업</span><b>7월 14일 화요일 6:30</b></div><div class="data-row"><span>보강 가능</span><b>수요일 7:00 · 토요일 11:00</b></div></div><button class="primary-action" data-toast="결석 알림 작성 화면을 열었어요">결석 예정일 알리기</button>${source("학원 운영규정 · 2장 4~5조", "결석 사전 안내 및 보강 수업 기준")}${feedback()}`;
-  return `<p class="answer-lead">민준 학생은 이번 주 수업에 <strong>모두 출석</strong>했고, 지난주 결석한 수업의 보강이 예정돼 있어요.</p><h2>이번 주 일정</h2><div class="result-card"><div class="data-row"><span>7월 9일 목</span><b>정규 수업 · 출석</b></div><div class="data-row"><span>7월 11일 토</span><b>보강 · 오전 11:00</b></div><div class="data-row"><span>7월 14일 화</span><b>정규 수업 · 오후 6:30</b></div></div><div class="notice"><strong>보강 안내</strong><br>6월 30일 결석 수업의 보강이며, 진도는 연립방정식 활용 2단원이에요.</div><button class="secondary-action" data-toast="보강 담당 선생님께 문의를 시작했어요">보강 시간 문의하기</button>${source("민준 학생 출결 기록 · 7월 2주", "보호자 본인 확인 후 제공된 출결 및 보강 일정", "학원 운영규정 · 2장 5조", "보강 편성 및 변경 기준")}${feedback()}`;
+  return `<p class="answer-lead">민준 학생은 이번 주 수업에 <strong>모두 출석</strong>했고, 지난주 결석한 수업의 보강이 예정돼 있어요.</p><h2>이번 주 일정</h2><div class="result-card"><div class="data-row"><span>7월 9일 목</span><b>정규 수업 · 출석</b></div><div class="data-row"><span>7월 11일 토</span><b>보강 · 오전 11:00</b></div><div class="data-row"><span>7월 14일 화</span><b>정규 수업 · 오후 6:30</b></div></div><div class="notice"><strong>보강 안내</strong><br>6월 30일 결석 수업의 보강이며, 진도는 연립방정식 활용 2단원이에요.</div><button class="secondary-action" data-toast="보강 담당 선생님께 문의를 시작했어요">보강 시간 문의하기</button>${source("민준 학생 출결 기록 · 7월 2주", "이번 주 출결과 예정된 보강 일정", "학원 운영규정 · 2장 5조", "보강 편성 및 변경 기준")}${feedback()}`;
 }
 
 function studentAnswer(action) {
@@ -142,7 +142,7 @@ function studentAnswer(action) {
 }
 
 function source(title1, detail1, title2, detail2) {
-  return `<div class="source"><button><span>근거 ${title2 ? "2개" : "1개"} 확인하기</span><span>⌄</span></button><div class="source-content"><strong>${title1}</strong><br>${detail1}${title2 ? `<br><br><strong>${title2}</strong><br>${detail2}` : ""}<br><br>마지막 확인: 2026년 7월 11일</div></div><p class="safety-line">AI가 학원 공식 자료를 바탕으로 정리한 내용이에요. 중요한 결정은 상담 선생님과 한 번 더 확인해주세요.</p>`;
+  return `<div class="source"><button><span>근거 ${title2 ? "2개" : "1개"} 확인하기</span><span>⌄</span></button><div class="source-content"><strong>${title1}</strong><br>${detail1}${title2 ? `<br><br><strong>${title2}</strong><br>${detail2}` : ""}<br><br>2026년 7월 11일 기준</div></div>`;
 }
 
 function feedback() {

@@ -62,16 +62,7 @@ main { min-height: 100dvh; padding: 94px 20px 132px; }
   padding-bottom: 20px;
 }
 
-.spark {
-  position: relative;
-  width: 42px;
-  height: 42px;
-  margin: 0 auto 22px;
-  transform: rotate(45deg);
-  border-radius: 12px 50% 12px 50%;
-  background: var(--black);
-}
-.spark::after { content: ""; position: absolute; left: 18px; top: 9px; width: 5px; height: 23px; border-radius: 3px; background: white; transform: rotate(-45deg); }
+.welcome-emoji { margin: 0 auto 20px; font-size: 38px; line-height: 1; }
 .welcome h1 { margin: 0; text-align: center; font-size: 28px; line-height: 1.4; letter-spacing: 0; }
 .welcome > p { margin: 12px auto 29px; max-width: 310px; color: var(--gray-700); text-align: center; font-size: 13px; line-height: 1.7; }
 
@@ -98,8 +89,6 @@ main { min-height: 100dvh; padding: 94px 20px 132px; }
 .role-badge { width: fit-content; margin: 0 auto 18px; padding: 6px 11px; border-radius: 20px; background: var(--gray-100); color: #555; font-size: 10px; font-weight: 600; }
 .role-home h1 { margin: 0; text-align: center; font-size: 27px; line-height: 1.42; }
 .role-home .sub { margin: 12px auto 30px; color: var(--gray-700); text-align: center; font-size: 13px; line-height: 1.7; }
-.verified { display: inline-flex; align-items: center; gap: 5px; margin-top: 8px; color: #555; font-size: 10px; font-weight: 600; }
-.verified i { width: 6px; height: 6px; border-radius: 50%; background: var(--black); }
 
 .suggestions { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; }
 .suggestion {
@@ -120,7 +109,7 @@ main { min-height: 100dvh; padding: 94px 20px 132px; }
 .conversation { display: grid; gap: 25px; padding-top: 8px; }
 .user-message { margin-left: 62px; padding: 16px 18px; border-radius: 25px; background: var(--gray-100); font-size: 14px; line-height: 1.7; }
 .thinking { display: flex; align-items: center; gap: 11px; color: var(--gray-500); font-size: 12px; }
-.mini-spark { width: 24px; height: 24px; border-radius: 7px 50% 7px 50%; background: var(--black); transform: rotate(45deg); }
+.thinking-emoji { font-size: 22px; line-height: 1; }
 .thinking-dots { display: flex; gap: 5px; }
 .thinking-dots i { width: 5px; height: 5px; border-radius: 50%; background: #aaa; animation: blink 1s infinite; }
 .thinking-dots i:nth-child(2) { animation-delay: .15s; }
@@ -153,7 +142,6 @@ main { min-height: 100dvh; padding: 94px 20px 132px; }
 .source > button span:last-child { margin-left: auto; }
 .source-content { display: none; padding: 0 2px 14px; color: var(--gray-700); font-size: 11px; line-height: 1.8; }
 .source.open .source-content { display: block; }
-.safety-line { margin-top: 16px; color: var(--gray-500); font-size: 10px; line-height: 1.7; }
 .feedback { display: flex; gap: 9px; margin-top: 20px; }
 .feedback button { width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid var(--gray-200); border-radius: 50%; background: white; }
 .feedback svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
@@ -192,9 +180,6 @@ main { min-height: 100dvh; padding: 94px 20px 132px; }
 .sheet-item b { font-size: 14px; }
 .sheet-item small { margin-top: 3px; color: var(--gray-500); font-size: 10px; }
 .sheet-item em { margin-left: auto; padding: 7px 11px; border: 1px solid var(--gray-300); border-radius: 17px; font-size: 10px; font-style: normal; font-weight: 700; }
-.sheet-note { margin-top: 16px; padding: 15px; border-radius: 14px; background: var(--gray-100); }
-.sheet-note b { font-size: 11px; }
-.sheet-note p { margin: 6px 0 0; color: var(--gray-700); font-size: 10px; line-height: 1.65; }
 .toast { position: fixed; z-index: 70; left: 50%; bottom: 112px; max-width: 340px; padding: 11px 16px; transform: translate(-50%, 16px); border-radius: 12px; background: var(--black); color: white; font-size: 11px; opacity: 0; pointer-events: none; transition: .22s; }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
