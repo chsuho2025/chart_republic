@@ -59,6 +59,7 @@ function renderWelcome() {
   screen = "welcome";
   currentRole = null;
   document.querySelector("#composer").classList.add("hidden");
+  app.classList.add("no-composer");
   app.innerHTML = `
     <section class="welcome">
       <div class="welcome-emoji" aria-hidden="true">👋</div>
@@ -81,6 +82,7 @@ function renderProfileSetup(role) {
   currentRole = role;
   screen = "profile";
   document.querySelector("#composer").classList.add("hidden");
+  app.classList.add("no-composer");
   const forms = {
     prospective: {
       emoji: "🔎",
@@ -147,6 +149,7 @@ function renderRoleHome(role) {
   currentRole = role;
   screen = "home";
   document.querySelector("#composer").classList.remove("hidden");
+  app.classList.remove("no-composer");
   const data = roles[role];
   const studentName = profile.studentName || "민준";
   const guardianName = profile.guardianName || "김서연";
@@ -173,6 +176,7 @@ function askQuestion(question, action = "free") {
   lastQuestion = question;
   screen = "answer";
   document.querySelector("#composer").classList.remove("hidden");
+  app.classList.remove("no-composer");
   app.innerHTML = `
     <section class="conversation">
       <div class="user-message">${escapeHtml(question)}</div>
