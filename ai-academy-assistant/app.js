@@ -13,6 +13,22 @@ let screen = "welcome";
 let lastQuestion = "";
 let profile = {};
 
+const studentNames = [
+  "김민준", "김서윤", "이도윤", "박지우", "최서준", "정하린", "강시우", "조예린", "윤지호", "장서아",
+  "임도현", "한유진", "오준혁", "서채원", "신건우", "권나연", "황우진", "안소율", "송현우", "전예은",
+  "홍지훈", "유다인", "고은찬", "문서현", "양재윤", "손채린", "배민재", "백지아", "허준서", "남유나",
+  "심태윤", "노서진", "하예준", "곽수빈", "성도훈", "차아린", "주민성", "우하윤", "구정우", "민서연",
+  "진현준", "엄가은", "원시윤", "천다현", "방주원", "공예나", "변도경", "염채아", "여승민", "추라희"
+];
+const grades = ["초등학교 5학년", "초등학교 6학년", "중학교 1학년", "중학교 2학년", "중학교 3학년", "고등학교 1학년"];
+const classNames = ["초등 기본반", "초등 심화반", "중등 기본 다지기반", "중등 심화반", "중등 내신 집중반", "고등 수학Ⅰ반"];
+const registeredStudents = studentNames.map((name, index) => ({
+  name,
+  id: `E${2081 + index}`,
+  grade: index === 0 ? "중학교 2학년" : grades[index % grades.length],
+  className: index === 0 ? "중등 기본 다지기반" : classNames[index % classNames.length]
+}));
+
 const arrow = `<svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>`;
 const searchIcon = `<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>`;
 const calendarIcon = `<svg viewBox="0 0 24 24"><path d="M5 4h14a2 2 0 0 1 2 2v14H3V6a2 2 0 0 1 2-2Z"/><path d="M8 2v4m8-4v4M3 9h18"/></svg>`;
@@ -86,61 +102,79 @@ function renderProfileSetup(role) {
   const forms = {
     prospective: {
       emoji: "🔎",
-      title: "상담할 학생을<br>선택해 주세요",
-      description: "선택한 학년을 기준으로 입학 상담을 시작해요.",
-      students: [
-        { name: "김민준", id: "신규 상담", grade: "중학교 1학년", className: "입학 상담" },
-        { name: "김서윤", id: "신규 상담", grade: "초등학교 6학년", className: "입학 상담" }
-      ]
+      title: "입학 상담에 필요한<br>내용을 알려주세요",
+      description: "학교와 학습 진도에 맞는 수업을 찾아드릴게요."
     },
     parent: {
       emoji: "📚",
       title: "자녀를<br>선택해 주세요",
       description: "선택한 학생의 출결과 학습 정보를 찾아드릴게요.",
-      students: [
-        { name: "김민준", id: "E2081", grade: "중학교 2학년", className: "중등 기본 다지기반" },
-        { name: "김서윤", id: "E2144", grade: "초등학교 6학년", className: "초등 심화반" }
-      ]
+      students: registeredStudents
     },
     student: {
       emoji: "✏️",
       title: "내 정보를<br>선택해 주세요",
       description: "수업과 숙제를 바로 확인할 수 있어요.",
-      students: [
-        { name: "김민준", id: "E2081", grade: "중학교 2학년", className: "중등 기본 다지기반" }
-      ]
+      students: registeredStudents
     }
   };
   const data = forms[role];
-  let selectedStudent = data.students[0];
+  let selectedStudent = role === "prospective" ? null : data.students[0];
   app.innerHTML = `
     <section class="profile-setup">
       <div class="profile-emoji">${data.emoji}</div>
       <h1>${data.title}</h1>
       <p>${data.description}</p>
       <form class="profile-form" id="profile-form">
-        <div class="student-picker">
-          ${data.students.map((student, index) => studentOption(student, index === 0, index)).join("")}
-        </div>
+        ${role === "prospective" ? admissionFields() : studentSelector(data.students)}
         <button class="profile-submit" type="submit">맞춤 상담 시작하기</button>
       </form>
     </section>`;
-  document.querySelectorAll(".student-option").forEach(button => {
-    button.addEventListener("click", () => {
-      document.querySelectorAll(".student-option").forEach(option => option.classList.remove("selected"));
-      button.classList.add("selected");
-      selectedStudent = data.students[Number(button.dataset.index)];
+  if (role !== "prospective") {
+    const selector = document.querySelector(".student-select");
+    const trigger = document.querySelector(".student-select-trigger");
+    trigger.addEventListener("click", () => selector.classList.toggle("open"));
+    document.querySelectorAll(".student-option").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".student-option").forEach(option => option.classList.remove("selected"));
+        button.classList.add("selected");
+        selectedStudent = data.students[Number(button.dataset.index)];
+        trigger.querySelector("span").innerHTML = studentLabel(selectedStudent);
+        selector.classList.remove("open");
+      });
     });
-  });
+  }
   document.querySelector("#profile-form").addEventListener("submit", event => {
     event.preventDefault();
-    profile = { ...selectedStudent, studentName: selectedStudent.name };
+    profile = role === "prospective"
+      ? Object.fromEntries(new FormData(event.currentTarget).entries())
+      : { ...selectedStudent, studentName: selectedStudent.name };
     renderRoleHome(role);
   });
 }
 
+function admissionFields() {
+  return `<div class="admission-fields">
+    <div class="compact-field"><label for="school">재학 중인 학교</label><select id="school" name="school"><option>솔빛중학교</option><option>한솔초등학교</option><option>정원중학교</option><option>미래고등학교</option></select></div>
+    <div class="compact-field"><label for="grade">학년</label><select id="grade" name="grade"><option>중학교 1학년</option><option>초등학교 6학년</option><option>중학교 2학년</option><option>중학교 3학년</option><option>고등학교 1학년</option></select></div>
+    <div class="compact-field"><label for="progress">현재 진도</label><select id="progress" name="progress"><option>일차방정식</option><option>정수와 유리수</option><option>연립방정식</option><option>함수</option><option>수학Ⅰ</option></select></div>
+  </div>`;
+}
+
+function studentSelector(students) {
+  return `<div class="student-select">
+    <span class="selector-label">학생 선택</span>
+    <button class="student-select-trigger" type="button"><span>${studentLabel(students[0])}</span><svg viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></svg></button>
+    <div class="student-select-menu">${students.map((student, index) => studentOption(student, index === 0, index)).join("")}</div>
+  </div>`;
+}
+
+function studentLabel(student) {
+  return `<b>${student.name} (${student.id})</b><small>${student.grade} · ${student.className}</small>`;
+}
+
 function studentOption(student, selected, index) {
-  return `<button class="student-option${selected ? " selected" : ""}" type="button" data-index="${index}"><span class="student-avatar">👤</span><span class="student-info"><b>${student.name} (${student.id})</b><small>${student.grade} · ${student.className}</small></span><span class="student-check">✓</span></button>`;
+  return `<button class="student-option${selected ? " selected" : ""}" type="button" data-index="${index}"><span>${studentLabel(student)}</span><span class="student-check">✓</span></button>`;
 }
 
 function renderRoleHome(role) {
@@ -151,12 +185,12 @@ function renderRoleHome(role) {
   const data = roles[role];
   const studentName = profile.studentName || "민준";
   const personalizedTitle = role === "prospective"
-    ? `${profile.grade || "학생"}에게 맞는 수업을<br>함께 찾아볼게요`
+    ? `${profile.grade || "학생"} 진도에 맞는 수업을<br>함께 찾아볼게요`
     : role === "parent"
       ? `${studentName} 학생의<br>학부모님 안녕하세요`
       : `${studentName} 학생,<br>오늘도 차근차근`;
   const roleBadge = role === "prospective"
-    ? "입학을 알아보는 학부모"
+    ? `${profile.school} · ${profile.progress}`
     : role === "parent"
       ? `${studentName} 학생 학부모`
       : `${profile.grade} · ${profile.className}`;
@@ -207,7 +241,7 @@ function prospectiveAnswer(action) {
   if (action === "tuition") return `<p class="answer-lead"><strong>중등 정규반은 주 2회, 회당 90분 수업</strong>으로 운영해요. 교육비는 월 32만원이며 교재비는 별도예요.</p><div class="result-card"><div class="data-row"><span>수업 시간</span><b>화·목 오후 6:30</b></div><div class="data-row"><span>월 교육비</span><b>320,000원</b></div><div class="data-row"><span>첫 수업</span><b>레벨 확인 후 확정</b></div></div><div class="notice">정확한 반과 시간은 레벨 확인 결과에 따라 달라질 수 있어요.</div>${source("2026년 2학기 수업 편성표", "중등부 정규반 운영 시간 및 교육비 안내")}`;
   if (action === "reserve") return `<p class="answer-lead"><strong>입학 상담은 약 30분 동안 진행</strong>되며, 학생의 현재 진도와 희망 시간표를 함께 확인해요.</p><div class="result-card"><div class="data-row"><span>가장 빠른 날</span><b>7월 14일 화요일</b></div><div class="data-row"><span>가능 시간</span><b>오후 5:00 · 7:30</b></div><div class="data-row"><span>상담 방법</span><b>방문 또는 전화</b></div></div><button class="primary-action" data-toast="상담 예약 화면으로 이동했어요">상담 시간 선택하기</button>${source("입학 상담 운영 안내 · 2026년 7월", "상담 절차, 예상 시간 및 준비 정보")}`;
   if (action === "level") return `<p class="answer-lead">레벨 확인은 시험을 위한 시험이 아니라, <strong>지금 가장 편안하게 시작할 수 있는 진도</strong>를 찾는 과정이에요.</p><div class="answer-list"><div class="result-card"><div class="result-top"><span>1단계</span><b>기초 확인 · 20분</b></div><p>현재 학년의 핵심 개념과 계산 정확도를 확인해요.</p></div><div class="result-card"><div class="result-top"><span>2단계</span><b>상담 · 15분</b></div><p>풀이 과정을 함께 보고 적합한 반과 학습 계획을 안내해요.</p></div></div>${source("입학 레벨 확인 기준 · 2026년 1학기", "평가 영역, 소요 시간 및 반 배정 기준")}`;
-  return `<p class="answer-lead">중학교 1학년이고 현재 일차방정식을 공부 중이라면, <strong>중등 기본 다지기반</strong>부터 살펴보는 것이 적합해요.</p><h2>추천 수업</h2><div class="result-card"><div class="result-top"><span>추천</span><b>중등 기본 다지기반</b></div><p>학교 진도보다 2주 앞서 개념을 익히고, 틀린 문제를 다시 설명하는 수업이에요.</p><div class="data-row"><span>수업</span><b>화·목 오후 6:30</b></div><div class="data-row"><span>정원</span><b>8명 · 현재 2자리</b></div><div class="data-row"><span>교육비</span><b>월 320,000원</b></div></div><div class="notice"><strong>추천 이유</strong><br>입학 상담에서 가장 많이 선택한 학습 상황을 기준으로 안내했어요. 최종 반은 레벨 확인 후 결정돼요.</div><button class="primary-action" data-toast="상담 가능한 시간을 불러왔어요">이 반으로 상담 예약하기</button>${source("중등부 반 편성 기준 · 3장 2조", "중등 기본 다지기반 수업 목표와 권장 진도", "2026년 2학기 수업 편성표", "반별 시간, 정원 및 교육비")}`;
+  return `<p class="answer-lead">${profile.school || "현재 학교"} ${profile.grade || "학생"}에서 <strong>${profile.progress || "현재 과정"}</strong>을 공부 중이라면, 중등 기본 다지기반부터 살펴보는 것이 적합해요.</p><h2>추천 수업</h2><div class="result-card"><div class="result-top"><span>추천</span><b>중등 기본 다지기반</b></div><p>학교 진도보다 2주 앞서 개념을 익히고, 틀린 문제를 다시 설명하는 수업이에요.</p><div class="data-row"><span>수업</span><b>화·목 오후 6:30</b></div><div class="data-row"><span>정원</span><b>8명 · 현재 2자리</b></div><div class="data-row"><span>교육비</span><b>월 320,000원</b></div></div><div class="notice"><strong>추천 이유</strong><br>입학 상담에서 가장 많이 선택한 학습 상황을 기준으로 안내했어요. 최종 반은 레벨 확인 후 결정돼요.</div><button class="primary-action" data-toast="상담 가능한 시간을 불러왔어요">이 반으로 상담 예약하기</button>${source("중등부 반 편성 기준 · 3장 2조", "중등 기본 다지기반 수업 목표와 권장 진도", "2026년 2학기 수업 편성표", "반별 시간, 정원 및 교육비")}`;
 }
 
 function parentAnswer(action) {
