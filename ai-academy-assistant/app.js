@@ -86,63 +86,61 @@ function renderProfileSetup(role) {
   const forms = {
     prospective: {
       emoji: "🔎",
-      title: "아이에 대해<br>간단히 알려주세요",
-      description: "학년과 현재 학습 상황에 맞춰 수업을 안내해 드릴게요.",
-      fields: `
-        ${textField("guardianName", "보호자 성함", "김서연")}
-        ${selectField("grade", "학생 학년", [["중학교 1학년", "중학교 1학년"], ["초등학교 6학년", "초등학교 6학년"], ["중학교 2학년", "중학교 2학년"]])}
-        ${textField("progress", "현재 공부하고 있는 내용", "일차방정식")}
-        ${areaField("concern", "요즘 가장 고민되는 점", "개념은 이해하지만 응용 문제를 어려워해요.")}`
+      title: "상담할 학생을<br>선택해 주세요",
+      description: "선택한 학년을 기준으로 입학 상담을 시작해요.",
+      students: [
+        { name: "김민준", id: "신규 상담", grade: "중학교 1학년", className: "입학 상담" },
+        { name: "김서윤", id: "신규 상담", grade: "초등학교 6학년", className: "입학 상담" }
+      ]
     },
     parent: {
       emoji: "📚",
-      title: "재원 정보를<br>확인해 주세요",
-      description: "학생에게 맞는 출결과 학습 정보를 바로 찾아드릴게요.",
-      fields: `
-        ${textField("guardianName", "보호자 성함", "김서연")}
-        ${textField("studentName", "학생 이름", "김민준")}
-        ${selectField("grade", "학생 학년", [["중학교 2학년", "중학교 2학년"], ["중학교 1학년", "중학교 1학년"], ["중학교 3학년", "중학교 3학년"]])}
-        ${selectField("className", "재원 반", [["중등 기본 다지기반", "중등 기본 다지기반"], ["중등 심화반", "중등 심화반"], ["중등 내신 집중반", "중등 내신 집중반"]])}`
+      title: "자녀를<br>선택해 주세요",
+      description: "선택한 학생의 출결과 학습 정보를 찾아드릴게요.",
+      students: [
+        { name: "김민준", id: "E2081", grade: "중학교 2학년", className: "중등 기본 다지기반" },
+        { name: "김서윤", id: "E2144", grade: "초등학교 6학년", className: "초등 심화반" }
+      ]
     },
     student: {
       emoji: "✏️",
-      title: "학생 정보를<br>확인해 주세요",
-      description: "오늘 수업과 숙제를 알맞게 정리해 드릴게요.",
-      fields: `
-        ${textField("studentName", "이름", "김민준")}
-        ${selectField("grade", "학년", [["중학교 2학년", "중학교 2학년"], ["중학교 1학년", "중학교 1학년"], ["중학교 3학년", "중학교 3학년"]])}
-        ${selectField("className", "재원 반", [["중등 기본 다지기반", "중등 기본 다지기반"], ["중등 심화반", "중등 심화반"], ["중등 내신 집중반", "중등 내신 집중반"]])}
-        ${areaField("goal", "이번 달 목표", "연립방정식 활용 문제를 자신 있게 풀고 싶어요.")}`
+      title: "내 정보를<br>선택해 주세요",
+      description: "수업과 숙제를 바로 확인할 수 있어요.",
+      students: [
+        { name: "김민준", id: "E2081", grade: "중학교 2학년", className: "중등 기본 다지기반" }
+      ]
     }
   };
   const data = forms[role];
+  let selectedStudent = data.students[0];
   app.innerHTML = `
     <section class="profile-setup">
       <div class="profile-emoji">${data.emoji}</div>
       <h1>${data.title}</h1>
       <p>${data.description}</p>
       <form class="profile-form" id="profile-form">
-        ${data.fields}
+        <div class="student-picker">
+          ${data.students.map((student, index) => studentOption(student, index === 0, index)).join("")}
+        </div>
         <button class="profile-submit" type="submit">맞춤 상담 시작하기</button>
       </form>
     </section>`;
+  document.querySelectorAll(".student-option").forEach(button => {
+    button.addEventListener("click", () => {
+      document.querySelectorAll(".student-option").forEach(option => option.classList.remove("selected"));
+      button.classList.add("selected");
+      selectedStudent = data.students[Number(button.dataset.index)];
+    });
+  });
   document.querySelector("#profile-form").addEventListener("submit", event => {
     event.preventDefault();
-    profile = Object.fromEntries(new FormData(event.currentTarget).entries());
+    profile = { ...selectedStudent, studentName: selectedStudent.name };
     renderRoleHome(role);
   });
 }
 
-function textField(name, label, value) {
-  return `<div class="field"><label for="${name}">${label}</label><input id="${name}" name="${name}" value="${value}" required></div>`;
-}
-
-function areaField(name, label, value) {
-  return `<div class="field"><label for="${name}">${label}</label><textarea id="${name}" name="${name}" required>${value}</textarea></div>`;
-}
-
-function selectField(name, label, options) {
-  return `<div class="field"><label for="${name}">${label}</label><select id="${name}" name="${name}">${options.map(([value, text]) => `<option value="${value}">${text}</option>`).join("")}</select></div>`;
+function studentOption(student, selected, index) {
+  return `<button class="student-option${selected ? " selected" : ""}" type="button" data-index="${index}"><span class="student-avatar">👤</span><span class="student-info"><b>${student.name} (${student.id})</b><small>${student.grade} · ${student.className}</small></span><span class="student-check">✓</span></button>`;
 }
 
 function renderRoleHome(role) {
@@ -152,15 +150,19 @@ function renderRoleHome(role) {
   app.classList.remove("no-composer");
   const data = roles[role];
   const studentName = profile.studentName || "민준";
-  const guardianName = profile.guardianName || "김서연";
   const personalizedTitle = role === "prospective"
     ? `${profile.grade || "학생"}에게 맞는 수업을<br>함께 찾아볼게요`
     : role === "parent"
-      ? `${guardianName} 학부모님<br>안녕하세요`
+      ? `${studentName} 학생의<br>학부모님 안녕하세요`
       : `${studentName} 학생,<br>오늘도 차근차근`;
+  const roleBadge = role === "prospective"
+    ? "입학을 알아보는 학부모"
+    : role === "parent"
+      ? `${studentName} 학생 학부모`
+      : `${profile.grade} · ${profile.className}`;
   app.innerHTML = `
     <section class="role-home">
-      <div class="role-badge">${data.badge}</div>
+      <div class="role-badge">${roleBadge}</div>
       <h1>${personalizedTitle}</h1>
       <p class="sub">${data.sub.replace("\n", "<br>")}</p>
       <div class="suggestions">
