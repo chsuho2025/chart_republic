@@ -264,6 +264,26 @@ main.no-composer { padding-bottom: 38px; }
 .toast { position: fixed; z-index: 70; left: 50%; bottom: 112px; max-width: 340px; padding: 11px 16px; transform: translate(-50%, 16px); border-radius: 12px; background: var(--black); color: white; font-size: 11px; opacity: 0; pointer-events: none; transition: .22s; }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
+.evaluation-report { padding-top: 10px; }
+.report-kicker { margin: 0 0 8px; color: var(--gray-700); font-size: 12px; font-weight: 700; }
+.evaluation-report h1 { margin: 0; font-size: 25px; line-height: 1.42; }
+.report-intro { margin: 10px 0 24px; color: var(--gray-700); font-size: 13px; line-height: 1.7; }
+.report-summary { display: grid; grid-template-columns: repeat(2, 1fr); gap: 9px; }
+.report-metric { padding: 14px; border: 1px solid var(--gray-200); border-radius: 14px; background: var(--gray-100); }
+.report-metric span { display: block; color: var(--gray-700); font-size: 10px; font-weight: 600; }
+.report-metric strong { display: block; margin-top: 5px; font-size: 23px; line-height: 1.2; }
+.report-section { margin-top: 27px; }
+.report-section h2 { margin: 0 0 13px; font-size: 17px; }
+.criteria-list { display: flex; flex-wrap: wrap; gap: 7px; }
+.criteria-list span { padding: 7px 10px; border: 1px solid var(--gray-200); border-radius: 9px; background: var(--gray-100); font-size: 11px; font-weight: 600; }
+.test-list { border-top: 1px solid var(--gray-200); }
+.test-case { display: grid; grid-template-columns: 1fr auto; gap: 8px; padding: 13px 0; border-bottom: 1px solid var(--gray-200); }
+.test-case b { display: block; font-size: 12px; line-height: 1.5; }
+.test-case small { display: block; margin-top: 3px; color: var(--gray-700); font-size: 10px; }
+.test-pass { align-self: center; padding: 4px 7px; border-radius: 6px; background: var(--black); color: white; font-size: 9px; font-weight: 700; }
+.test-change { align-self: center; color: var(--gray-700); font-size: 9px; font-style: normal; font-weight: 700; white-space: nowrap; }
+.report-note { margin-top: 24px; padding: 13px 14px; border-radius: 12px; background: var(--gray-100); color: var(--gray-700); font-size: 10px; line-height: 1.65; }
+
 @media (max-width: 360px) {
   main { padding-left: 16px; padding-right: 16px; }
   .welcome h1, .role-home h1, .profile-setup h1 { font-size: 23px; }
