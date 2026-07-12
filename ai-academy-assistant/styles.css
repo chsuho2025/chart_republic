@@ -108,6 +108,8 @@ main.no-composer { padding-bottom: 38px; }
   font-size: 14px;
 }
 .compact-field select:focus { border-color: var(--black); background: white; }
+.compact-field select:invalid { color: var(--gray-500); }
+.compact-field select option { color: var(--black); }
 .student-select { position: relative; display: grid; gap: 7px; }
 .student-select-trigger {
   width: 100%;
@@ -125,6 +127,7 @@ main.no-composer { padding-bottom: 38px; }
 }
 .student-select-trigger b, .student-option b { display: block; font-size: 14px; line-height: 1.4; }
 .student-select-trigger small, .student-option small { display: block; margin-top: 2px; color: var(--gray-700); font-size: 11px; line-height: 1.4; }
+.select-placeholder { color: var(--gray-500); font-size: 14px; }
 .student-select-trigger svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; transition: transform .18s; }
 .student-select.open .student-select-trigger svg { transform: rotate(180deg); }
 .student-select-menu {
@@ -162,6 +165,7 @@ main.no-composer { padding-bottom: 38px; }
 .student-option .student-check { color: transparent; text-align: center; font-size: 13px; font-weight: 700; }
 .student-option.selected .student-check { color: var(--black); }
 .profile-submit { width: 100%; min-height: 52px; margin-top: 4px; border: 0; border-radius: 14px; background: var(--black); color: white; font-size: 14px; font-weight: 700; }
+.profile-submit:disabled { cursor: default; background: var(--gray-200); color: var(--gray-500); }
 
 .role-home { min-height: calc(100dvh - 226px); display: flex; flex-direction: column; justify-content: center; padding-bottom: 12px; }
 .role-badge { width: fit-content; margin: 0 auto 16px; padding: 6px 11px; border-radius: 20px; background: var(--gray-100); color: #555; font-size: 11px; font-weight: 600; }

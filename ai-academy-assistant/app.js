@@ -119,7 +119,7 @@ function renderProfileSetup(role) {
     }
   };
   const data = forms[role];
-  let selectedStudent = role === "prospective" ? null : data.students[0];
+  let selectedStudent = null;
   app.innerHTML = `
     <section class="profile-setup">
       <div class="profile-emoji">${data.emoji}</div>
@@ -127,22 +127,32 @@ function renderProfileSetup(role) {
       <p>${data.description}</p>
       <form class="profile-form" id="profile-form">
         ${role === "prospective" ? admissionFields() : studentSelector(data.students)}
-        <button class="profile-submit" type="submit">맞춤 상담 시작하기</button>
+        <button class="profile-submit" type="submit" disabled>맞춤 상담 시작하기</button>
       </form>
     </section>`;
   if (role !== "prospective") {
     const selector = document.querySelector(".student-select");
     const trigger = document.querySelector(".student-select-trigger");
+    const submit = document.querySelector(".profile-submit");
     trigger.addEventListener("click", () => selector.classList.toggle("open"));
     document.querySelectorAll(".student-option").forEach(button => {
       button.addEventListener("click", () => {
         document.querySelectorAll(".student-option").forEach(option => option.classList.remove("selected"));
         button.classList.add("selected");
         selectedStudent = data.students[Number(button.dataset.index)];
-        trigger.querySelector("span").innerHTML = studentLabel(selectedStudent);
+        const triggerLabel = trigger.querySelector("span");
+        triggerLabel.classList.remove("select-placeholder");
+        triggerLabel.innerHTML = studentLabel(selectedStudent);
+        submit.disabled = false;
         selector.classList.remove("open");
       });
     });
+  } else {
+    const selects = [...document.querySelectorAll(".admission-fields select")];
+    const submit = document.querySelector(".profile-submit");
+    selects.forEach(select => select.addEventListener("change", () => {
+      submit.disabled = !selects.every(item => item.value);
+    }));
   }
   document.querySelector("#profile-form").addEventListener("submit", event => {
     event.preventDefault();
@@ -155,17 +165,17 @@ function renderProfileSetup(role) {
 
 function admissionFields() {
   return `<div class="admission-fields">
-    <div class="compact-field"><label for="school">재학 중인 학교</label><select id="school" name="school"><option>솔빛중학교</option><option>한솔초등학교</option><option>정원중학교</option><option>미래고등학교</option></select></div>
-    <div class="compact-field"><label for="grade">학년</label><select id="grade" name="grade"><option>중학교 1학년</option><option>초등학교 6학년</option><option>중학교 2학년</option><option>중학교 3학년</option><option>고등학교 1학년</option></select></div>
-    <div class="compact-field"><label for="progress">현재 진도</label><select id="progress" name="progress"><option>일차방정식</option><option>정수와 유리수</option><option>연립방정식</option><option>함수</option><option>수학Ⅰ</option></select></div>
+    <div class="compact-field"><label for="school">재학 중인 학교</label><select id="school" name="school" required><option value="" selected disabled>학교를 선택해 주세요</option><option>솔빛중학교</option><option>한솔초등학교</option><option>정원중학교</option><option>미래고등학교</option></select></div>
+    <div class="compact-field"><label for="grade">학년</label><select id="grade" name="grade" required><option value="" selected disabled>학년을 선택해 주세요</option><option>중학교 1학년</option><option>초등학교 6학년</option><option>중학교 2학년</option><option>중학교 3학년</option><option>고등학교 1학년</option></select></div>
+    <div class="compact-field"><label for="progress">현재 진도</label><select id="progress" name="progress" required><option value="" selected disabled>현재 진도를 선택해 주세요</option><option>일차방정식</option><option>정수와 유리수</option><option>연립방정식</option><option>함수</option><option>수학Ⅰ</option></select></div>
   </div>`;
 }
 
 function studentSelector(students) {
   return `<div class="student-select">
     <span class="selector-label">학생 선택</span>
-    <button class="student-select-trigger" type="button"><span>${studentLabel(students[0])}</span><svg viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></svg></button>
-    <div class="student-select-menu">${students.map((student, index) => studentOption(student, index === 0, index)).join("")}</div>
+    <button class="student-select-trigger" type="button"><span class="select-placeholder">학생을 선택해 주세요</span><svg viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></svg></button>
+    <div class="student-select-menu">${students.map((student, index) => studentOption(student, false, index)).join("")}</div>
   </div>`;
 }
 
