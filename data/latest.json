@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-16T08:07:52.945Z",
-  "chartDate": "2026-07-16",
+  "generatedAt": "2026-07-17T10:30:00.481Z",
+  "chartDate": "2026-07-17",
   "sources": {
     "spotifyDaily": {
       "name": "Spotify Top 50 - South Korea",
@@ -38,7 +38,7 @@
       "url": "https://charts.youtube.com/charts/TopShortsSongs/kr/daily",
       "weight": 0.15,
       "fetchedCount": 50,
-      "sourceDate": "2026-07-14"
+      "sourceDate": "2026-07-15"
     },
     "reviewScore": {
       "name": "Chart Republic editorial review score",
@@ -46,6 +46,56 @@
     }
   },
   "tracks": [
+    {
+      "id": "gg-ez-m-sasuke",
+      "title": "Gg Ez",
+      "artist": "M.Sasuke",
+      "artistKo": "",
+      "album": "Single",
+      "spotifyDailyRank": null,
+      "spotifyViralRank": 7,
+      "appleDailyRank": 21,
+      "appleSeoulRank": 12,
+      "youtubeMusicWeeklyRank": 26,
+      "youtubeShortsDailyRank": 1,
+      "reviewScore": 5,
+      "previousRank": 2,
+      "peakRank": 1,
+      "daysOnChart": 6,
+      "status": "up",
+      "coverSeed": "gg-ez-m-sasuke",
+      "finalScore": 83.35,
+      "rankHistory": [
+        {
+          "chartDate": "2026-07-01",
+          "rank": 29
+        },
+        {
+          "chartDate": "2026-07-03",
+          "rank": 10
+        },
+        {
+          "chartDate": "2026-07-04",
+          "rank": 2
+        },
+        {
+          "chartDate": "2026-07-06",
+          "rank": 2
+        },
+        {
+          "chartDate": "2026-07-16",
+          "rank": 2
+        },
+        {
+          "chartDate": "2026-07-17",
+          "rank": 1
+        }
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/dc/06/58/dc06582d-ccf4-0cb1-5cb2-90312d0287b8/4550756948591_cover.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/gg-ez/6773028282?i=6773028284",
+      "videoUrl": "https://www.youtube.com/embed/TEbPKeeJnlA"
+    },
     {
       "id": "love-attack-rescene",
       "title": "LOVE ATTACK",
@@ -57,14 +107,14 @@
       "appleDailyRank": 2,
       "appleSeoulRank": 3,
       "youtubeMusicWeeklyRank": 4,
-      "youtubeShortsDailyRank": 9,
+      "youtubeShortsDailyRank": 10,
       "reviewScore": 2,
       "previousRank": 1,
       "peakRank": 1,
-      "daysOnChart": 6,
-      "status": "steady",
+      "daysOnChart": 7,
+      "status": "down",
       "coverSeed": "love-attack-rescene",
-      "finalScore": 83.45,
+      "finalScore": 83.3,
       "rankHistory": [
         {
           "chartDate": "2026-06-25",
@@ -89,58 +139,16 @@
         {
           "chartDate": "2026-07-16",
           "rank": 1
+        },
+        {
+          "chartDate": "2026-07-17",
+          "rank": 2
         }
       ],
       "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/43/0b/4c/430b4c8e-3cb8-da27-648f-435ec3b391a6/8804775334160.jpg/1000x1000bb.jpg",
       "artworkSource": "apple",
       "artworkAttributionUrl": "https://music.apple.com/kr/album/love-attack/1764485168?i=1764485170&uo=4",
       "videoUrl": "https://www.youtube.com/embed/9XttLI0oH0I"
-    },
-    {
-      "id": "gg-ez-m-sasuke",
-      "title": "Gg Ez",
-      "artist": "M.Sasuke",
-      "artistKo": "",
-      "album": "Single",
-      "spotifyDailyRank": null,
-      "spotifyViralRank": 7,
-      "appleDailyRank": 22,
-      "appleSeoulRank": 12,
-      "youtubeMusicWeeklyRank": 26,
-      "youtubeShortsDailyRank": 1,
-      "reviewScore": 5,
-      "previousRank": 2,
-      "peakRank": 2,
-      "daysOnChart": 5,
-      "status": "steady",
-      "coverSeed": "gg-ez-m-sasuke",
-      "finalScore": 83.25,
-      "rankHistory": [
-        {
-          "chartDate": "2026-07-01",
-          "rank": 29
-        },
-        {
-          "chartDate": "2026-07-03",
-          "rank": 10
-        },
-        {
-          "chartDate": "2026-07-04",
-          "rank": 2
-        },
-        {
-          "chartDate": "2026-07-06",
-          "rank": 2
-        },
-        {
-          "chartDate": "2026-07-16",
-          "rank": 2
-        }
-      ],
-      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/dc/06/58/dc06582d-ccf4-0cb1-5cb2-90312d0287b8/4550756948591_cover.jpg/1000x1000bb.jpg",
-      "artworkSource": "apple",
-      "artworkAttributionUrl": "https://music.apple.com/kr/album/gg-ez/6773028282?i=6773028284",
-      "videoUrl": "https://www.youtube.com/embed/TEbPKeeJnlA"
     },
     {
       "id": "bad-ateez",
@@ -153,14 +161,14 @@
       "appleDailyRank": 9,
       "appleSeoulRank": 6,
       "youtubeMusicWeeklyRank": 9,
-      "youtubeShortsDailyRank": 15,
+      "youtubeShortsDailyRank": 14,
       "reviewScore": 2,
-      "previousRank": 4,
+      "previousRank": 3,
       "peakRank": 3,
-      "daysOnChart": 3,
-      "status": "up",
+      "daysOnChart": 4,
+      "status": "steady",
       "coverSeed": "bad-ateez",
-      "finalScore": 82.7,
+      "finalScore": 82.85,
       "rankHistory": [
         {
           "chartDate": "2026-07-04",
@@ -172,6 +180,10 @@
         },
         {
           "chartDate": "2026-07-16",
+          "rank": 3
+        },
+        {
+          "chartDate": "2026-07-17",
           "rank": 3
         }
       ],
@@ -186,22 +198,26 @@
       "artist": "RESCENE",
       "artistKo": "",
       "album": "Single",
-      "spotifyDailyRank": 6,
+      "spotifyDailyRank": 4,
       "spotifyViralRank": null,
       "appleDailyRank": 5,
       "appleSeoulRank": 2,
       "youtubeMusicWeeklyRank": 8,
-      "youtubeShortsDailyRank": 5,
+      "youtubeShortsDailyRank": 2,
       "reviewScore": 5,
-      "previousRank": null,
+      "previousRank": 4,
       "peakRank": 4,
-      "daysOnChart": 1,
-      "status": "new",
+      "daysOnChart": 2,
+      "status": "steady",
       "coverSeed": "pretty-girl-rescene",
-      "finalScore": 77.95,
+      "finalScore": 78.6,
       "rankHistory": [
         {
           "chartDate": "2026-07-16",
+          "rank": 4
+        },
+        {
+          "chartDate": "2026-07-17",
           "rank": 4
         }
       ],
@@ -216,19 +232,19 @@
       "artist": "Hearts2Hearts",
       "artistKo": "Hearts2Hearts",
       "album": "Lemon Tang - The 2nd Mini Album",
-      "spotifyDailyRank": 5,
+      "spotifyDailyRank": 6,
       "spotifyViralRank": null,
       "appleDailyRank": 3,
       "appleSeoulRank": 4,
       "youtubeMusicWeeklyRank": 13,
-      "youtubeShortsDailyRank": 13,
+      "youtubeShortsDailyRank": 16,
       "reviewScore": 3,
-      "previousRank": 3,
+      "previousRank": 5,
       "peakRank": 2,
-      "daysOnChart": 6,
-      "status": "down",
+      "daysOnChart": 7,
+      "status": "steady",
       "coverSeed": "lemon-tang-hearts2hearts",
-      "finalScore": 68.4,
+      "finalScore": 67.85,
       "rankHistory": [
         {
           "chartDate": "2026-06-25",
@@ -253,6 +269,10 @@
         {
           "chartDate": "2026-07-16",
           "rank": 5
+        },
+        {
+          "chartDate": "2026-07-17",
+          "rank": 5
         }
       ],
       "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/00/a4/c1/00a4c1fb-c2c9-83c9-af2e-44cb5da80bc4/888735956140.png/1000x1000bb.jpg",
@@ -271,14 +291,14 @@
       "appleDailyRank": 4,
       "appleSeoulRank": 5,
       "youtubeMusicWeeklyRank": 2,
-      "youtubeShortsDailyRank": 26,
+      "youtubeShortsDailyRank": 36,
       "reviewScore": 2,
-      "previousRank": 5,
+      "previousRank": 6,
       "peakRank": 3,
-      "daysOnChart": 6,
-      "status": "down",
+      "daysOnChart": 7,
+      "status": "steady",
       "coverSeed": "lemonade-aespa",
-      "finalScore": 62.9,
+      "finalScore": 61.4,
       "rankHistory": [
         {
           "chartDate": "2026-06-25",
@@ -303,6 +323,10 @@
         {
           "chartDate": "2026-07-16",
           "rank": 6
+        },
+        {
+          "chartDate": "2026-07-17",
+          "rank": 6
         }
       ],
       "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/00/1d/e6/001de64e-c2f1-fd4b-3604-3d2e16641968/888735955211.png/1000x1000bb.jpg",
@@ -321,14 +345,14 @@
       "appleDailyRank": 1,
       "appleSeoulRank": 1,
       "youtubeMusicWeeklyRank": 1,
-      "youtubeShortsDailyRank": 20,
+      "youtubeShortsDailyRank": 19,
       "reviewScore": 1,
-      "previousRank": 6,
+      "previousRank": 7,
       "peakRank": 1,
-      "daysOnChart": 6,
-      "status": "down",
+      "daysOnChart": 7,
+      "status": "steady",
       "coverSeed": "redred-cortis",
-      "finalScore": 61.15,
+      "finalScore": 61.3,
       "rankHistory": [
         {
           "chartDate": "2026-06-25",
@@ -353,6 +377,10 @@
         {
           "chartDate": "2026-07-16",
           "rank": 7
+        },
+        {
+          "chartDate": "2026-07-17",
+          "rank": 7
         }
       ],
       "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/9b/5f/47/9b5f4711-dc78-2dea-6721-d06709ea5121/198704992810_Cover.jpg/1000x1000bb.jpg",
@@ -361,24 +389,74 @@
       "videoUrl": "https://www.youtube.com/embed/U6BDbXIah-Y"
     },
     {
+      "id": "runaway-rescene",
+      "title": "Runaway",
+      "artist": "RESCENE",
+      "artistKo": "",
+      "album": "Single",
+      "spotifyDailyRank": 20,
+      "spotifyViralRank": 26,
+      "appleDailyRank": 15,
+      "appleSeoulRank": 16,
+      "youtubeMusicWeeklyRank": 38,
+      "youtubeShortsDailyRank": null,
+      "reviewScore": 1,
+      "previousRank": 9,
+      "peakRank": 8,
+      "daysOnChart": 6,
+      "status": "up",
+      "coverSeed": "runaway-rescene",
+      "finalScore": 55.85,
+      "rankHistory": [
+        {
+          "chartDate": "2026-07-01",
+          "rank": 33
+        },
+        {
+          "chartDate": "2026-07-03",
+          "rank": 37
+        },
+        {
+          "chartDate": "2026-07-04",
+          "rank": 24
+        },
+        {
+          "chartDate": "2026-07-06",
+          "rank": 19
+        },
+        {
+          "chartDate": "2026-07-16",
+          "rank": 9
+        },
+        {
+          "chartDate": "2026-07-17",
+          "rank": 8
+        }
+      ],
+      "artworkUrl": "https://yt3.googleusercontent.com/rPEeKAbGWakUfCArlymVjzCjVkLPuTSmwxtqKJhwqhQkQg24703KRcfz8ePy0YcwCuYxqq-zG1pdro4tNQ=w180-h180-l90-rj",
+      "artworkSource": "manual",
+      "artworkAttributionUrl": "",
+      "videoUrl": "https://www.youtube.com/embed/rsZwrTNklos"
+    },
+    {
       "id": "its-me-illit",
       "title": "It's Me",
       "artist": "ILLIT",
       "artistKo": "아일릿",
       "album": "MAMIHLAPINATAPAI",
-      "spotifyDailyRank": 4,
+      "spotifyDailyRank": 5,
       "spotifyViralRank": null,
       "appleDailyRank": 6,
       "appleSeoulRank": 8,
       "youtubeMusicWeeklyRank": 3,
-      "youtubeShortsDailyRank": 12,
+      "youtubeShortsDailyRank": 15,
       "reviewScore": 0,
-      "previousRank": 7,
+      "previousRank": 8,
       "peakRank": 1,
-      "daysOnChart": 6,
+      "daysOnChart": 7,
       "status": "down",
       "coverSeed": "its-me-illit",
-      "finalScore": 56.05,
+      "finalScore": 55.5,
       "rankHistory": [
         {
           "chartDate": "2026-06-25",
@@ -403,58 +481,16 @@
         {
           "chartDate": "2026-07-16",
           "rank": 8
+        },
+        {
+          "chartDate": "2026-07-17",
+          "rank": 9
         }
       ],
       "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/db/56/04/db5604ab-c7f4-b982-8c76-98ee766ac294/823375069195_Cover.jpg/1000x1000bb.jpg",
       "artworkSource": "apple",
       "artworkAttributionUrl": "https://music.apple.com/kr/album/its-me/1887194024?i=1887194026&uo=4",
       "videoUrl": "https://www.youtube.com/embed/bMhDJ0S0OBA"
-    },
-    {
-      "id": "runaway-rescene",
-      "title": "Runaway",
-      "artist": "RESCENE",
-      "artistKo": "",
-      "album": "Single",
-      "spotifyDailyRank": 23,
-      "spotifyViralRank": 26,
-      "appleDailyRank": 17,
-      "appleSeoulRank": 16,
-      "youtubeMusicWeeklyRank": 38,
-      "youtubeShortsDailyRank": null,
-      "reviewScore": 1,
-      "previousRank": 19,
-      "peakRank": 9,
-      "daysOnChart": 5,
-      "status": "up",
-      "coverSeed": "runaway-rescene",
-      "finalScore": 55.35,
-      "rankHistory": [
-        {
-          "chartDate": "2026-07-01",
-          "rank": 33
-        },
-        {
-          "chartDate": "2026-07-03",
-          "rank": 37
-        },
-        {
-          "chartDate": "2026-07-04",
-          "rank": 24
-        },
-        {
-          "chartDate": "2026-07-06",
-          "rank": 19
-        },
-        {
-          "chartDate": "2026-07-16",
-          "rank": 9
-        }
-      ],
-      "artworkUrl": "https://yt3.googleusercontent.com/rPEeKAbGWakUfCArlymVjzCjVkLPuTSmwxtqKJhwqhQkQg24703KRcfz8ePy0YcwCuYxqq-zG1pdro4tNQ=w180-h180-l90-rj",
-      "artworkSource": "manual",
-      "artworkAttributionUrl": "",
-      "videoUrl": "https://www.youtube.com/embed/rsZwrTNklos"
     },
     {
       "id": "gapjagi-ioi",
@@ -471,7 +507,7 @@
       "reviewScore": 0,
       "previousRank": 10,
       "peakRank": 2,
-      "daysOnChart": 6,
+      "daysOnChart": 7,
       "status": "steady",
       "coverSeed": "gapjagi-ioi",
       "finalScore": 45,
@@ -499,6 +535,10 @@
         {
           "chartDate": "2026-07-16",
           "rank": 10
+        },
+        {
+          "chartDate": "2026-07-17",
+          "rank": 10
         }
       ],
       "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/4e/f0/d9/4ef0d927-e14f-49c7-b273-e92ed3ce354b/888272181623_Cover.jpg/1000x1000bb.jpg",
@@ -512,7 +552,7 @@
       "artist": "NOWIMYOUNG, Royal 44, SUNWOO",
       "artistKo": "",
       "album": "Single",
-      "spotifyDailyRank": 40,
+      "spotifyDailyRank": 43,
       "spotifyViralRank": 40,
       "appleDailyRank": 19,
       "appleSeoulRank": 23,
@@ -521,10 +561,10 @@
       "reviewScore": 0,
       "previousRank": 11,
       "peakRank": 9,
-      "daysOnChart": 5,
+      "daysOnChart": 6,
       "status": "steady",
       "coverSeed": "kiss-kiss-kiss-nowimyoung-royal-44-sunwoo",
-      "finalScore": 42.1,
+      "finalScore": 41.8,
       "rankHistory": [
         {
           "chartDate": "2026-07-01",
@@ -545,6 +585,10 @@
         {
           "chartDate": "2026-07-16",
           "rank": 11
+        },
+        {
+          "chartDate": "2026-07-17",
+          "rank": 11
         }
       ],
       "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/f3/fc/6a/f3fc6a43-142f-daf6-e07e-f2917bd24c1e/888272178388_Cover.jpg/1000x1000bb.jpg",
@@ -558,19 +602,19 @@
       "artist": "리센느",
       "artistKo": "",
       "album": "Single",
-      "spotifyDailyRank": 14,
+      "spotifyDailyRank": 13,
       "spotifyViralRank": null,
       "appleDailyRank": 7,
       "appleSeoulRank": 7,
       "youtubeMusicWeeklyRank": 14,
       "youtubeShortsDailyRank": null,
       "reviewScore": 0,
-      "previousRank": 25,
+      "previousRank": 12,
       "peakRank": 12,
-      "daysOnChart": 2,
-      "status": "up",
+      "daysOnChart": 3,
+      "status": "steady",
       "coverSeed": "deja-vu-리센느",
-      "finalScore": 41.25,
+      "finalScore": 41.35,
       "rankHistory": [
         {
           "chartDate": "2026-07-06",
@@ -578,6 +622,10 @@
         },
         {
           "chartDate": "2026-07-16",
+          "rank": 12
+        },
+        {
+          "chartDate": "2026-07-17",
           "rank": 12
         }
       ],
@@ -599,10 +647,10 @@
       "youtubeMusicWeeklyRank": 7,
       "youtubeShortsDailyRank": null,
       "reviewScore": 0,
-      "previousRank": 8,
+      "previousRank": 13,
       "peakRank": 7,
-      "daysOnChart": 6,
-      "status": "down",
+      "daysOnChart": 7,
+      "status": "steady",
       "coverSeed": "rude-hearts2hearts",
       "finalScore": 41.1,
       "rankHistory": [
@@ -629,6 +677,10 @@
         {
           "chartDate": "2026-07-16",
           "rank": 13
+        },
+        {
+          "chartDate": "2026-07-17",
+          "rank": 13
         }
       ],
       "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/78/b9/fb/78b9fb30-169a-eab0-38e9-8df725f8f2d6/888735954603.png/1000x1000bb.jpg",
@@ -647,17 +699,21 @@
       "appleDailyRank": null,
       "appleSeoulRank": null,
       "youtubeMusicWeeklyRank": 37,
-      "youtubeShortsDailyRank": 4,
+      "youtubeShortsDailyRank": 5,
       "reviewScore": 1,
-      "previousRank": null,
+      "previousRank": 14,
       "peakRank": 14,
-      "daysOnChart": 1,
-      "status": "new",
+      "daysOnChart": 2,
+      "status": "steady",
       "coverSeed": "gimme-dat-love-i-dle",
-      "finalScore": 40.75,
+      "finalScore": 40.6,
       "rankHistory": [
         {
           "chartDate": "2026-07-16",
+          "rank": 14
+        },
+        {
+          "chartDate": "2026-07-17",
           "rank": 14
         }
       ],
@@ -672,19 +728,19 @@
       "artist": "HANRORO",
       "artistKo": "한로로",
       "album": "자몽살구클럽",
-      "spotifyDailyRank": 7,
+      "spotifyDailyRank": 8,
       "spotifyViralRank": null,
-      "appleDailyRank": 16,
+      "appleDailyRank": 17,
       "appleSeoulRank": 22,
       "youtubeMusicWeeklyRank": 12,
       "youtubeShortsDailyRank": null,
       "reviewScore": 0,
-      "previousRank": 9,
+      "previousRank": 15,
       "peakRank": 6,
-      "daysOnChart": 6,
-      "status": "down",
+      "daysOnChart": 7,
+      "status": "steady",
       "coverSeed": "zero-zero-hanroro",
-      "finalScore": 38.15,
+      "finalScore": 37.95,
       "rankHistory": [
         {
           "chartDate": "2026-06-25",
@@ -709,12 +765,66 @@
         {
           "chartDate": "2026-07-16",
           "rank": 15
+        },
+        {
+          "chartDate": "2026-07-17",
+          "rank": 15
         }
       ],
       "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/c8/a4/c6/c8a4c64f-89b3-9ef2-473f-4ad423a03c5b/887928030421.jpg/1000x1000bb.jpg",
       "artworkSource": "apple",
       "artworkAttributionUrl": "https://music.apple.com/kr/album/0-0/1828393588?i=1828393595&uo=4",
       "videoUrl": "https://www.youtube.com/embed/_Ngk-DCHfD0"
+    },
+    {
+      "id": "404-kiiikiii",
+      "title": "404 (New Era)",
+      "artist": "KiiiKiii",
+      "artistKo": "",
+      "album": "Single",
+      "spotifyDailyRank": 16,
+      "spotifyViralRank": null,
+      "appleDailyRank": 14,
+      "appleSeoulRank": 21,
+      "youtubeMusicWeeklyRank": 20,
+      "youtubeShortsDailyRank": null,
+      "reviewScore": 0,
+      "previousRank": 17,
+      "peakRank": 10,
+      "daysOnChart": 6,
+      "status": "up",
+      "coverSeed": "404-kiiikiii",
+      "finalScore": 37.25,
+      "rankHistory": [
+        {
+          "chartDate": "2026-07-01",
+          "rank": 10
+        },
+        {
+          "chartDate": "2026-07-03",
+          "rank": 12
+        },
+        {
+          "chartDate": "2026-07-04",
+          "rank": 14
+        },
+        {
+          "chartDate": "2026-07-06",
+          "rank": 16
+        },
+        {
+          "chartDate": "2026-07-16",
+          "rank": 17
+        },
+        {
+          "chartDate": "2026-07-17",
+          "rank": 16
+        }
+      ],
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/1b/43/f5/1b43f5d0-0a3b-d1e1-bc0a-e572e92e0455/199806885123.jpg/1000x1000bb.jpg",
+      "artworkSource": "apple",
+      "artworkAttributionUrl": "https://music.apple.com/kr/album/404-new-era/1868617345?i=1868617347",
+      "videoUrl": "https://www.youtube.com/embed/zhHB4dZTChw"
     },
     {
       "id": "heavy-serenade-nmixx",
@@ -729,9 +839,9 @@
       "youtubeMusicWeeklyRank": 18,
       "youtubeShortsDailyRank": null,
       "reviewScore": 0,
-      "previousRank": 14,
+      "previousRank": 16,
       "peakRank": 9,
-      "daysOnChart": 5,
+      "daysOnChart": 6,
       "status": "down",
       "coverSeed": "heavy-serenade-nmixx",
       "finalScore": 37.25,
@@ -755,58 +865,16 @@
         {
           "chartDate": "2026-07-16",
           "rank": 16
+        },
+        {
+          "chartDate": "2026-07-17",
+          "rank": 17
         }
       ],
       "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/fe/cd/64/fecd6408-3ace-12b5-7ad7-c5d2ac891168/8809928958262.jpg/1000x1000bb.jpg",
       "artworkSource": "apple",
       "artworkAttributionUrl": "https://music.apple.com/kr/album/heavy-serenade/1892954835?i=1892954841",
       "videoUrl": "https://www.youtube.com/embed/6Ycn9qZK09I"
-    },
-    {
-      "id": "404-kiiikiii",
-      "title": "404 (New Era)",
-      "artist": "KiiiKiii",
-      "artistKo": "",
-      "album": "Single",
-      "spotifyDailyRank": 16,
-      "spotifyViralRank": null,
-      "appleDailyRank": 15,
-      "appleSeoulRank": 21,
-      "youtubeMusicWeeklyRank": 20,
-      "youtubeShortsDailyRank": null,
-      "reviewScore": 0,
-      "previousRank": 16,
-      "peakRank": 10,
-      "daysOnChart": 5,
-      "status": "down",
-      "coverSeed": "404-kiiikiii",
-      "finalScore": 37.15,
-      "rankHistory": [
-        {
-          "chartDate": "2026-07-01",
-          "rank": 10
-        },
-        {
-          "chartDate": "2026-07-03",
-          "rank": 12
-        },
-        {
-          "chartDate": "2026-07-04",
-          "rank": 14
-        },
-        {
-          "chartDate": "2026-07-06",
-          "rank": 16
-        },
-        {
-          "chartDate": "2026-07-16",
-          "rank": 17
-        }
-      ],
-      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/1b/43/f5/1b43f5d0-0a3b-d1e1-bc0a-e572e92e0455/199806885123.jpg/1000x1000bb.jpg",
-      "artworkSource": "apple",
-      "artworkAttributionUrl": "https://music.apple.com/kr/album/404-new-era/1868617345?i=1868617347",
-      "videoUrl": "https://www.youtube.com/embed/zhHB4dZTChw"
     },
     {
       "id": "만찬가-태연",
@@ -821,10 +889,10 @@
       "youtubeMusicWeeklyRank": null,
       "youtubeShortsDailyRank": null,
       "reviewScore": 2,
-      "previousRank": 17,
+      "previousRank": 18,
       "peakRank": 17,
-      "daysOnChart": 4,
-      "status": "down",
+      "daysOnChart": 5,
+      "status": "steady",
       "coverSeed": "만찬가-태연",
       "finalScore": 35.4,
       "rankHistory": [
@@ -843,6 +911,10 @@
         {
           "chartDate": "2026-07-16",
           "rank": 18
+        },
+        {
+          "chartDate": "2026-07-17",
+          "rank": 18
         }
       ],
       "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/fb/64/dc/fb64dc58-5e47-9e5d-a695-baa40839c6f2/cover_KM0024853_1.jpg/1000x1000bb.jpg",
@@ -856,22 +928,26 @@
       "artist": "TAEYEON",
       "artistKo": "",
       "album": "Single",
-      "spotifyDailyRank": 15,
+      "spotifyDailyRank": 14,
       "spotifyViralRank": 2,
       "appleDailyRank": null,
       "appleSeoulRank": null,
       "youtubeMusicWeeklyRank": 5,
       "youtubeShortsDailyRank": null,
       "reviewScore": 0,
-      "previousRank": null,
+      "previousRank": 19,
       "peakRank": 19,
-      "daysOnChart": 1,
-      "status": "new",
+      "daysOnChart": 2,
+      "status": "steady",
       "coverSeed": "bansanka-taeyeon",
-      "finalScore": 33.2,
+      "finalScore": 33.3,
       "rankHistory": [
         {
           "chartDate": "2026-07-16",
+          "rank": 19
+        },
+        {
+          "chartDate": "2026-07-17",
           "rank": 19
         }
       ],
@@ -886,7 +962,7 @@
       "artist": "CORTIS",
       "artistKo": "",
       "album": "Single",
-      "spotifyDailyRank": 37,
+      "spotifyDailyRank": 32,
       "spotifyViralRank": null,
       "appleDailyRank": 10,
       "appleSeoulRank": 15,
@@ -895,10 +971,10 @@
       "reviewScore": 0,
       "previousRank": 20,
       "peakRank": 15,
-      "daysOnChart": 5,
+      "daysOnChart": 6,
       "status": "steady",
       "coverSeed": "acai-cortis",
-      "finalScore": 32.7,
+      "finalScore": 33.2,
       "rankHistory": [
         {
           "chartDate": "2026-07-01",
@@ -919,6 +995,10 @@
         {
           "chartDate": "2026-07-16",
           "rank": 20
+        },
+        {
+          "chartDate": "2026-07-17",
+          "rank": 20
         }
       ],
       "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/9b/5f/47/9b5f4711-dc78-2dea-6721-d06709ea5121/198704992810_Cover.jpg/1000x1000bb.jpg",
@@ -932,19 +1012,19 @@
       "artist": "Ariana Grande",
       "artistKo": "",
       "album": "Single",
-      "spotifyDailyRank": 34,
+      "spotifyDailyRank": 31,
       "spotifyViralRank": null,
-      "appleDailyRank": 21,
+      "appleDailyRank": 20,
       "appleSeoulRank": 13,
       "youtubeMusicWeeklyRank": null,
       "youtubeShortsDailyRank": null,
       "reviewScore": 0,
       "previousRank": 21,
       "peakRank": 20,
-      "daysOnChart": 5,
+      "daysOnChart": 6,
       "status": "steady",
       "coverSeed": "hate-that-i-made-you-love-me-ariana-grande",
-      "finalScore": 32.3,
+      "finalScore": 32.7,
       "rankHistory": [
         {
           "chartDate": "2026-07-01",
@@ -965,6 +1045,10 @@
         {
           "chartDate": "2026-07-16",
           "rank": 21
+        },
+        {
+          "chartDate": "2026-07-17",
+          "rank": 21
         }
       ],
       "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/7e/e6/82/7ee682bd-1b17-6adc-be63-b5af1bdff369/26UMGIM51126.rgb.jpg/1000x1000bb.jpg",
@@ -980,17 +1064,17 @@
       "album": "이상비행",
       "spotifyDailyRank": null,
       "spotifyViralRank": null,
-      "appleDailyRank": 14,
+      "appleDailyRank": 16,
       "appleSeoulRank": 17,
       "youtubeMusicWeeklyRank": 10,
       "youtubeShortsDailyRank": null,
       "reviewScore": 0,
       "previousRank": 22,
       "peakRank": 8,
-      "daysOnChart": 6,
+      "daysOnChart": 7,
       "status": "steady",
       "coverSeed": "sarang-hanroro",
-      "finalScore": 30.05,
+      "finalScore": 29.85,
       "rankHistory": [
         {
           "chartDate": "2026-06-25",
@@ -1015,6 +1099,10 @@
         {
           "chartDate": "2026-07-16",
           "rank": 22
+        },
+        {
+          "chartDate": "2026-07-17",
+          "rank": 22
         }
       ],
       "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/c2/ef/87/c2ef8779-f3bb-5a1c-ef6f-c27185e62446/8809936067307.jpg/1000x1000bb.jpg",
@@ -1030,20 +1118,24 @@
       "album": "Single",
       "spotifyDailyRank": null,
       "spotifyViralRank": null,
-      "appleDailyRank": 27,
+      "appleDailyRank": 24,
       "appleSeoulRank": 24,
       "youtubeMusicWeeklyRank": null,
       "youtubeShortsDailyRank": null,
       "reviewScore": 1,
-      "previousRank": null,
+      "previousRank": 23,
       "peakRank": 23,
-      "daysOnChart": 1,
-      "status": "new",
+      "daysOnChart": 2,
+      "status": "steady",
       "coverSeed": "pinball-리센느",
-      "finalScore": 26.8,
+      "finalScore": 27.1,
       "rankHistory": [
         {
           "chartDate": "2026-07-16",
+          "rank": 23
+        },
+        {
+          "chartDate": "2026-07-17",
           "rank": 23
         }
       ],
@@ -1065,10 +1157,10 @@
       "youtubeMusicWeeklyRank": null,
       "youtubeShortsDailyRank": null,
       "reviewScore": 0,
-      "previousRank": 28,
+      "previousRank": 24,
       "peakRank": 24,
-      "daysOnChart": 6,
-      "status": "up",
+      "daysOnChart": 7,
+      "status": "steady",
       "coverSeed": "youngcreatorcrew-cortis",
       "finalScore": 25.2,
       "rankHistory": [
@@ -1095,6 +1187,10 @@
         {
           "chartDate": "2026-07-16",
           "rank": 24
+        },
+        {
+          "chartDate": "2026-07-17",
+          "rank": 24
         }
       ],
       "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/9b/5f/47/9b5f4711-dc78-2dea-6721-d06709ea5121/198704992810_Cover.jpg/1000x1000bb.jpg",
@@ -1108,19 +1204,19 @@
       "artist": "OFFICIAL HIGE DANDISM",
       "artistKo": "",
       "album": "Single",
-      "spotifyDailyRank": 25,
+      "spotifyDailyRank": 22,
       "spotifyViralRank": null,
-      "appleDailyRank": 34,
+      "appleDailyRank": 33,
       "appleSeoulRank": null,
       "youtubeMusicWeeklyRank": null,
-      "youtubeShortsDailyRank": 30,
+      "youtubeShortsDailyRank": 32,
       "reviewScore": 0,
-      "previousRank": 31,
+      "previousRank": 25,
       "peakRank": 12,
-      "daysOnChart": 5,
-      "status": "up",
+      "daysOnChart": 6,
+      "status": "steady",
       "coverSeed": "pretender-official-hige-dandism",
-      "finalScore": 24.95,
+      "finalScore": 25.05,
       "rankHistory": [
         {
           "chartDate": "2026-07-01",
@@ -1141,6 +1237,10 @@
         {
           "chartDate": "2026-07-16",
           "rank": 25
+        },
+        {
+          "chartDate": "2026-07-17",
+          "rank": 25
         }
       ],
       "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/1f/b6/36/1fb6364f-77fc-7653-3750-811631832ee9/PCCA_04785.jpg/1000x1000bb.jpg",
@@ -1156,20 +1256,24 @@
       "album": "Single",
       "spotifyDailyRank": null,
       "spotifyViralRank": null,
-      "appleDailyRank": 43,
+      "appleDailyRank": 37,
       "appleSeoulRank": 11,
       "youtubeMusicWeeklyRank": null,
       "youtubeShortsDailyRank": null,
       "reviewScore": 0,
-      "previousRank": null,
+      "previousRank": 26,
       "peakRank": 26,
-      "daysOnChart": 1,
-      "status": "new",
+      "daysOnChart": 2,
+      "status": "steady",
       "coverSeed": "yo-i-don-nct-wish",
-      "finalScore": 23.8,
+      "finalScore": 24.4,
       "rankHistory": [
         {
           "chartDate": "2026-07-16",
+          "rank": 26
+        },
+        {
+          "chartDate": "2026-07-17",
           "rank": 26
         }
       ],
@@ -1179,48 +1283,6 @@
       "videoUrl": ""
     },
     {
-      "id": "캐치-캐치-yena",
-      "title": "캐치 캐치",
-      "artist": "YENA (최예나)",
-      "artistKo": "",
-      "album": "Single",
-      "spotifyDailyRank": 22,
-      "spotifyViralRank": 46,
-      "appleDailyRank": null,
-      "appleSeoulRank": null,
-      "youtubeMusicWeeklyRank": 11,
-      "youtubeShortsDailyRank": null,
-      "reviewScore": 0,
-      "previousRank": 12,
-      "peakRank": 12,
-      "daysOnChart": 4,
-      "status": "down",
-      "coverSeed": "캐치-캐치-yena",
-      "finalScore": 23.4,
-      "rankHistory": [
-        {
-          "chartDate": "2026-07-03",
-          "rank": 26
-        },
-        {
-          "chartDate": "2026-07-04",
-          "rank": 15
-        },
-        {
-          "chartDate": "2026-07-06",
-          "rank": 12
-        },
-        {
-          "chartDate": "2026-07-16",
-          "rank": 27
-        }
-      ],
-      "artworkUrl": "https://yt3.googleusercontent.com/KkiZjgUI7ADMjnfu90T8szhJ3CqljSdGDIpo3iNmOltOgewijZyI_Z2TQiXDdCN2jlozAVXNjuiyiSsL=w180-h180-l90-rj",
-      "artworkSource": "manual",
-      "artworkAttributionUrl": "",
-      "videoUrl": "https://www.youtube.com/embed/ItSKahBISg0"
-    },
-    {
       "id": "boy-meets-girl-nct-wish",
       "title": "BOY MEETS GIRL",
       "artist": "NCT WISH",
@@ -1228,17 +1290,17 @@
       "album": "Single",
       "spotifyDailyRank": null,
       "spotifyViralRank": null,
-      "appleDailyRank": 30,
+      "appleDailyRank": 28,
       "appleSeoulRank": 20,
       "youtubeMusicWeeklyRank": null,
       "youtubeShortsDailyRank": null,
       "reviewScore": 0,
-      "previousRank": null,
-      "peakRank": 28,
-      "daysOnChart": 3,
-      "status": "new",
+      "previousRank": 28,
+      "peakRank": 27,
+      "daysOnChart": 4,
+      "status": "up",
       "coverSeed": "boy-meets-girl-nct-wish",
-      "finalScore": 23.3,
+      "finalScore": 23.5,
       "rankHistory": [
         {
           "chartDate": "2026-07-03",
@@ -1251,6 +1313,10 @@
         {
           "chartDate": "2026-07-16",
           "rank": 28
+        },
+        {
+          "chartDate": "2026-07-17",
+          "rank": 27
         }
       ],
       "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/71/b9/4d/71b94d3e-fd49-df90-4bb4-9503af8eb31a/Digital_Cover_NCT_WISH_BOY_MEETS_GIRL_FIX_3000x3000.jpg/1000x1000bb.jpg",
@@ -1266,17 +1332,17 @@
       "album": "Single",
       "spotifyDailyRank": null,
       "spotifyViralRank": 21,
-      "appleDailyRank": 31,
+      "appleDailyRank": 29,
       "appleSeoulRank": null,
       "youtubeMusicWeeklyRank": null,
       "youtubeShortsDailyRank": null,
       "reviewScore": 0,
-      "previousRank": 13,
+      "previousRank": 29,
       "peakRank": 11,
-      "daysOnChart": 4,
-      "status": "down",
+      "daysOnChart": 5,
+      "status": "up",
       "coverSeed": "ddi-ro-ri-meovv",
-      "finalScore": 23,
+      "finalScore": 23.2,
       "rankHistory": [
         {
           "chartDate": "2026-07-03",
@@ -1293,12 +1359,62 @@
         {
           "chartDate": "2026-07-16",
           "rank": 29
+        },
+        {
+          "chartDate": "2026-07-17",
+          "rank": 28
         }
       ],
       "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/8e/e0/28/8ee02856-a2a1-7c8c-bc44-8a965f002ec6/8800370679927_cover.jpg/1000x1000bb.jpg",
       "artworkSource": "apple",
       "artworkAttributionUrl": "https://music.apple.com/kr/album/ddi-ro-ri/6773164734?i=6773164946",
       "videoUrl": ""
+    },
+    {
+      "id": "캐치-캐치-yena",
+      "title": "캐치 캐치",
+      "artist": "YENA (최예나)",
+      "artistKo": "",
+      "album": "Single",
+      "spotifyDailyRank": 24,
+      "spotifyViralRank": 46,
+      "appleDailyRank": null,
+      "appleSeoulRank": null,
+      "youtubeMusicWeeklyRank": 11,
+      "youtubeShortsDailyRank": null,
+      "reviewScore": 0,
+      "previousRank": 27,
+      "peakRank": 12,
+      "daysOnChart": 5,
+      "status": "down",
+      "coverSeed": "캐치-캐치-yena",
+      "finalScore": 23.2,
+      "rankHistory": [
+        {
+          "chartDate": "2026-07-03",
+          "rank": 26
+        },
+        {
+          "chartDate": "2026-07-04",
+          "rank": 15
+        },
+        {
+          "chartDate": "2026-07-06",
+          "rank": 12
+        },
+        {
+          "chartDate": "2026-07-16",
+          "rank": 27
+        },
+        {
+          "chartDate": "2026-07-17",
+          "rank": 29
+        }
+      ],
+      "artworkUrl": "https://yt3.googleusercontent.com/KkiZjgUI7ADMjnfu90T8szhJ3CqljSdGDIpo3iNmOltOgewijZyI_Z2TQiXDdCN2jlozAVXNjuiyiSsL=w180-h180-l90-rj",
+      "artworkSource": "manual",
+      "artworkAttributionUrl": "",
+      "videoUrl": "https://www.youtube.com/embed/ItSKahBISg0"
     },
     {
       "id": "crow-i-dle",
@@ -1313,10 +1429,10 @@
       "youtubeMusicWeeklyRank": null,
       "youtubeShortsDailyRank": null,
       "reviewScore": 1,
-      "previousRank": 15,
+      "previousRank": 30,
       "peakRank": 12,
-      "daysOnChart": 5,
-      "status": "down",
+      "daysOnChart": 6,
+      "status": "steady",
       "coverSeed": "crow-i-dle",
       "finalScore": 22,
       "rankHistory": [
@@ -1339,6 +1455,10 @@
         {
           "chartDate": "2026-07-16",
           "rank": 30
+        },
+        {
+          "chartDate": "2026-07-17",
+          "rank": 30
         }
       ],
       "artworkUrl": "https://yt3.googleusercontent.com/FRxan2GhOM1h3ChzwVk1jpuz8F9DaGmJcRqyaTV2Mh9REDZ_CmtJJe6R7x-9S63UJJ4clFGBDe6Uawv4=w180-h180-l90-rj",
@@ -1354,20 +1474,24 @@
       "album": "Single",
       "spotifyDailyRank": null,
       "spotifyViralRank": null,
-      "appleDailyRank": 35,
+      "appleDailyRank": 41,
       "appleSeoulRank": 25,
       "youtubeMusicWeeklyRank": null,
       "youtubeShortsDailyRank": null,
       "reviewScore": 0,
-      "previousRank": null,
+      "previousRank": 31,
       "peakRank": 31,
-      "daysOnChart": 1,
-      "status": "new",
+      "daysOnChart": 2,
+      "status": "steady",
       "coverSeed": "너와-나-한로로",
-      "finalScore": 21.8,
+      "finalScore": 21.2,
       "rankHistory": [
         {
           "chartDate": "2026-07-16",
+          "rank": 31
+        },
+        {
+          "chartDate": "2026-07-17",
           "rank": 31
         }
       ],
@@ -1377,62 +1501,24 @@
       "videoUrl": ""
     },
     {
-      "id": "lve-choijunseong",
-      "title": "L[ ]VE",
-      "artist": "CHOIJUNSEONG (Jun S)",
-      "artistKo": "",
-      "album": "Single",
-      "spotifyDailyRank": 46,
-      "spotifyViralRank": 29,
-      "appleDailyRank": null,
-      "appleSeoulRank": null,
-      "youtubeMusicWeeklyRank": null,
-      "youtubeShortsDailyRank": null,
-      "reviewScore": 0,
-      "previousRank": 33,
-      "peakRank": 32,
-      "daysOnChart": 3,
-      "status": "up",
-      "coverSeed": "lve-choijunseong",
-      "finalScore": 19.9,
-      "rankHistory": [
-        {
-          "chartDate": "2026-07-04",
-          "rank": 35
-        },
-        {
-          "chartDate": "2026-07-06",
-          "rank": 33
-        },
-        {
-          "chartDate": "2026-07-16",
-          "rank": 32
-        }
-      ],
-      "artworkUrl": "",
-      "artworkSource": "",
-      "artworkAttributionUrl": "",
-      "videoUrl": ""
-    },
-    {
       "id": "boompala-lesserafim",
       "title": "BOOMPALA",
       "artist": "LE SSERAFIM",
       "artistKo": "르세라핌",
       "album": "PUREFLOW, Pt. 1",
-      "spotifyDailyRank": 38,
+      "spotifyDailyRank": 35,
       "spotifyViralRank": null,
       "appleDailyRank": null,
       "appleSeoulRank": null,
       "youtubeMusicWeeklyRank": 19,
-      "youtubeShortsDailyRank": 39,
+      "youtubeShortsDailyRank": 37,
       "reviewScore": 0,
-      "previousRank": 34,
+      "previousRank": 33,
       "peakRank": 8,
-      "daysOnChart": 6,
+      "daysOnChart": 7,
       "status": "up",
       "coverSeed": "boompala-lesserafim",
-      "finalScore": 19.7,
+      "finalScore": 20.3,
       "rankHistory": [
         {
           "chartDate": "2026-06-25",
@@ -1457,12 +1543,58 @@
         {
           "chartDate": "2026-07-16",
           "rank": 33
+        },
+        {
+          "chartDate": "2026-07-17",
+          "rank": 32
         }
       ],
       "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/b8/0c/98/b80c980c-52c6-a180-ff3e-2afaaab75fdd/823375107286_Cover.jpg/1000x1000bb.jpg",
       "artworkSource": "apple",
       "artworkAttributionUrl": "https://music.apple.com/kr/album/boompala/1894802719?i=1894802726&uo=4",
       "videoUrl": "https://www.youtube.com/embed/V1Lr-_AxeR8"
+    },
+    {
+      "id": "lve-choijunseong",
+      "title": "L[ ]VE",
+      "artist": "CHOIJUNSEONG (Jun S)",
+      "artistKo": "",
+      "album": "Single",
+      "spotifyDailyRank": 46,
+      "spotifyViralRank": 29,
+      "appleDailyRank": null,
+      "appleSeoulRank": null,
+      "youtubeMusicWeeklyRank": null,
+      "youtubeShortsDailyRank": null,
+      "reviewScore": 0,
+      "previousRank": 32,
+      "peakRank": 32,
+      "daysOnChart": 4,
+      "status": "down",
+      "coverSeed": "lve-choijunseong",
+      "finalScore": 19.9,
+      "rankHistory": [
+        {
+          "chartDate": "2026-07-04",
+          "rank": 35
+        },
+        {
+          "chartDate": "2026-07-06",
+          "rank": 33
+        },
+        {
+          "chartDate": "2026-07-16",
+          "rank": 32
+        },
+        {
+          "chartDate": "2026-07-17",
+          "rank": 33
+        }
+      ],
+      "artworkUrl": "",
+      "artworkSource": "",
+      "artworkAttributionUrl": "",
+      "videoUrl": ""
     },
     {
       "id": "crushed-10cm",
@@ -1477,15 +1609,19 @@
       "youtubeMusicWeeklyRank": null,
       "youtubeShortsDailyRank": null,
       "reviewScore": 0,
-      "previousRank": null,
+      "previousRank": 34,
       "peakRank": 34,
-      "daysOnChart": 1,
-      "status": "new",
+      "daysOnChart": 2,
+      "status": "steady",
       "coverSeed": "crushed-10cm",
       "finalScore": 19.4,
       "rankHistory": [
         {
           "chartDate": "2026-07-16",
+          "rank": 34
+        },
+        {
+          "chartDate": "2026-07-17",
           "rank": 34
         }
       ],
@@ -1507,15 +1643,19 @@
       "youtubeMusicWeeklyRank": null,
       "youtubeShortsDailyRank": null,
       "reviewScore": 0,
-      "previousRank": null,
+      "previousRank": 35,
       "peakRank": 35,
-      "daysOnChart": 1,
-      "status": "new",
+      "daysOnChart": 2,
+      "status": "steady",
       "coverSeed": "나와-같다면-kim-jang-hoon",
       "finalScore": 19.2,
       "rankHistory": [
         {
           "chartDate": "2026-07-16",
+          "rank": 35
+        },
+        {
+          "chartDate": "2026-07-17",
           "rank": 35
         }
       ],
@@ -1530,19 +1670,19 @@
       "artist": "hamo",
       "artistKo": "",
       "album": "Single",
-      "spotifyDailyRank": 43,
+      "spotifyDailyRank": 44,
       "spotifyViralRank": 34,
       "appleDailyRank": null,
       "appleSeoulRank": null,
       "youtubeMusicWeeklyRank": null,
       "youtubeShortsDailyRank": null,
       "reviewScore": 0,
-      "previousRank": 29,
+      "previousRank": 36,
       "peakRank": 29,
-      "daysOnChart": 4,
-      "status": "down",
+      "daysOnChart": 5,
+      "status": "steady",
       "coverSeed": "아크라포빅-hamo",
-      "finalScore": 19.2,
+      "finalScore": 19.1,
       "rankHistory": [
         {
           "chartDate": "2026-07-01",
@@ -1558,6 +1698,10 @@
         },
         {
           "chartDate": "2026-07-16",
+          "rank": 36
+        },
+        {
+          "chartDate": "2026-07-17",
           "rank": 36
         }
       ],
@@ -1579,10 +1723,10 @@
       "youtubeMusicWeeklyRank": null,
       "youtubeShortsDailyRank": null,
       "reviewScore": 0,
-      "previousRank": 36,
+      "previousRank": 37,
       "peakRank": 36,
-      "daysOnChart": 3,
-      "status": "down",
+      "daysOnChart": 4,
+      "status": "steady",
       "coverSeed": "layback-jay-b",
       "finalScore": 18.6,
       "rankHistory": [
@@ -1596,6 +1740,10 @@
         },
         {
           "chartDate": "2026-07-16",
+          "rank": 37
+        },
+        {
+          "chartDate": "2026-07-17",
           "rank": 37
         }
       ],
@@ -1617,10 +1765,10 @@
       "youtubeMusicWeeklyRank": null,
       "youtubeShortsDailyRank": null,
       "reviewScore": 0,
-      "previousRank": 37,
+      "previousRank": 38,
       "peakRank": 37,
-      "daysOnChart": 3,
-      "status": "down",
+      "daysOnChart": 4,
+      "status": "steady",
       "coverSeed": "girls-girls-girls-got7",
       "finalScore": 18.4,
       "rankHistory": [
@@ -1634,6 +1782,10 @@
         },
         {
           "chartDate": "2026-07-16",
+          "rank": 38
+        },
+        {
+          "chartDate": "2026-07-17",
           "rank": 38
         }
       ],
@@ -1655,10 +1807,10 @@
       "youtubeMusicWeeklyRank": null,
       "youtubeShortsDailyRank": null,
       "reviewScore": 0,
-      "previousRank": 38,
+      "previousRank": 39,
       "peakRank": 38,
-      "daysOnChart": 3,
-      "status": "down",
+      "daysOnChart": 4,
+      "status": "steady",
       "coverSeed": "shadow-lee-jaewook",
       "finalScore": 18.2,
       "rankHistory": [
@@ -1672,6 +1824,10 @@
         },
         {
           "chartDate": "2026-07-16",
+          "rank": 39
+        },
+        {
+          "chartDate": "2026-07-17",
           "rank": 39
         }
       ],
@@ -1695,7 +1851,7 @@
       "reviewScore": 0,
       "previousRank": 40,
       "peakRank": 40,
-      "daysOnChart": 3,
+      "daysOnChart": 4,
       "status": "steady",
       "coverSeed": "heaven-nowimyoung",
       "finalScore": 17.8,
@@ -1710,6 +1866,10 @@
         },
         {
           "chartDate": "2026-07-16",
+          "rank": 40
+        },
+        {
+          "chartDate": "2026-07-17",
           "rank": 40
         }
       ],
@@ -1733,7 +1893,7 @@
       "reviewScore": 0,
       "previousRank": 41,
       "peakRank": 41,
-      "daysOnChart": 3,
+      "daysOnChart": 4,
       "status": "steady",
       "coverSeed": "first-and-last-4bout",
       "finalScore": 17.6,
@@ -1748,6 +1908,10 @@
         },
         {
           "chartDate": "2026-07-16",
+          "rank": 41
+        },
+        {
+          "chartDate": "2026-07-17",
           "rank": 41
         }
       ],
@@ -1771,7 +1935,7 @@
       "reviewScore": 0,
       "previousRank": 42,
       "peakRank": 42,
-      "daysOnChart": 3,
+      "daysOnChart": 4,
       "status": "steady",
       "coverSeed": "lllm-tray-b-gaeko-zico",
       "finalScore": 17.2,
@@ -1786,6 +1950,10 @@
         },
         {
           "chartDate": "2026-07-16",
+          "rank": 42
+        },
+        {
+          "chartDate": "2026-07-17",
           "rank": 42
         }
       ],
@@ -1807,10 +1975,10 @@
       "youtubeMusicWeeklyRank": null,
       "youtubeShortsDailyRank": null,
       "reviewScore": 0,
-      "previousRank": 44,
+      "previousRank": 43,
       "peakRank": 43,
-      "daysOnChart": 3,
-      "status": "up",
+      "daysOnChart": 4,
+      "status": "steady",
       "coverSeed": "ten-thirty-hang-out-big-naughty-dynamicduo",
       "finalScore": 17,
       "rankHistory": [
@@ -1824,6 +1992,10 @@
         },
         {
           "chartDate": "2026-07-16",
+          "rank": 43
+        },
+        {
+          "chartDate": "2026-07-17",
           "rank": 43
         }
       ],
@@ -1845,10 +2017,10 @@
       "youtubeMusicWeeklyRank": null,
       "youtubeShortsDailyRank": null,
       "reviewScore": 0,
-      "previousRank": 45,
+      "previousRank": 44,
       "peakRank": 44,
-      "daysOnChart": 3,
-      "status": "up",
+      "daysOnChart": 4,
+      "status": "steady",
       "coverSeed": "アニョハセヨ-yuki-chiba-lil-moshpit",
       "finalScore": 16.8,
       "rankHistory": [
@@ -1862,6 +2034,10 @@
         },
         {
           "chartDate": "2026-07-16",
+          "rank": 44
+        },
+        {
+          "chartDate": "2026-07-17",
           "rank": 44
         }
       ],
@@ -1883,10 +2059,10 @@
       "youtubeMusicWeeklyRank": null,
       "youtubeShortsDailyRank": null,
       "reviewScore": 0,
-      "previousRank": 46,
+      "previousRank": 45,
       "peakRank": 45,
-      "daysOnChart": 3,
-      "status": "up",
+      "daysOnChart": 4,
+      "status": "steady",
       "coverSeed": "yarrr-haon",
       "finalScore": 16.6,
       "rankHistory": [
@@ -1900,6 +2076,10 @@
         },
         {
           "chartDate": "2026-07-16",
+          "rank": 45
+        },
+        {
+          "chartDate": "2026-07-17",
           "rank": 45
         }
       ],
@@ -1921,10 +2101,10 @@
       "youtubeMusicWeeklyRank": null,
       "youtubeShortsDailyRank": null,
       "reviewScore": 0,
-      "previousRank": 47,
+      "previousRank": 46,
       "peakRank": 46,
-      "daysOnChart": 3,
-      "status": "up",
+      "daysOnChart": 4,
+      "status": "steady",
       "coverSeed": "day-dream-sung-si-kyung",
       "finalScore": 16.4,
       "rankHistory": [
@@ -1938,6 +2118,10 @@
         },
         {
           "chartDate": "2026-07-16",
+          "rank": 46
+        },
+        {
+          "chartDate": "2026-07-17",
           "rank": 46
         }
       ],
@@ -1959,10 +2143,10 @@
       "youtubeMusicWeeklyRank": null,
       "youtubeShortsDailyRank": null,
       "reviewScore": 0,
-      "previousRank": 48,
+      "previousRank": 47,
       "peakRank": 47,
-      "daysOnChart": 3,
-      "status": "up",
+      "daysOnChart": 4,
+      "status": "steady",
       "coverSeed": "angel-s-whiskey-erick-oh",
       "finalScore": 16.2,
       "rankHistory": [
@@ -1976,6 +2160,10 @@
         },
         {
           "chartDate": "2026-07-16",
+          "rank": 47
+        },
+        {
+          "chartDate": "2026-07-17",
           "rank": 47
         }
       ],
@@ -1997,10 +2185,10 @@
       "youtubeMusicWeeklyRank": 17,
       "youtubeShortsDailyRank": 21,
       "reviewScore": 0,
-      "previousRank": 32,
+      "previousRank": 48,
       "peakRank": 3,
-      "daysOnChart": 6,
-      "status": "down",
+      "daysOnChart": 7,
+      "status": "steady",
       "coverSeed": "somun-akmu",
       "finalScore": 16.2,
       "rankHistory": [
@@ -2027,6 +2215,10 @@
         {
           "chartDate": "2026-07-16",
           "rank": 48
+        },
+        {
+          "chartDate": "2026-07-17",
+          "rank": 48
         }
       ],
       "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/43/aa/35/43aa3529-1776-70fb-fe49-2bb59a7680f2/8800367489775_cover.jpg/1000x1000bb.jpg",
@@ -2049,7 +2241,7 @@
       "reviewScore": 0,
       "previousRank": 49,
       "peakRank": 49,
-      "daysOnChart": 3,
+      "daysOnChart": 4,
       "status": "steady",
       "coverSeed": "shock-the-world-melody-version-that-boy-franco",
       "finalScore": 15.8,
@@ -2064,6 +2256,10 @@
         },
         {
           "chartDate": "2026-07-16",
+          "rank": 49
+        },
+        {
+          "chartDate": "2026-07-17",
           "rank": 49
         }
       ],
@@ -2087,7 +2283,7 @@
       "reviewScore": 0,
       "previousRank": 50,
       "peakRank": 50,
-      "daysOnChart": 3,
+      "daysOnChart": 4,
       "status": "steady",
       "coverSeed": "say-my-name-dimo-rex",
       "finalScore": 15.6,
@@ -2102,6 +2298,10 @@
         },
         {
           "chartDate": "2026-07-16",
+          "rank": 50
+        },
+        {
+          "chartDate": "2026-07-17",
           "rank": 50
         }
       ],
